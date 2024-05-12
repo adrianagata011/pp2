@@ -1,3 +1,6 @@
+-- mysql> ALTER USER 'root'@'localhost' IDENTIFIED BY 'testing01';
+-- mysql> ALTER USER 'pp2'@'%' IDENTIFIED BY 'Testing_2024';
+
 DROP TABLE permisos;
 DROP TABLE usuarios;
 DROP TABLE pantallas;
