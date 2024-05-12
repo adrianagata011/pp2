@@ -25,7 +25,7 @@ $usuario = $_SESSION['usuario'];
     <li><a href="#">Opción 1</a></li>
     <li><a href="#">Opción 2</a></li>
     <li><a href="#">Opción 3</a></li>
-    <li><a href="logout.php">Cerrar Sesión</a></li>
+    <li><a href="logout.php">Cerrar Sesion</a></li>
 </ul>
 
 </body>
