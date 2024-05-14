@@ -12,7 +12,7 @@ $mysqli = new mysqli('localhost', 'pp2', 'Testing_2024', 'pp2');
 if ($mysqli->connect_error) {
     die("Error en la conexión: " . $mysqli->connect_error);
 }
-
+// comentario
 // Llamar al procedimiento almacenado VerificarUsuario
 $query = "CALL VerificarUsuario('$usuario', '$contrasena', @existe)";
 $result = $mysqli->query($query);
