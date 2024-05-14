@@ -74,3 +74,34 @@ end
 -- SELECT @existe;
 -- CALL VerificarUsuario('paciente', 'password01', @existe);
 -- SELECT @existe;
+
+DELIMITER //
+CREATE PROCEDURE ObtenerNivelAcceso(
+    IN p_usuario VARCHAR(50),
+    IN p_pantalla VARCHAR(50),
+    OUT p_nivel_acceso INT
+)
+BEGIN
+    DECLARE v_rol_id INT;
+    
+    -- Obtener el ID del usuario
+    SELECT rol_id INTO v_rol_id
+    FROM usuarios
+    WHERE usuario = p_usuario;
+    
+    -- Obtener el nivel de acceso para la pantalla especificada
+    SELECT nivel_permiso INTO p_nivel_acceso
+    FROM permisos
+    INNER JOIN pantallas ON permisos.pantalla_id = pantallas.id
+    WHERE permisos.rol_id = v_rol_id AND pantallas.nombre = p_pantalla;
+    
+    -- Si no se encuentra un nivel de acceso, establecerlo como 0 (sin acceso)
+    IF p_nivel_acceso IS NULL THEN
+        SET p_nivel_acceso = 0;
+    END IF;
+    
+END //
+DELIMITER ;
+
+CALL ObtenerNivelAcceso('paciente', 'menu_001', @nivel_acceso);
+SELECT @nivel_acceso;
