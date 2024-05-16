@@ -31,7 +31,7 @@ if ($existe == 1) {
     $_SESSION['usuario'] = $usuario;
 
     // Redireccionar a la pantalla de menú
-    header("Location: index.html");
+    header("Location: index.php");
     exit();
 } else {
     // Mostrar mensaje de error y redireccionar de nuevo a la página de inicio de sesión
