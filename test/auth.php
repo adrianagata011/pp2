@@ -31,12 +31,12 @@ if ($existe == 1) {
     $_SESSION['usuario'] = $usuario;
 
     // Redireccionar a la pantalla de menú
-    header("Location: menu.php");
+    header("Location: index.html");
     exit();
 } else {
     // Mostrar mensaje de error y redireccionar de nuevo a la página de inicio de sesión
     echo "Usuario o contraseña incorrectos. Inténtelo nuevamente.";
-    header("refresh:3; url=/index.php");
+    header("refresh:3; url=/login.html");
     exit();
 }
 ?>
