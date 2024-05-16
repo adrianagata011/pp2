@@ -36,7 +36,7 @@ if ($existe == 1) {
 } else {
     // Mostrar mensaje de error y redireccionar de nuevo a la página de inicio de sesión
     echo "Usuario o contraseña incorrectos. Inténtelo nuevamente.";
-    header("refresh:3; url=/index.php");
+    header("refresh:3; url=/backup/index.php");
     exit();
 }
 ?>
