@@ -26,9 +26,9 @@ $existe = $row['existe'];
 if ($existe == 1) {
     // Iniciar sesión
 
-    $select_result_rol = $mysqli->query("SELECT rol_id FROM usuarios WHERE usuario = $usuario");
-    $row = $select_result_rol->fetch_assoc();
-    $rol = $row['rol_id'];
+    $select_result_rol = $mysqli->query("SELECT rol_id FROM usuarios WHERE usuario = '$usuario'");
+    $row2 = $select_result_rol->fetch_assoc();
+    $rol = $row2['rol_id'];
 
     $_SESSION['usuario'] = $usuario;
     $_SESSION['rol_id'] = $rol
