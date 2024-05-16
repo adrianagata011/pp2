@@ -24,7 +24,7 @@ $existe = $row['existe'];
 
 // Cerrar conexión
 $mysqli->close();
-
+echo $existe;
 // Verificar el resultado del procedimiento almacenado
 if ($existe == 1) {
     // Iniciar sesión
