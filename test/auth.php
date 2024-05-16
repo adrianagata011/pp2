@@ -24,11 +24,16 @@ $existe = $row['existe'];
 
 // Cerrar conexión
 $mysqli->close();
-echo $existe;
 // Verificar el resultado del procedimiento almacenado
 if ($existe == 1) {
     // Iniciar sesión
+
+    $select_result_rol = $mysqli->query("SELECT rol_id FROM usuarios WHERE usuario = $usuario");
+    $row = $select_result_rol->fetch_assoc();
+    $rol = $row['rol_id'];
+    
     $_SESSION['usuario'] = $usuario;
+    $_SESSION['rol_id'] = $rol
 
     // Redireccionar a la pantalla de menú
     header("Location: index.php");
