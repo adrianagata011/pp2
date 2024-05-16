@@ -7,7 +7,7 @@
 
 <h2>Iniciar Sesion</h2>
 
-<form method="post" action="backup/auth.php">
+<form method="post" action="auth.php">
     <label for="usuario">Usuario:</label>
     <input type="text" id="usuario" name="usuario" value="" required><br><br>
 

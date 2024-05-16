@@ -18,6 +18,6 @@ if (ini_get("session.use_cookies")) {
 session_destroy();
 
 // Redireccionar a la página de inicio de sesión
-header("Location: backup/index.php");
+header("Location: /backup/index.php");
 exit();
 ?>
