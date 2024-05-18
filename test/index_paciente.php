@@ -21,7 +21,7 @@ if (!isset($_SESSION['usuario']) || $_SESSION['rol_id'] != 1 ) {
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Login</title>
+    <title>Sistema Clínica - Home del Paciente</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -50,46 +50,6 @@ if (!isset($_SESSION['usuario']) || $_SESSION['rol_id'] != 1 ) {
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Gestion de turnos pacientes</h1>
-                                    </div>
-                                    
-                                    <hr>
-                                       
-                                        <a href="index.html" class="btn btn-primary btn-user btn-block">
-                                            reservar turno
-                                        </a>
-                                       
-                                        <a href="index.html" class="btn btn-primary btn-user btn-block">
-                                             cancelar turno
-                                        </a>
-                                        <a href="index.html" class="btn btn-primary btn-user btn-block">
-                                            acreditar turno
-                                        </a>
-                                   
-                                    <hr>
-
-                                    <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Gestion de pacientes</h1>
-                                    </div>
-                                     
-                                    <hr>
-                                       
-                                        <a href="index.html" class="btn btn-primary btn-user btn-block">
-                                            abm pacientes
-                                            
-                                        </a>
-                                       
-                                        <a href="index.html" class="btn btn-primary btn-user btn-block">
-                                            registrar atencion
-                                        </a>
-                                    
-                                    <hr>
-                                   
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="p-5">
-                                    <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Gestion de turnos</h1>
                                     </div>
                                     
@@ -102,29 +62,6 @@ if (!isset($_SESSION['usuario']) || $_SESSION['rol_id'] != 1 ) {
                                         <a href="index.html" class="btn btn-primary btn-user btn-block">
                                              cancelar turno
                                         </a>
-                                        <a href="index.html" class="btn btn-primary btn-user btn-block">
-                                            acreditar turno
-                                        </a>
-                                   
-                                    <hr>
-
-                                    <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Gestion de pacientes</h1>
-                                    </div>
-                                     
-                                    <hr>
-                                       
-                                        <a href="index.html" class="btn btn-primary btn-user btn-block">
-                                            abm pacientes
-                                            
-                                        </a>
-                                       
-                                        <a href="index.html" class="btn btn-primary btn-user btn-block">
-                                            registrar atencion
-                                        </a>
-                                    
-                                    <hr>
-
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Salir del Sistema</h1>
                                     </div>
