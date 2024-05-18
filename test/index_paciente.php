@@ -52,7 +52,8 @@ if (!isset($_SESSION['usuario']) || $_SESSION['rol_id'] != 1 ) {
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Gestion de turnos</h1>
                                     </div>
-                                    <hr>                                    
+                                    <hr>      
+                                    <div class="text-center">                                                              
                                     
 <?php
 
@@ -66,19 +67,36 @@ if ($mysqli->connect_error) {
 
 $sql = "SELECT id, usuario, contrasena FROM usuarios";
 $result = $conn->query($sql);
+?>
 
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>nombre</th>
+            <th>contrasena</th>
+        </tr>
+    </thead>
+    <tbody>
+<?php
 if ($result->num_rows > 0) {
     // Output de cada fila
     while($row = $result->fetch_assoc()) {
-        echo '<input type="checkbox" name="opciones[]" value="' . $row["id"] . '"> ' . $row["usuario"] . $row["contrasena"] . '<br>';
+        echo "<tr>";
+        echo "<td>" . $row["id"] . "</td><td>" . $row["usuario"] . "</td><td>" . $row["contrasena"] . "</td>";
+        echo "</tr>";
     }
 } else {
-    echo "No se encontraron resultados.";
+    echo "<tr>";    
+    echo "<td>No se encontraron resultados</td><td></td><td></td>";
+    echo "</tr>";    
 }
 $conn->close();
 
 ?>
-
+    </tbody>
+</table>
+</div>
                                     <hr>
                                        
                                         <a href="index.html" class="btn btn-primary btn-user btn-block">
