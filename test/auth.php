@@ -14,34 +14,25 @@ if ($mysqli->connect_error) {
 }
 // comentario
 // Llamar al procedimiento almacenado VerificarUsuario
-$query = "CALL VerificarUsuario('$usuario', '$contrasena', @existe)";
+$query = "CALL VerificarUsuario('$usuario', '$contrasena', @existe, @rol)";
 $result = $mysqli->query($query);
 
 // Obtener el resultado del procedimiento almacenado
-$select_result = $mysqli->query("SELECT @existe AS existe");
+$select_result = $mysqli->query("SELECT @existe AS existe, @rol AS rol");
 $row = $select_result->fetch_assoc();
 $existe = $row['existe'];
+$rol = $row['rol'];
 $mysqli->close();
 
 // Verificar el resultado del procedimiento almacenado
 if ($existe == 1) {
     // Iniciar sesión
-
-//    $select_result_rol = $mysqli->query("SELECT rol_id FROM usuarios WHERE usuario = '$usuario'");
-//    $row2 = $select_result_rol->fetch_assoc();
-//    $rol = $row2['rol_id'];
-
     $_SESSION['usuario'] = $usuario;
-//    $_SESSION['rol_id'] = $rol
-    // Cerrar conexión
-//    $mysqli->close();
+    $_SESSION['rol_id'] = $rol;
     // Redireccionar a la pantalla de menú
     header("Location: index.php");
-
     exit();
 } else {
-    // Cerrar conexión
-//    $mysqli->close();
     // Mostrar mensaje de error y redireccionar de nuevo a la página de inicio de sesión
     echo "Usuario o contraseña incorrectos. Inténtelo nuevamente.";
     header("refresh:3; url=login.html");

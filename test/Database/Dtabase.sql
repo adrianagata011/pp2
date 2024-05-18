@@ -15,10 +15,47 @@ CREATE TABLE usuarios (
 INSERT INTO usuarios (usuario,contrasena,rol) values ('paciente','password01',1);
 INSERT INTO usuarios (usuario,contrasena,rol) values ('administrador','password01',2);
 
+CREATE TABLE pacientes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(50) NOT NULL,
+    apellido VARCHAR(50) NOT NULL,
+    dni VARCHAR(50) NOT NULL,
+    telefono VARCHAR(50) NOT NULL,
+    domicilio VARCHAR(50) NOT NULL,
+    email VARCHAR(50),
+    id_procedencia INT,
+    obra_social VARCHAR(50),
+    id_historia_clinica
+    ficha_medica
+    prioridad
+);
+
+CREATE TABLE profesionales (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(50) NOT NULL,
+    apellido VARCHAR(50) NOT NULL,
+    dni VARCHAR(50) NOT NULL,
+    telefono VARCHAR(50) NOT NULL,
+    domicilio VARCHAR(50) NOT NULL,
+    email VARCHAR(50) NOT NULL,
+    nro_matricula VARCHAR(50) NOT NULL,
+    id_servicio INT,
+    fecha_hora_ingreso DATETIME,
+    fecha_hora_egreso DATETIME,
+    inicio_actividad DATETIME,
+    fin_actividad DATETIME
+);
+
+
+
+
+
+
+
 drop procedure if exists VerificarUsuario;
 
 delimiter //
-CREATE PROCEDURE VerificarUsuario(
+CREATE PROCEDURE `VerificarUsuario`(
     IN t_usuario varchar(50),
     IN t_contrasena varchar(255),
     OUT existe boolean,
