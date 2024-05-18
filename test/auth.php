@@ -30,8 +30,17 @@ if ($existe == 1) {
     $_SESSION['usuario'] = $usuario;
     $_SESSION['rol_id'] = $rol;
     // Redireccionar a la pantalla de menú
-    header("Location: index.php");
-    exit();
+    if ($rol == 1) {
+        header("Location: index_paciente.php");
+        exit();
+    }
+    else 
+    {
+        header("Location: index_administrativo.php");
+        exit();        
+    }
+    
+
 } else {
     // Mostrar mensaje de error y redireccionar de nuevo a la página de inicio de sesión
     echo "Usuario o contraseña incorrectos. Inténtelo nuevamente.";

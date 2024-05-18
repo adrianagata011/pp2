@@ -13,7 +13,7 @@ CREATE TABLE usuarios (
 );
 
 INSERT INTO usuarios (usuario,contrasena,rol) values ('paciente','password01',1);
-INSERT INTO usuarios (usuario,contrasena,rol) values ('administrador','password01',2);
+INSERT INTO usuarios (usuario,contrasena,rol) values ('administrativo','password01',2);
 
 CREATE TABLE pacientes (
     id INT AUTO_INCREMENT PRIMARY KEY,
