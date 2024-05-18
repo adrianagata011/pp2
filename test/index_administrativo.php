@@ -124,13 +124,6 @@ if (!isset($_SESSION['usuario']) || $_SESSION['rol_id'] != 2 ) {
                                         </a>
                                     
                                     <hr>
-
-                                    <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Salir del Sistema</h1>
-                                    </div>
-                                    
-                                    <hr>
-
                                         <a href="index.html" class="btn btn-primary btn-user btn-block" href="#" data-toggle="modal" data-target="#logoutModal">
                                             Salir
                                         </a>

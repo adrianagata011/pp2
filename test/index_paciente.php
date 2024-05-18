@@ -52,7 +52,33 @@ if (!isset($_SESSION['usuario']) || $_SESSION['rol_id'] != 1 ) {
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Gestion de turnos</h1>
                                     </div>
+                                    <hr>                                    
                                     
+<?php
+
+// Conectar a la base de datos
+$mysqli = new mysqli('localhost', 'pp2', 'Testing_2024', 'pp2');
+
+// Verificar conexión
+if ($mysqli->connect_error) {
+    die("Error en la conexión: " . $mysqli->connect_error);
+}
+
+$sql = "SELECT id, usuario, contrasena FROM usuarios";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    // Output de cada fila
+    while($row = $result->fetch_assoc()) {
+        echo '<input type="checkbox" name="opciones[]" value="' . $row["id"] . '"> ' . $row["usuario"] . $row["contrasena"] . '<br>';
+    }
+} else {
+    echo "No se encontraron resultados.";
+}
+$conn->close();
+
+?>
+
                                     <hr>
                                        
                                         <a href="index.html" class="btn btn-primary btn-user btn-block">
@@ -62,10 +88,6 @@ if (!isset($_SESSION['usuario']) || $_SESSION['rol_id'] != 1 ) {
                                         <a href="index.html" class="btn btn-primary btn-user btn-block">
                                              cancelar turno
                                         </a>
-                                    <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Salir del Sistema</h1>
-                                    </div>
-                                    
                                     <hr>
 
                                         <a href="index.html" class="btn btn-primary btn-user btn-block" href="#" data-toggle="modal" data-target="#logoutModal">
