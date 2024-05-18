@@ -21,7 +21,7 @@ if (!isset($_SESSION['usuario']) || $_SESSION['rol_id'] != 2 ) {
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Login</title>
+    <title>Sistema Clínica - Home del Administrativo</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
