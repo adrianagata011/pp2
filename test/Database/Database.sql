@@ -85,8 +85,18 @@ CREATE TABLE agendas (
     id_servicio INT
 );
 
-drop procedure if exists VerificarUsuario;
+DROP TABLE pagos;
+CREATE TABLE pagos (
+    fecha DATETIME,
+    id_paciente INT,
+    importe FLOAT,
+    id_obra_social VARCHAR(50),
+    factura VARCHAR(50),
+    id_servicio INT
+);
 
+
+drop procedure if exists VerificarUsuario;
 delimiter //
 CREATE PROCEDURE `VerificarUsuario`(
     IN t_usuario varchar(50),
