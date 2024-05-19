@@ -4,7 +4,6 @@
 use PP2;
 
 DROP TABLE usuarios;
-
 CREATE TABLE usuarios (
     id INT AUTO_INCREMENT PRIMARY KEY,
     usuario VARCHAR(50) UNIQUE NOT NULL,
@@ -15,8 +14,9 @@ CREATE TABLE usuarios (
 INSERT INTO usuarios (usuario,contrasena,rol) values ('paciente','password01',1);
 INSERT INTO usuarios (usuario,contrasena,rol) values ('administrativo','password01',2);
 
+DROP TABLE pacientes;
 CREATE TABLE pacientes (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_paciente INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(50) NOT NULL,
     apellido VARCHAR(50) NOT NULL,
     dni VARCHAR(50) NOT NULL,
@@ -25,13 +25,14 @@ CREATE TABLE pacientes (
     email VARCHAR(50),
     id_procedencia INT,
     obra_social VARCHAR(50),
-    id_historia_clinica
-    ficha_medica
-    prioridad
+    id_historia_clinica INT,
+    id_ficha_medica INT,
+    prioridad INT
 );
 
+DROP TABLE profesionales;
 CREATE TABLE profesionales (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_profesional INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(50) NOT NULL,
     apellido VARCHAR(50) NOT NULL,
     dni VARCHAR(50) NOT NULL,
@@ -40,17 +41,49 @@ CREATE TABLE profesionales (
     email VARCHAR(50) NOT NULL,
     nro_matricula VARCHAR(50) NOT NULL,
     id_servicio INT,
-    fecha_hora_ingreso DATETIME,
-    fecha_hora_egreso DATETIME,
+    horario_ingreso DATETIME,
+    horario_egreso DATETIME,
     inicio_actividad DATETIME,
     fin_actividad DATETIME
 );
 
+DROP TABLE control_horario;
+CREATE TABLE control_horario (
+    id_profesional INT,
+    fecha_hora_ingreso DATETIME,
+    fecha_hora_egreso DATETIME
+);
 
+DROP TABLE consultorios;
+CREATE TABLE consultorios (
+    id_consultorio INT,
+    id_profesional INT,
+    id_insumo INT,
+    fecha_hora_ingreso DATETIME,
+    fecha_hora_egreso DATETIME,
+    id_servicio INT
+);
 
+DROP TABLE turnos;
+CREATE TABLE turnos (
+    id_turno INT,
+    fecha_hora DATETIME,
+    id_profesional INT,
+    id_consultorio INT,
+    id_servicio INT,
+    sobreturno BOOLEAN,
+    id_paciente INT,
+    acreditado BOOLEAN
+);
 
-
-
+DROP TABLE agendas;
+CREATE TABLE agendas (
+    id_profesional INT,
+    fecha_hora_ingreso DATETIME,
+    fecha_hora_egreso DATETIME,
+    id_consultorio INT,
+    id_servicio INT
+);
 
 drop procedure if exists VerificarUsuario;
 
