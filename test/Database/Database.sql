@@ -361,6 +361,8 @@ CREATE TABLE pacientes (
 );
 
 INSERT INTO pacientes (idFichaMedica, nombre, apellido, dni, telefono, domicilio, email, obraSocial, prioridad) VALUES
+(1, 'Carlos', 'González', '12345678', '555-1234', 'Calle 123', 'carlos@example.com', 'OSDE', 1),
+(2, 'María', 'López', '23456789', '555-2345', 'Avenida 456', 'maria@example.com', 'Swiss Medical', 2),
 (3, 'Juan', 'Martínez', '34567890', '555-3456', 'Ruta 789', 'juan@example.com', 'Galeno', 1),
 (4, 'Laura', 'Gómez', '45678901', '555-4567', 'Boulevard 012', 'laura@example.com', 'Medicus', 2),
 (5, 'Lucía', 'Rodríguez', '56789012', '555-5678', 'Plaza Principal', 'lucia@example.com', 'IAPOS', 3),
