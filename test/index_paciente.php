@@ -55,11 +55,14 @@ if (!isset($_SESSION['usuario']) || $_SESSION['rol_id'] != 1 ) {
                                     <hr>      
                                     <div class="text-center">
                                         <table>
-                                            <tr>
-                                                <th>ID</th>
-                                                <th>nombre</th>
-                                                <th>contrasena</th>
-                                            </tr>
+                                            <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>nombre</th>
+                                                    <th>contrasena</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
 <?php
 
 // Conectar a la base de datos
@@ -89,6 +92,7 @@ if ($result->num_rows > 0) {
 $conn->close();
 
 ?>
+                                            </tbody>
                                         </table>
                                     </div>
                                     <hr>
