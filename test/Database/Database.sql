@@ -11,10 +11,10 @@ DROP TABLE historias_clinicas;
 DROP TABLE resultados;
 DROP TABLE horarios;
 DROP TABLE usuarios;
-DROP TABLE pacientes;
-DROP TABLE profesionales;
-DROP TABLE consultorios;
 DROP TABLE turnos;
+DROP TABLE pacientes;
+DROP TABLE consultorios;
+DROP TABLE profesionales;
 DROP TABLE fichas_medicas;
 DROP TABLE informes;
 DROP TABLE servicios;
@@ -34,23 +34,17 @@ CREATE TABLE usuarios (
 INSERT INTO usuarios (usuario,contrasena,rol) values ('paciente','password01',1);
 INSERT INTO usuarios (usuario,contrasena,rol) values ('administrativo','password01',2);
 
-CREATE TABLE pacientes (
-    idPaciente INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(50) NOT NULL,
-    apellido VARCHAR(50) NOT NULL,
-    dni VARCHAR(50) NOT NULL,
-    telefono VARCHAR(50) NOT NULL,
-    domicilio VARCHAR(50) NOT NULL,
-    email VARCHAR(50),
-    idServicio INT,
-    obraSocial VARCHAR(50),
-    idHistoriaClinica INT,
-    idFichaMedica INT,
-    prioridad INT
+CREATE TABLE servicios (
+    idServicio INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100),
+    tiempo INT,
+    horario INT,
+    precio FLOAT
 );
 
 CREATE TABLE profesionales (
     idProfesional INT AUTO_INCREMENT PRIMARY KEY,
+    idServicio INT,
     nombre VARCHAR(50) NOT NULL,
     apellido VARCHAR(50) NOT NULL,
     dni VARCHAR(50) NOT NULL,
@@ -58,11 +52,19 @@ CREATE TABLE profesionales (
     domicilio VARCHAR(50) NOT NULL,
     email VARCHAR(50) NOT NULL,
     numeroMatricula VARCHAR(50) NOT NULL,
-    idServicio INT,
     horarioIngreso DATETIME,
     horarioEgreso DATETIME,
     inicioActividad DATETIME,
     finActividad DATETIME
+);
+
+CREATE TABLE insumos (
+    idInsumo INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(50) UNIQUE,
+    cantidadMinima INT,
+    cantidadExistente INT,
+    descripcion VARCHAR(50),
+    observaciones VARCHAR(50)
 );
 
 CREATE TABLE consultorios (
@@ -71,32 +73,9 @@ CREATE TABLE consultorios (
     idInsumo INT,
     fechaHoraIngreso DATETIME,
     fechaHoraEgreso DATETIME,
-    idServicio INT
-);
-
-CREATE TABLE fichas_medicas (
-    idFichaMedica INT AUTO_INCREMENT PRIMARY KEY,
-    idPaciente INT,
-    grupoSanguineo VARCHAR(20),
-    observaciones VARCHAR(50)
-);
-
-CREATE TABLE informes (
-    idInformes INT AUTO_INCREMENT PRIMARY KEY,
-    idProfesional INT,
-    idPaciente INT,
-    idEstudio INT,
-    idResultado INT,
-    fecha DATETIME,
-    observacion VARCHAR(100)
-);
-
-CREATE TABLE servicios (
-    idServicio INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(100),
-    tiempo INT,
-    horario INT,
-    precio FLOAT
+    idServicio INT,
+    constraint fk_consultorios_p foreign key (idProfesional) references profesionales(idProfesional),
+    constraint fk_consultorios_i foreign key (idInsumo) references insumos(idInsumo)
 );
 
 CREATE TABLE obras_sociales (
@@ -115,30 +94,82 @@ CREATE TABLE administrativos (
     horarioLaboral VARCHAR(50)
 );
 
-CREATE TABLE muestras (
-    idMuestra INT AUTO_INCREMENT PRIMARY KEY,
-    idPaciente INT,
-    fecha DATETIME,
-    descripcion VARCHAR(100),
-    idResultado INT,
-    rotulo VARCHAR(100)
-);
-
-CREATE TABLE insumos (
-    idInsumo INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(50) UNIQUE,
-    cantidadMinima INT,
-    cantidadExistente INT,
-    descripcion VARCHAR(50),
-    observaciones VARCHAR(50)
-);
-
 CREATE TABLE estudios (
     idEstudio INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(50) UNIQUE,
     fechaHora DATETIME,
     precio FLOAT,
     prioridad VARCHAR(50)
+);
+
+CREATE TABLE resultados (
+    idResultado INT AUTO_INCREMENT PRIMARY KEY,
+    idEstudio INT,
+    fecha DATETIME,
+    muestra VARCHAR(100),
+    descripcion VARCHAR(100),
+    comprobanteRetiro BOOLEAN,
+    constraint fk_resultados_e foreign key (idEstudio) references estudios(idEstudio)
+);
+
+CREATE TABLE historias_clinicas (
+    idHistoriaClinica INT AUTO_INCREMENT PRIMARY KEY,
+    idEstudio INT,
+    idServicio INT,
+    idResultado INT,
+    fecha DATETIME,
+    observacion VARCHAR(100),
+    derivadoDesde VARCHAR(100),
+    derivadoHacia VARCHAR(100),
+    constraint fk_historias_clinicas_e foreign key (idEstudio) references estudios(idEstudio),
+    constraint fk_historias_clinicas_s foreign key (idServicio) references servicios(idServicio),
+    constraint fk_historias_clinicas_r foreign key (idResultado ) references resultados(idResultado)
+);
+
+CREATE TABLE fichas_medicas (
+    idFichaMedica INT AUTO_INCREMENT PRIMARY KEY,
+    idHistoriaClinica INT,
+    grupoSanguineo VARCHAR(20),
+    observaciones VARCHAR(50),
+    constraint fk_fichas_medicas_h foreign key (idHistoriaClinica) references historias_clinicas(idHistoriaClinica)
+);
+
+CREATE TABLE pacientes (
+    idPaciente INT AUTO_INCREMENT PRIMARY KEY,
+    idFichaMedica INT,
+    nombre VARCHAR(50) NOT NULL,
+    apellido VARCHAR(50) NOT NULL,
+    dni VARCHAR(50) NOT NULL,
+    telefono VARCHAR(50) NOT NULL,
+    domicilio VARCHAR(50) NOT NULL,
+    email VARCHAR(50),
+    obraSocial VARCHAR(50),
+    prioridad INT,
+    constraint fk_pacientes_f foreign key (idFichaMedica) references fichas_medicas(idFichaMedica)
+);
+
+CREATE TABLE informes (
+    idInformes INT AUTO_INCREMENT PRIMARY KEY,
+    idProfesional INT,
+    idPaciente INT,
+    idEstudio INT,
+    idResultado INT,
+    fecha DATETIME,
+    observacion VARCHAR(100),
+    constraint fk_informes_p foreign key (idProfesional) references profesionales(idProfesional),
+    constraint fk_informes_pa foreign key (idPaciente) references pacientes(idPaciente),
+    constraint fk_informes_e foreign key (idEstudio) references estudios(idEstudio),
+    constraint fk_informes_r foreign key (idResultado) references resultados(idResultado)
+);
+
+CREATE TABLE muestras (
+    idMuestra INT AUTO_INCREMENT PRIMARY KEY,
+    idPaciente INT,
+    fecha DATETIME,
+    descripcion VARCHAR(100),
+    idResultado INT,
+    rotulo VARCHAR(100),
+    constraint fk_muestras_p foreign key (idPaciente) references pacientes(idPaciente)
 );
 
 CREATE TABLE turnos (
@@ -161,18 +192,6 @@ CREATE TABLE control_horario (
     fechaHoraIngreso DATETIME,
     fechaHoraEgreso DATETIME,
     constraint fk_control_horario_p foreign key (idProfesional) references profesionales(idProfesional)
-);
-
-CREATE TABLE resultados (
-    idResultado INT AUTO_INCREMENT PRIMARY KEY,
-    idEstudio INT,
-    idPaciente INT,
-    fecha DATETIME,
-    muestra VARCHAR(100),
-    descripcion VARCHAR(100),
-    comprobanteRetiro BOOLEAN,
-    constraint fk_resultados_p foreign key (idPaciente) references pacientes(idPaciente),
-    constraint fk_resultados_e foreign key (idEstudio) references estudios(idEstudio)
 );
 
 CREATE TABLE agendas (
@@ -205,22 +224,6 @@ CREATE TABLE recetas (
     descripcion VARCHAR(50),
     constraint fk_recetas_p foreign key (idPaciente) references pacientes(idPaciente),
     constraint fk_recetas_pr foreign key (idProfesional) references profesionales(idProfesional)
-);
-
-CREATE TABLE historias_clinicas (
-    idHistoriaClinica INT AUTO_INCREMENT PRIMARY KEY,
-    idPaciente INT,
-    idEstudio INT,
-    idServicio INT,
-    idResultado INT,
-    fecha DATETIME,
-    observacion VARCHAR(100),
-    derivadoDesde VARCHAR(100),
-    derivadoHacia VARCHAR(100),
-    constraint fk_historias_clinicas_p foreign key (idPaciente) references pacientes(idPaciente),
-    constraint fk_historias_clinicas_e foreign key (idEstudio) references estudios(idEstudio),
-    constraint fk_historias_clinicas_s foreign key (idServicio) references servicios(idServicio),
-    constraint fk_historias_clinicas_r foreign key (idResultado ) references resultados(idResultado)
 );
 
 CREATE TABLE horarios (
