@@ -137,6 +137,72 @@ CREATE TABLE informes (
     constraint pk_informes primary key (idInformes)
 );
 
+DROP TABLE historias_clinicas;
+CREATE TABLE historias_clinicas (
+    idPaciente INT,
+    fecha DATETIME,
+    idEstudio INT,
+    idServicio INT,
+    observacion VARCHAR(100),
+    idResultado INT,
+    derivadoDesde VARCHAR(100),
+    derivadoHacia VARCHAR(100)
+);
+
+DROP TABLE resultados;
+CREATE TABLE resultados (
+    idEstudio INT,
+    idPaciente INT,
+    fecha DATETIME,
+    muestra VARCHAR(100),
+    descripcion VARCHAR(100),
+    comprobanteRetiro BOOLEAN
+);
+
+DROP TABLE servicios;
+CREATE TABLE servicios (
+    idServicio INT,
+    nombre VARCHAR(100),
+    tiempo INT,
+    horario INT,
+    precio FLOAT
+);
+
+DROP TABLE obras_sociales;
+CREATE TABLE obras_sociales (
+    idObraSocial INT,
+    nombre VARCHAR(100)
+);
+
+DROP TABLE administrativos;
+CREATE TABLE administrativos (
+    legajo INT,
+    nombre VARCHAR(50),
+    apellido VARCHAR(50),
+    dni INT,
+    telefono VARCHAR(50),
+    domicilio VARCHAR(100),
+    email VARCHAR(100),
+    horarioLaboral VARCHAR(50)
+);
+
+DROP TABLE horarios;
+CREATE TABLE horarios (
+    idProfesional INT,
+    fecha DATETIME,
+    turno VARCHAR(50)
+);
+
+DROP TABLE muestras;
+CREATE TABLE muestras (
+    idMuestra INT,
+    idPaciente INT,
+    fecha DATETIME,
+    descripcion VARCHAR(100),
+    idResultado INT,
+    rotulo VARCHAR(100)
+)
+
 drop procedure if exists VerificarUsuario;
 delimiter //
 CREATE PROCEDURE `VerificarUsuario`(
