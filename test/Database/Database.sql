@@ -25,7 +25,6 @@ DROP TABLE obras_sociales;
 DROP TABLE administrativos;
 DROP TABLE insumos;
 
-
 CREATE TABLE usuarios (
     idUsuario INT AUTO_INCREMENT PRIMARY KEY,
     usuario VARCHAR(50) UNIQUE NOT NULL,
@@ -265,6 +264,18 @@ CREATE TABLE estudios (
     prioridad VARCHAR(50)
 );
 
+INSERT INTO estudios (nombre, fechaHora, precio, prioridad) VALUES
+('Ecografía abdominal', '2024-05-20 09:00:00', 150.00, 'Alta'),
+('Análisis de sangre', '2024-05-21 10:00:00', 80.00, 'Media'),
+('Radiografía de tórax', '2024-05-22 11:00:00', 120.00, 'Alta'),
+('Electrocardiograma', '2024-05-23 12:00:00', 100.00, 'Baja'),
+('Resonancia magnética', '2024-05-24 13:00:00', 300.00, 'Alta'),
+('Tomografía computarizada', '2024-05-25 14:00:00', 250.00, 'Media'),
+('Colonoscopía', '2024-05-26 15:00:00', 200.00, 'Alta'),
+('Mamografía', '2024-05-27 16:00:00', 180.00, 'Media'),
+('Endoscopía', '2024-05-28 17:00:00', 220.00, 'Baja'),
+('Prueba de esfuerzo', '2024-05-29 18:00:00', 130.00, 'Media');
+
 CREATE TABLE resultados (
     idResultado INT AUTO_INCREMENT PRIMARY KEY,
     idEstudio INT,
@@ -274,6 +285,19 @@ CREATE TABLE resultados (
     comprobanteRetiro BOOLEAN,
     constraint fk_resultados_e foreign key (idEstudio) references estudios(idEstudio)
 );
+
+INSERT INTO resultados (idEstudio, fecha, muestra, descripcion, comprobanteRetiro) VALUES
+(1, '2024-05-20 09:30:00', 'Sangre', 'Normal', TRUE),
+(2, '2024-05-21 10:30:00', 'Sangre', 'Hemoglobina dentro de valores normales', TRUE),
+(3, '2024-05-22 11:30:00', 'Radiografía', 'Sin alteraciones significativas', FALSE),
+(4, '2024-05-23 12:30:00', 'Electrodos', 'Se observa ritmo cardíaco regular', TRUE),
+(5, '2024-05-24 13:30:00', 'Imágenes', 'Presencia de lesión en el tejido blando', TRUE),
+(6, '2024-05-25 14:30:00', 'Imágenes', 'Presencia de anomalías en el hígado', TRUE),
+(7, '2024-05-26 15:30:00', 'Colonoscopia', 'Presencia de pólipos benignos', FALSE),
+(8, '2024-05-27 16:30:00', 'Mamografía', 'No se detectan masas ni calcificaciones', TRUE),
+(9, '2024-05-28 17:30:00', 'Endoscopía', 'Úlcera gástrica leve', FALSE),
+(10, '2024-05-29 18:30:00', 'Electrocardiograma', 'Ejercicio bien tolerado, sin arritmias', TRUE);
+
 
 CREATE TABLE historias_clinicas (
     idHistoriaClinica INT AUTO_INCREMENT PRIMARY KEY,
@@ -289,6 +313,19 @@ CREATE TABLE historias_clinicas (
     constraint fk_historias_clinicas_r foreign key (idResultado ) references resultados(idResultado)
 );
 
+INSERT INTO historias_clinicas (idEstudio, idServicio, idResultado, fecha, observacion, derivadoDesde, derivadoHacia) VALUES
+(1, 1, 1, '2024-05-20 09:30:00', 'Paciente sin síntomas aparentes', 'Consulta médica', 'Eco Doppler'),
+(2, 2, 2, '2024-05-21 10:30:00', 'Paciente con fatiga crónica', 'Consulta médica', 'Análisis de glucemia postprandial'),
+(3, 3, 3, '2024-05-22 11:30:00', 'Paciente con tos persistente', 'Consulta médica', 'Tomografía de abdomen'),
+(4, 4, 4, '2024-05-23 12:30:00', 'Paciente con antecedentes cardíacos', 'Consulta médica', 'Holter de 24hs'),
+(5, 5, 5, '2024-05-24 13:30:00', 'Paciente con dolor lumbar crónico', 'Consulta médica', 'Revisión por traumatología'),
+(6, 6, 6, '2024-05-25 14:30:00', 'Paciente con síntomas gastrointestinales', 'Consulta médica', 'Colangiorresonancia'),
+(7, 7, 7, '2024-05-26 15:30:00', 'Paciente asintomático', 'Control de rutina', 'Seguimiento médico'),
+(8, 8, 8, '2024-05-27 16:30:00', 'Paciente con antecedentes familiares de cáncer de mama', 'Consulta médica', 'Seguimiento oncológico'),
+(9, 9, 9, '2024-05-28 17:30:00', 'Paciente con dispepsia', 'Consulta médica', 'Esofagoscopia'),
+(10, 10, 10, '2024-05-29 18:30:00', 'Paciente con antecedentes de enfermedad cardiovascular', 'Consulta médica', 'Seguimiento cardiológico');
+
+
 CREATE TABLE fichas_medicas (
     idFichaMedica INT AUTO_INCREMENT PRIMARY KEY,
     idHistoriaClinica INT,
@@ -296,6 +333,18 @@ CREATE TABLE fichas_medicas (
     observaciones VARCHAR(50),
     constraint fk_fichas_medicas_h foreign key (idHistoriaClinica) references historias_clinicas(idHistoriaClinica)
 );
+
+INSERT INTO fichas_medicas (idHistoriaClinica, grupoSanguineo, observaciones) VALUES
+(1, 'A+', 'Sin observaciones'),
+(2, 'O-', 'Sin observaciones'),
+(3, 'B+', 'Hipertensión arterial'),
+(4, 'AB+', 'Sin observaciones'),
+(5, 'A-', 'Sin observaciones'),
+(6, 'O+', 'Sin observaciones'),
+(7, 'B-', 'Sin observaciones'),
+(8, 'AB-', 'Antecedentes familiares de cáncer de mama'),
+(9, 'O+', 'Sin observaciones'),
+(10, 'A+', 'Sin observaciones');
 
 CREATE TABLE pacientes (
     idPaciente INT AUTO_INCREMENT PRIMARY KEY,
@@ -311,6 +360,16 @@ CREATE TABLE pacientes (
     constraint fk_pacientes_f foreign key (idFichaMedica) references fichas_medicas(idFichaMedica)
 );
 
+INSERT INTO pacientes (idFichaMedica, nombre, apellido, dni, telefono, domicilio, email, obraSocial, prioridad) VALUES
+(3, 'Juan', 'Martínez', '34567890', '555-3456', 'Ruta 789', 'juan@example.com', 'Galeno', 1),
+(4, 'Laura', 'Gómez', '45678901', '555-4567', 'Boulevard 012', 'laura@example.com', 'Medicus', 2),
+(5, 'Lucía', 'Rodríguez', '56789012', '555-5678', 'Plaza Principal', 'lucia@example.com', 'IAPOS', 3),
+(6, 'Pedro', 'Fernández', '67890123', '555-6789', 'Callejón 345', 'pedro@example.com', 'OSPIM', 1),
+(7, 'Ana', 'Díaz', '78901234', '555-7890', 'Calle 678', 'ana@example.com', 'OSSEG', 2),
+(8, 'Sofía', 'Pérez', '89012345', '555-8901', 'Avenida 901', 'sofia@example.com', 'Sancor Salud', 3),
+(9, 'Martín', 'Suárez', '90123456', '555-9012', 'Calle 234', 'martin@example.com', 'OSPERYH', 1),
+(10, 'Julieta', 'López', '01234567', '555-0123', 'Avenida 345', 'julieta@example.com', 'Federada Salud', 2);
+
 CREATE TABLE informes (
     idInformes INT AUTO_INCREMENT PRIMARY KEY,
     idProfesional INT,
@@ -325,6 +384,19 @@ CREATE TABLE informes (
     constraint fk_informes_r foreign key (idResultado) references resultados(idResultado)
 );
 
+INSERT INTO informes (idProfesional, idPaciente, idEstudio, idResultado, fecha, observacion) VALUES
+(1, 1, 1, 1, '2024-05-20 09:30:00', 'Eco abdominal normal'),
+(2, 2, 2, 2, '2024-05-21 10:30:00', 'Análisis de sangre dentro de valores normales'),
+(3, 3, 3, 3, '2024-05-22 11:30:00', 'Radiografía sin hallazgos significativos'),
+(4, 4, 4, 4, '2024-05-23 12:30:00', 'Electrocardiograma sin alteraciones'),
+(5, 5, 5, 5, '2024-05-24 13:30:00', 'Lesión detectada en resonancia magnética'),
+(6, 6, 6, 6, '2024-05-25 14:30:00', 'Anomalías en tomografía computarizada'),
+(7, 7, 7, 7, '2024-05-26 15:30:00', 'Pólipos detectados en colonoscopía'),
+(8, 8, 8, 8, '2024-05-27 16:30:00', 'Mamografía normal'),
+(9, 9, 9, 9, '2024-05-28 17:30:00', 'Úlcera gástrica leve en endoscopía'),
+(10, 10, 10, 10, '2024-05-29 18:30:00', 'Prueba de esfuerzo bien tolerada');
+
+
 CREATE TABLE muestras (
     idMuestra INT AUTO_INCREMENT PRIMARY KEY,
     idPaciente INT,
@@ -334,6 +406,18 @@ CREATE TABLE muestras (
     rotulo VARCHAR(100),
     constraint fk_muestras_p foreign key (idPaciente) references pacientes(idPaciente)
 );
+
+INSERT INTO muestras (idPaciente, fecha, descripcion, idResultado, rotulo) VALUES
+(1, '2024-05-20 09:30:00', 'Sangre', 1, 'Muestra A-123'),
+(2, '2024-05-21 10:30:00', 'Sangre', 2, 'Muestra B-456'),
+(3, '2024-05-22 11:30:00', 'Radiografía', 3, 'Muestra C-789'),
+(4, '2024-05-23 12:30:00', 'Electrodos', 4, 'Muestra D-012'),
+(5, '2024-05-24 13:30:00', 'Imágenes', 5, 'Muestra E-345'),
+(6, '2024-05-25 14:30:00', 'Imágenes', 6, 'Muestra F-678'),
+(7, '2024-05-26 15:30:00', 'Colonoscopia', 7, 'Muestra G-901'),
+(8, '2024-05-27 16:30:00', 'Mamografía', 8, 'Muestra H-234'),
+(9, '2024-05-28 17:30:00', 'Endoscopía', 9, 'Muestra I-567'),
+(10, '2024-05-29 18:30:00', 'Electrocardiograma', 10, 'Muestra J-890');
 
 CREATE TABLE turnos (
     idTurno INT AUTO_INCREMENT PRIMARY KEY,
@@ -350,12 +434,36 @@ CREATE TABLE turnos (
     constraint fk_turnos_pa foreign key (idPaciente) references pacientes(idPaciente)
 );
 
+INSERT INTO turnos (idProfesional, idConsultorio, idServicio, idPaciente, fechaHora, sobreturno, acreditado) VALUES
+(1, 1, 1, 1, '2024-05-20 09:30:00', FALSE, TRUE),
+(2, 2, 2, 2, '2024-05-21 10:30:00', FALSE, TRUE),
+(3, 3, 3, 3, '2024-05-22 11:30:00', FALSE, TRUE),
+(4, 4, 4, 4, '2024-05-23 12:30:00', FALSE, TRUE),
+(5, 5, 5, 5, '2024-05-24 13:30:00', FALSE, TRUE),
+(6, 6, 6, 6, '2024-05-25 14:30:00', FALSE, TRUE),
+(7, 7, 7, 7, '2024-05-26 15:30:00', FALSE, TRUE),
+(8, 8, 8, 8, '2024-05-27 16:30:00', FALSE, TRUE),
+(9, 9, 9, 9, '2024-05-28 17:30:00', FALSE, TRUE),
+(10, 10, 10, 10, '2024-05-29 18:30:00', FALSE, TRUE);
+
 CREATE TABLE control_horario (
     idProfesional INT,
     fechaHoraIngreso DATETIME,
     fechaHoraEgreso DATETIME,
     constraint fk_control_horario_p foreign key (idProfesional) references profesionales(idProfesional)
 );
+
+INSERT INTO control_horario (idProfesional, fechaHoraIngreso, fechaHoraEgreso) VALUES
+(1, '2024-05-20 09:00:00', '2024-05-20 18:00:00'),
+(2, '2024-05-21 09:00:00', '2024-05-21 18:00:00'),
+(3, '2024-05-22 09:00:00', '2024-05-22 18:00:00'),
+(4, '2024-05-23 09:00:00', '2024-05-23 18:00:00'),
+(5, '2024-05-24 09:00:00', '2024-05-24 18:00:00'),
+(6, '2024-05-25 09:00:00', '2024-05-25 18:00:00'),
+(7, '2024-05-26 09:00:00', '2024-05-26 18:00:00'),
+(8, '2024-05-27 09:00:00', '2024-05-27 18:00:00'),
+(9, '2024-05-28 09:00:00', '2024-05-28 18:00:00'),
+(10, '2024-05-29 09:00:00', '2024-05-29 18:00:00');
 
 CREATE TABLE agendas (
     idProfesional INT,
@@ -367,6 +475,18 @@ CREATE TABLE agendas (
     constraint fk_agenda_c foreign key (idConsultorio) references consultorios(idConsultorio),
     constraint fk_agenda_s foreign key (idServicio) references servicios(idServicio)
 );
+
+INSERT INTO agendas (idProfesional, idConsultorio, idServicio, fechaHoraIngreso, fechaHoraEgreso) VALUES
+(1, 1, 1, '2024-05-20 09:00:00', '2024-05-20 18:00:00'),
+(2, 2, 2, '2024-05-21 09:00:00', '2024-05-21 18:00:00'),
+(3, 3, 3, '2024-05-22 09:00:00', '2024-05-22 18:00:00'),
+(4, 4, 4, '2024-05-23 09:00:00', '2024-05-23 18:00:00'),
+(5, 5, 5, '2024-05-24 09:00:00', '2024-05-24 18:00:00'),
+(6, 6, 6, '2024-05-25 09:00:00', '2024-05-25 18:00:00'),
+(7, 7, 7, '2024-05-26 09:00:00', '2024-05-26 18:00:00'),
+(8, 8, 8, '2024-05-27 09:00:00', '2024-05-27 18:00:00'),
+(9, 9, 9, '2024-05-28 09:00:00', '2024-05-28 18:00:00'),
+(10, 10, 10, '2024-05-29 09:00:00', '2024-05-29 18:00:00');
 
 CREATE TABLE pagos (
     idPaciente INT,
@@ -380,6 +500,18 @@ CREATE TABLE pagos (
     constraint fk_pagos_o foreign key (idObraSocial) references obras_sociales(idObraSocial)
 );
 
+INSERT INTO pagos (idPaciente, idServicio, idObraSocial, fecha, importe, factura) VALUES
+(1, 1, 1, '2024-05-20 09:30:00', 150.00, 'FAC-001'),
+(2, 2, 2, '2024-05-21 10:30:00', 80.00, 'FAC-002'),
+(3, 3, 3, '2024-05-22 11:30:00', 120.00, 'FAC-003'),
+(4, 4, 4, '2024-05-23 12:30:00', 100.00, 'FAC-004'),
+(5, 5, 5, '2024-05-24 13:30:00', 300.00, 'FAC-005'),
+(6, 6, 6, '2024-05-25 14:30:00', 250.00, 'FAC-006'),
+(7, 7, 7, '2024-05-26 15:30:00', 200.00, 'FAC-007'),
+(8, 8, 8, '2024-05-27 16:30:00', 180.00, 'FAC-008'),
+(9, 9, 9, '2024-05-28 17:30:00', 220.00, 'FAC-009'),
+(10, 10, 10, '2024-05-29 18:30:00', 130.00, 'FAC-010');
+
 CREATE TABLE recetas (
     idPaciente INT,
     idProfesional INT,
@@ -389,12 +521,36 @@ CREATE TABLE recetas (
     constraint fk_recetas_pr foreign key (idProfesional) references profesionales(idProfesional)
 );
 
+INSERT INTO recetas (idPaciente, idProfesional, fecha, descripcion) VALUES
+(1, 1, '2024-05-20 09:30:00', 'Analgesia para el dolor abdominal'),
+(2, 2, '2024-05-21 10:30:00', 'Antibióticos para tratar infección'),
+(3, 3, '2024-05-22 11:30:00', 'Antiinflamatorios para aliviar dolor'),
+(4, 4, '2024-05-23 12:30:00', 'Medicación para regular ritmo cardíaco'),
+(5, 5, '2024-05-24 13:30:00', 'Tratamiento para lesión en tejido blando'),
+(6, 6, '2024-05-25 14:30:00', 'Medicamentos para afecciones hepáticas'),
+(7, 7, '2024-05-26 15:30:00', 'Laxantes para preparación de colonoscopia'),
+(8, 8, '2024-05-27 16:30:00', 'Indicaciones para seguimiento mamográfico'),
+(9, 9, '2024-05-28 17:30:00', 'Tratamiento para úlcera gástrica'),
+(10, 10, '2024-05-29 18:30:00', 'Recomendaciones post-prueba de esfuerzo');
+
 CREATE TABLE horarios (
     idProfesional INT,
     fecha DATETIME,
     turno VARCHAR(50),
     constraint fk_horarios_p foreign key (idProfesional) references profesionales(idProfesional)
 );
+
+INSERT INTO horarios (idProfesional, fecha, turno) VALUES
+(1, '2024-05-20', 'Mañana'),
+(2, '2024-05-21', 'Mañana'),
+(3, '2024-05-22', 'Mañana'),
+(4, '2024-05-23', 'Mañana'),
+(5, '2024-05-24', 'Mañana'),
+(6, '2024-05-25', 'Mañana'),
+(7, '2024-05-26', 'Mañana'),
+(8, '2024-05-27', 'Mañana'),
+(9, '2024-05-28', 'Mañana'),
+(10, '2024-05-29', 'Mañana');
 
 drop procedure if exists VerificarUsuario;
 delimiter //
