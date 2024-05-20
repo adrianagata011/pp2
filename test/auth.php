@@ -6,7 +6,8 @@ $usuario = $_POST['usuario'];
 $contrasena = $_POST['contrasena'];
 
 // Conectar a la base de datos
-$mysqli = new mysqli('localhost', 'pp2', 'Testing_2024', 'pp2');
+// $mysqli = new mysqli('localhost', 'pp2', 'Testing_2024', 'pp2');
+$mysqli = new mysqli('sql10.freemysqlhosting.net', 'sql10707793', 'Rre1s76tSV', 'sql10707793');
 
 // Verificar conexión
 if ($mysqli->connect_error) {
