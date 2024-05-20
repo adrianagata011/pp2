@@ -3,7 +3,27 @@
 
 use pp2;
 
+DROP TABLE control_horario;
+DROP TABLE agendas;
+DROP TABLE pagos;
+DROP TABLE recetas;
+DROP TABLE historias_clinicas;
+DROP TABLE resultados;
+DROP TABLE horarios;
 DROP TABLE usuarios;
+DROP TABLE pacientes;
+DROP TABLE profesionales;
+DROP TABLE consultorios;
+DROP TABLE turnos;
+DROP TABLE fichas_medicas;
+DROP TABLE informes;
+DROP TABLE servicios;
+DROP TABLE obras_sociales;
+DROP TABLE administrativos;
+DROP TABLE muestras;
+DROP TABLE insumos;
+DROP TABLE estudios;
+
 CREATE TABLE usuarios (
     idUsuario INT AUTO_INCREMENT PRIMARY KEY,
     usuario VARCHAR(50) UNIQUE NOT NULL,
@@ -14,7 +34,6 @@ CREATE TABLE usuarios (
 INSERT INTO usuarios (usuario,contrasena,rol) values ('paciente','password01',1);
 INSERT INTO usuarios (usuario,contrasena,rol) values ('administrativo','password01',2);
 
-DROP TABLE pacientes;
 CREATE TABLE pacientes (
     idPaciente INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(50) NOT NULL,
@@ -30,7 +49,6 @@ CREATE TABLE pacientes (
     prioridad INT
 );
 
-DROP TABLE profesionales;
 CREATE TABLE profesionales (
     idProfesional INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(50) NOT NULL,
@@ -47,7 +65,6 @@ CREATE TABLE profesionales (
     finActividad DATETIME
 );
 
-DROP TABLE consultorios;
 CREATE TABLE consultorios (
     idConsultorio INT AUTO_INCREMENT PRIMARY KEY,
     idProfesional INT,
@@ -57,19 +74,6 @@ CREATE TABLE consultorios (
     idServicio INT
 );
 
-DROP TABLE turnos;
-CREATE TABLE turnos (
-    idTurno INT AUTO_INCREMENT PRIMARY KEY,
-    fechaHora DATETIME,
-    idProfesional INT,
-    idConsultorio INT,
-    idServicio INT,
-    sobreturno BOOLEAN,
-    idPaciente INT,
-    acreditado BOOLEAN
-);
-
-DROP TABLE fichas_medicas;
 CREATE TABLE fichas_medicas (
     idFichaMedica INT AUTO_INCREMENT PRIMARY KEY,
     idPaciente INT,
@@ -77,7 +81,6 @@ CREATE TABLE fichas_medicas (
     observaciones VARCHAR(50)
 );
 
-DROP TABLE informes;
 CREATE TABLE informes (
     idInformes INT AUTO_INCREMENT PRIMARY KEY,
     idProfesional INT,
@@ -88,7 +91,6 @@ CREATE TABLE informes (
     observacion VARCHAR(100)
 );
 
-DROP TABLE servicios;
 CREATE TABLE servicios (
     idServicio INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100),
@@ -97,13 +99,11 @@ CREATE TABLE servicios (
     precio FLOAT
 );
 
-DROP TABLE obras_sociales;
 CREATE TABLE obras_sociales (
     idObraSocial INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100)
 );
 
-DROP TABLE administrativos;
 CREATE TABLE administrativos (
     idAdministrativo INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(50),
@@ -115,7 +115,6 @@ CREATE TABLE administrativos (
     horarioLaboral VARCHAR(50)
 );
 
-DROP TABLE muestras;
 CREATE TABLE muestras (
     idMuestra INT AUTO_INCREMENT PRIMARY KEY,
     idPaciente INT,
@@ -125,7 +124,6 @@ CREATE TABLE muestras (
     rotulo VARCHAR(100)
 );
 
-DROP TABLE insumos;
 CREATE TABLE insumos (
     idInsumo INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(50) UNIQUE,
@@ -135,7 +133,29 @@ CREATE TABLE insumos (
     observaciones VARCHAR(50)
 );
 
-DROP TABLE control_horario;
+CREATE TABLE estudios (
+    idEstudio INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(50) UNIQUE,
+    fechaHora DATETIME,
+    precio FLOAT,
+    prioridad VARCHAR(50)
+);
+
+CREATE TABLE turnos (
+    idTurno INT AUTO_INCREMENT PRIMARY KEY,
+    idProfesional INT,
+    idConsultorio INT,
+    idServicio INT,
+    idPaciente INT,
+    fechaHora DATETIME,
+    sobreturno BOOLEAN,
+    acreditado BOOLEAN,
+    constraint fk_turnos_p foreign key (idProfesional) references profesionales(idProfesional),
+    constraint fk_turnos_c foreign key (idConsultorio) references consultorios(idConsultorio),
+    constraint fk_turnos_s foreign key (idServicio) references servicios(idServicio),
+    constraint fk_turnos_pa foreign key (idPaciente) references pacientes(idPaciente)
+);
+
 CREATE TABLE control_horario (
     idProfesional INT,
     fechaHoraIngreso DATETIME,
@@ -143,7 +163,18 @@ CREATE TABLE control_horario (
     constraint fk_control_horario_p foreign key (idProfesional) references profesionales(idProfesional)
 );
 
-DROP TABLE agendas;
+CREATE TABLE resultados (
+    idResultado INT AUTO_INCREMENT PRIMARY KEY,
+    idEstudio INT,
+    idPaciente INT,
+    fecha DATETIME,
+    muestra VARCHAR(100),
+    descripcion VARCHAR(100),
+    comprobanteRetiro BOOLEAN,
+    constraint fk_resultados_p foreign key (idPaciente) references pacientes(idPaciente),
+    constraint fk_resultados_e foreign key (idEstudio) references estudios(idEstudio)
+);
+
 CREATE TABLE agendas (
     idProfesional INT,
     idConsultorio INT,
@@ -155,7 +186,6 @@ CREATE TABLE agendas (
     constraint fk_agenda_s foreign key (idServicio) references servicios(idServicio)
 );
 
-DROP TABLE pagos;
 CREATE TABLE pagos (
     idPaciente INT,
     idServicio INT,
@@ -168,7 +198,6 @@ CREATE TABLE pagos (
     constraint fk_pagos_o foreign key (idObraSocial) references obras_sociales(idObraSocial)
 );
 
-DROP TABLE recetas;
 CREATE TABLE recetas (
     idPaciente INT,
     idProfesional INT,
@@ -178,8 +207,8 @@ CREATE TABLE recetas (
     constraint fk_recetas_pr foreign key (idProfesional) references profesionales(idProfesional)
 );
 
-DROP TABLE historias_clinicas;
 CREATE TABLE historias_clinicas (
+    idHistoriaClinica INT AUTO_INCREMENT PRIMARY KEY,
     idPaciente INT,
     idEstudio INT,
     idServicio INT,
@@ -194,19 +223,6 @@ CREATE TABLE historias_clinicas (
     constraint fk_historias_clinicas_r foreign key (idResultado ) references resultados(idResultado)
 );
 
-DROP TABLE resultados;
-CREATE TABLE resultados (
-    idEstudio INT,
-    idPaciente INT,
-    fecha DATETIME,
-    muestra VARCHAR(100),
-    descripcion VARCHAR(100),
-    comprobanteRetiro BOOLEAN,
-    constraint fk_resultados_p foreign key (idPaciente) references pacientes(idPaciente),
-    constraint fk_resultados_e foreign key (idEstudio) references estudios(idEstudio)
-);
-
-DROP TABLE horarios;
 CREATE TABLE horarios (
     idProfesional INT,
     fecha DATETIME,
