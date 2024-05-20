@@ -95,10 +95,10 @@ CREATE TABLE profesionales (
     domicilio VARCHAR(50) NOT NULL,
     email VARCHAR(50) NOT NULL,
     numeroMatricula VARCHAR(50) NOT NULL,
-    horarioIngreso DATETIME,
-    horarioEgreso DATETIME,
-    inicioActividad DATETIME,
-    finActividad DATETIME
+    horarioIngreso INT,
+    horarioEgreso INT,
+    inicioActividad DATE,
+    finActividad DATETIME DEFAULT NULL
 );
 
 CREATE TABLE insumos (
