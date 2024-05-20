@@ -98,7 +98,8 @@ CREATE TABLE profesionales (
     horarioIngreso INT,
     horarioEgreso INT,
     inicioActividad DATE,
-    finActividad DATETIME DEFAULT NULL
+    finActividad DATETIME DEFAULT NULL,
+    constraint fk_profesionales_s foreign key (idServicio) references servicios(idServicio)
 );
 
 CREATE TABLE insumos (
