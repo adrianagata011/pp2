@@ -65,19 +65,15 @@ if ($mysqli->connect_error) {
     die("Error en la conexión: " . $mysqli->connect_error);
 }
 
-$sql = "SELECT id, usuario, contrasena FROM usuarios";
+$sql = "SELECT idUsuario, usuario, contrasena FROM usuarios";
 $result = $conn->query($sql);
 ?>
 
-<table>
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>nombre</th>
-            <th>contrasena</th>
-        </tr>
-    </thead>
-    <tbody>
+                                        <table>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>nombre</th>
+                                                <th>contrasena</th>
 <?php
 if ($result->num_rows > 0) {
     // Output de cada fila
@@ -94,9 +90,8 @@ if ($result->num_rows > 0) {
 $conn->close();
 
 ?>
-    </tbody>
-</table>
-</div>
+                                        </table>
+                                    </div>
                                     <hr>
                                        
                                         <a href="index.html" class="btn btn-primary btn-user btn-block">
