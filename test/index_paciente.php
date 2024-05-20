@@ -53,8 +53,13 @@ if (!isset($_SESSION['usuario']) || $_SESSION['rol_id'] != 1 ) {
                                         <h1 class="h4 text-gray-900 mb-4">Gestion de turnos</h1>
                                     </div>
                                     <hr>      
-                                    <div class="text-center">                                                              
-                                    
+                                    <div class="text-center">
+                                        <table>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>nombre</th>
+                                                <th>contrasena</th>
+                                            </tr>
 <?php
 
 // Conectar a la base de datos
@@ -68,14 +73,7 @@ if ($mysqli->connect_error) {
 
 $sql = "SELECT idUsuario, usuario, contrasena FROM usuarios";
 $result = $conn->query($sql);
-?>
 
-                                        <table>
-                                            <tr>
-                                                <th>ID</th>
-                                                <th>nombre</th>
-                                                <th>contrasena</th>
-<?php
 if ($result->num_rows > 0) {
     // Output de cada fila
     while($row = $result->fetch_assoc()) {
