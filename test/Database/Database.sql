@@ -208,10 +208,35 @@ CREATE TABLE consultorios (
     constraint fk_consultorios_i foreign key (idInsumo) references insumos(idInsumo)
 );
 
+INSERT INTO consultorios (idProfesional, idInsumo, fechaHoraIngreso, fechaHoraEgreso, idServicio) VALUES
+(1, 1, '2024-05-20 09:00:00', '2024-05-20 18:00:00', 1),
+(2, 2, '2024-05-20 09:00:00', '2024-05-20 18:00:00', 2),
+(3, 3, '2024-05-20 09:00:00', '2024-05-20 18:00:00', 3),
+(4, 4, '2024-05-20 09:00:00', '2024-05-20 18:00:00', 4),
+(5, 5, '2024-05-20 09:00:00', '2024-05-20 18:00:00', 5),
+(6, 6, '2024-05-20 09:00:00', '2024-05-20 18:00:00', 6),
+(7, 7, '2024-05-20 09:00:00', '2024-05-20 18:00:00', 7),
+(8, 8, '2024-05-20 09:00:00', '2024-05-20 18:00:00', 8),
+(9, 9, '2024-05-20 09:00:00', '2024-05-20 18:00:00', 9),
+(10, 10, '2024-05-20 09:00:00', '2024-05-20 18:00:00', 10);
+
+
 CREATE TABLE obras_sociales (
     idObraSocial INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100)
 );
+
+INSERT INTO obras_sociales (nombre) VALUES
+('OSDE'),
+('Swiss Medical'),
+('Galeno'),
+('Medicus'),
+('IAPOS'),
+('OSPIM'),
+('OSSEG'),
+('Sancor Salud'),
+('OSPERYH'),
+('Federada Salud');
 
 CREATE TABLE administrativos (
     idAdministrativo INT AUTO_INCREMENT PRIMARY KEY,
@@ -223,6 +248,14 @@ CREATE TABLE administrativos (
     email VARCHAR(100),
     horarioLaboral VARCHAR(50)
 );
+
+INSERT INTO administrativos (nombre, apellido, dni, telefono, domicilio, email, horarioLaboral) VALUES
+('María', 'García', 12345678, '555-1234', 'Calle 123', 'maria@example.com', '9:00 - 18:00'),
+('Juan', 'López', 23456789, '555-2345', 'Avenida 456', 'juan@example.com', '9:00 - 18:00'),
+('Ana', 'Martínez', 34567890, '555-3456', 'Ruta 789', 'ana@example.com', '9:00 - 18:00'),
+('Pedro', 'Gómez', 45678901, '555-4567', 'Boulevard 012', 'pedro@example.com', '9:00 - 18:00'),
+('Lucía', 'Rodríguez', 56789012, '555-5678', 'Plaza Principal', 'lucia@example.com', '9:00 - 18:00'),
+('Carlos', 'Fernández', 67890123, '555-6789', 'Callejón 345', 'carlos@example.com', '9:00 - 18:00');
 
 CREATE TABLE estudios (
     idEstudio INT AUTO_INCREMENT PRIMARY KEY,
