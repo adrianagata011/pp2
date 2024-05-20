@@ -5,10 +5,11 @@ use PP2;
 
 DROP TABLE usuarios;
 CREATE TABLE usuarios (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    idUsuario INT AUTO_INCREMENT PRIMARY KEY,
     usuario VARCHAR(50) UNIQUE NOT NULL,
     contrasena VARCHAR(255) NOT NULL,
-    rol INT NOT NULL
+    rol INT NOT NULL,
+    constraint pk_usuarios primary key (idUsuario)
 );
 
 INSERT INTO usuarios (usuario,contrasena,rol) values ('paciente','password01',1);
@@ -16,85 +17,125 @@ INSERT INTO usuarios (usuario,contrasena,rol) values ('administrativo','password
 
 DROP TABLE pacientes;
 CREATE TABLE pacientes (
-    id_paciente INT AUTO_INCREMENT PRIMARY KEY,
+    idPaciente INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(50) NOT NULL,
     apellido VARCHAR(50) NOT NULL,
     dni VARCHAR(50) NOT NULL,
     telefono VARCHAR(50) NOT NULL,
     domicilio VARCHAR(50) NOT NULL,
     email VARCHAR(50),
-    id_procedencia INT,
-    obra_social VARCHAR(50),
-    id_historia_clinica INT,
-    id_ficha_medica INT,
-    prioridad INT
+    idServicio INT,
+    obraSocial VARCHAR(50),
+    idHistoriaClinica INT,
+    idFichaMedica INT,
+    prioridad INT,
+    constraint pk_pacientes primary key (idPaciente)
 );
 
 DROP TABLE profesionales;
 CREATE TABLE profesionales (
-    id_profesional INT AUTO_INCREMENT PRIMARY KEY,
+    idProfesional INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(50) NOT NULL,
     apellido VARCHAR(50) NOT NULL,
     dni VARCHAR(50) NOT NULL,
     telefono VARCHAR(50) NOT NULL,
     domicilio VARCHAR(50) NOT NULL,
     email VARCHAR(50) NOT NULL,
-    nro_matricula VARCHAR(50) NOT NULL,
-    id_servicio INT,
-    horario_ingreso DATETIME,
-    horario_egreso DATETIME,
-    inicio_actividad DATETIME,
-    fin_actividad DATETIME
+    numeroMatricula VARCHAR(50) NOT NULL,
+    idServicio INT,
+    horarioIngreso DATETIME,
+    horarioEgreso DATETIME,
+    inicioActividad DATETIME,
+    finActividad DATETIME,
+    constraint pk_profesionales primary key (idProfesional)
 );
 
 DROP TABLE control_horario;
 CREATE TABLE control_horario (
-    id_profesional INT,
-    fecha_hora_ingreso DATETIME,
-    fecha_hora_egreso DATETIME
+    idProfesional INT,
+    fechaHoraIngreso DATETIME,
+    fechaHoraEgreso DATETIME
 );
 
 DROP TABLE consultorios;
 CREATE TABLE consultorios (
-    id_consultorio INT,
-    id_profesional INT,
-    id_insumo INT,
-    fecha_hora_ingreso DATETIME,
-    fecha_hora_egreso DATETIME,
-    id_servicio INT
+    idConsultorio INT,
+    idProfesional INT,
+    idInsumo INT,
+    fechaHoraIngreso DATETIME,
+    fechaHoraEgreso DATETIME,
+    idServicio INT,
+    constraint pk_consultorios primary key (idConsultorio)
 );
 
 DROP TABLE turnos;
 CREATE TABLE turnos (
-    id_turno INT,
-    fecha_hora DATETIME,
-    id_profesional INT,
-    id_consultorio INT,
-    id_servicio INT,
+    idTurno INT,
+    fechaHora DATETIME,
+    idProfesional INT,
+    idConsultorio INT,
+    idServicio INT,
     sobreturno BOOLEAN,
-    id_paciente INT,
-    acreditado BOOLEAN
+    idPaciente INT,
+    acreditado BOOLEAN,
+    constraint pk_turnos primary key (idTurnos)
 );
 
 DROP TABLE agendas;
 CREATE TABLE agendas (
-    id_profesional INT,
-    fecha_hora_ingreso DATETIME,
-    fecha_hora_egreso DATETIME,
-    id_consultorio INT,
-    id_servicio INT
+    idProfesional INT,
+    fechaHoraIngreso DATETIME,
+    fechaHoraEgreso DATETIME,
+    idConsultorio INT,
+    idServicio INT
 );
 
 DROP TABLE pagos;
 CREATE TABLE pagos (
     fecha DATETIME,
-    id_paciente INT,
+    idPaciente INT,
     importe FLOAT,
-    id_obra_social VARCHAR(50),
+    idObraSocial VARCHAR(50),
     factura VARCHAR(50),
-    id_servicio INT
+    idServicio INT
 );
 
+DROP TABLE fichas_medicas;
+CREATE TABLE fichas_medicas (
+    idFichaMedica INT,
+    idPaciente INT,
+    grupoSanguineo VARCHAR(20),
+    observaciones VARCHAR(50),
+    constraint pk_fichas_medicas primary key (idTurnos)
+);
+
+DROP TABLE insumos;
+CREATE TABLE insumos (
+    cantidadMinima INT,
+    cantidadExistente INT,
+    descripcion VARCHAR(50),
+    observaciones VARCHAR(50)
+);
+
+DROP TABLE recetas;
+CREATE TABLE recetas (
+    fecha DATETIME,
+    idPaciente INT,
+    idProfesional INT,
+    descripcion VARCHAR(50)
+);
+
+DROP TABLE informes;
+CREATE TABLE informes (
+    idInformes INT,
+    idProfesional INT,
+    idPaciente INT,
+    idEstudio INT,
+    idResultado INT,
+    fecha DATETIME,
+    observacion VARCHAR(100),
+    constraint pk_informes primary key (idInformes)
+);
 
 drop procedure if exists VerificarUsuario;
 delimiter //
