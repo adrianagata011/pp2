@@ -55,14 +55,11 @@ if (!isset($_SESSION['usuario']) || $_SESSION['rol_id'] != 1 ) {
                                     <hr>      
                                     <div class="text-center">
                                         <table>
-                                            <thead>
-                                                <tr>
-                                                    <th>ID</th>
-                                                    <th>nombre</th>
-                                                    <th>contrasena</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
+                                            <tr>
+                                                <td>ID</td>
+                                                <td>nombre</td>
+                                                <td>contrasena</td>
+                                            </tr>
 <?php
 
 // Conectar a la base de datos
@@ -81,7 +78,7 @@ if ($result->num_rows > 0) {
     // Output de cada fila
     while($row = $result->fetch_assoc()) {
         echo "<tr>";
-        echo "<td>" . $row["id"] . "</td><td>" . $row["usuario"] . "</td><td>" . $row["contrasena"] . "</td>";
+        echo "<td>" . $row["idUsuario"] . "</td><td>" . $row["usuario"] . "</td><td>" . $row["contrasena"] . "</td>";
         echo "</tr>";
     }
 } else {
@@ -92,7 +89,6 @@ if ($result->num_rows > 0) {
 $conn->close();
 
 ?>
-                                            </tbody>
                                         </table>
                                     </div>
                                     <hr>
