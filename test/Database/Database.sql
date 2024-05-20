@@ -44,46 +44,48 @@ CREATE TABLE servicios (
     horarioFin INT,
     precio FLOAT
 );
-INSERT INTO servicios (nombre,tiempo,horarioInicio,horarioFin,precio) values ('Emergencias',15,9,18,150.00);
-INSERT INTO servicios (nombre,tiempo,horarioInicio,horarioFin,precio) values ('Medicina Interna',15,9,18,150.00);
-INSERT INTO servicios (nombre,tiempo,horarioInicio,horarioFin,precio) values ('Cirugía General',15,9,18,150.00);
-INSERT INTO servicios (nombre,tiempo,horarioInicio,horarioFin,precio) values ('Pediatría',15,9,18,150.00);
-INSERT INTO servicios (nombre,tiempo,horarioInicio,horarioFin,precio) values ('Ginecología y Obstetricia',15,9,18,150.00);
-INSERT INTO servicios (nombre,tiempo,horarioInicio,horarioFin,precio) values ('Cardiología',15,9,18,150.00);
-INSERT INTO servicios (nombre,tiempo,horarioInicio,horarioFin,precio) values ('Neurología',15,9,18,150.00);
-INSERT INTO servicios (nombre,tiempo,horarioInicio,horarioFin,precio) values ('Oncología',15,9,18,150.00);
-INSERT INTO servicios (nombre,tiempo,horarioInicio,horarioFin,precio) values ('Dermatología',15,9,18,150.00);
-INSERT INTO servicios (nombre,tiempo,horarioInicio,horarioFin,precio) values ('Oftalmología',15,9,18,150.00);
-INSERT INTO servicios (nombre,tiempo,horarioInicio,horarioFin,precio) values ('Otorrinolaringología',15,9,18,150.00);
-INSERT INTO servicios (nombre,tiempo,horarioInicio,horarioFin,precio) values ('Ortopedia y Traumatología',15,9,18,150.00);
-INSERT INTO servicios (nombre,tiempo,horarioInicio,horarioFin,precio) values ('Psiquiatría',15,9,18,150.00);
-INSERT INTO servicios (nombre,tiempo,horarioInicio,horarioFin,precio) values ('Urología',15,9,18,150.00);
-INSERT INTO servicios (nombre,tiempo,horarioInicio,horarioFin,precio) values ('Gastroenterología',15,9,18,150.00);
-INSERT INTO servicios (nombre,tiempo,horarioInicio,horarioFin,precio) values ('Neumología',15,9,18,150.00);
-INSERT INTO servicios (nombre,tiempo,horarioInicio,horarioFin,precio) values ('Endocrinología',15,9,18,150.00);
-INSERT INTO servicios (nombre,tiempo,horarioInicio,horarioFin,precio) values ('Nefrología',15,9,18,150.00);
-INSERT INTO servicios (nombre,tiempo,horarioInicio,horarioFin,precio) values ('Hematología',15,9,18,150.00);
-INSERT INTO servicios (nombre,tiempo,horarioInicio,horarioFin,precio) values ('Reumatología',15,9,18,150.00);
-INSERT INTO servicios (nombre,tiempo,horarioInicio,horarioFin,precio) values ('Radiología',15,9,18,150.00);
-INSERT INTO servicios (nombre,tiempo,horarioInicio,horarioFin,precio) values ('Anestesiología',15,9,18,150.00);
-INSERT INTO servicios (nombre,tiempo,horarioInicio,horarioFin,precio) values ('Unidad de Cuidados Intensivos (UCI)',15,9,18,150.00);
-INSERT INTO servicios (nombre,tiempo,horarioInicio,horarioFin,precio) values ('Rehabilitación y Fisioterapia',15,9,18,150.00);
-INSERT INTO servicios (nombre,tiempo,horarioInicio,horarioFin,precio) values ('Laboratorio Clínico',15,9,18,150.00);
-INSERT INTO servicios (nombre,tiempo,horarioInicio,horarioFin,precio) values ('Farmacia Hospitalaria',15,9,18,150.00);
-INSERT INTO servicios (nombre,tiempo,horarioInicio,horarioFin,precio) values ('Nutrición y Dietética',15,9,18,150.00);
-INSERT INTO servicios (nombre,tiempo,horarioInicio,horarioFin,precio) values ('Terapia Ocupacional',15,9,18,150.00);
-INSERT INTO servicios (nombre,tiempo,horarioInicio,horarioFin,precio) values ('Terapia del Lenguaje',15,9,18,150.00);
-INSERT INTO servicios (nombre,tiempo,horarioInicio,horarioFin,precio) values ('Medicina Física y Rehabilitación',15,9,18,150.00);
-INSERT INTO servicios (nombre,tiempo,horarioInicio,horarioFin,precio) values ('Cirugía Plástica y Reconstructiva',15,9,18,150.00);
-INSERT INTO servicios (nombre,tiempo,horarioInicio,horarioFin,precio) values ('Medicina del Dolor y Cuidados Paliativos',15,9,18,150.00);
-INSERT INTO servicios (nombre,tiempo,horarioInicio,horarioFin,precio) values ('Infectología',15,9,18,150.00);
-INSERT INTO servicios (nombre,tiempo,horarioInicio,horarioFin,precio) values ('Medicina Nuclear',15,9,18,150.00);
-INSERT INTO servicios (nombre,tiempo,horarioInicio,horarioFin,precio) values ('Unidad de Cuidados Coronarios',15,9,18,150.00);
-INSERT INTO servicios (nombre,tiempo,horarioInicio,horarioFin,precio) values ('Unidad de Quemados',15,9,18,150.00);
-INSERT INTO servicios (nombre,tiempo,horarioInicio,horarioFin,precio) values ('Genética Clínica',15,9,18,150.00);
-INSERT INTO servicios (nombre,tiempo,horarioInicio,horarioFin,precio) values ('Neurocirugía',15,9,18,150.00);
-INSERT INTO servicios (nombre,tiempo,horarioInicio,horarioFin,precio) values ('Cirugía Vascular',15,9,18,150.00);
-INSERT INTO servicios (nombre,tiempo,horarioInicio,horarioFin,precio) values ('Neonatología',15,9,18,150.00);
+
+INSERT INTO servicios (nombre, tiempo, horarioInicio, horarioFin, precio) VALUES
+('Emergencias', 15, 9, 18, 150.00),
+('Medicina Interna', 15, 9, 18, 150.00),
+('Cirugía General', 15, 9, 18, 150.00),
+('Pediatría', 15, 9, 18, 150.00),
+('Ginecología y Obstetricia', 15, 9, 18, 150.00),
+('Cardiología', 15, 9, 18, 150.00),
+('Neurología', 15, 9, 18, 150.00),
+('Oncología', 15, 9, 18, 150.00),
+('Dermatología', 15, 9, 18, 150.00),
+('Oftalmología', 15, 9, 18, 150.00),
+('Otorrinolaringología', 15, 9, 18, 150.00),
+('Ortopedia y Traumatología', 15, 9, 18, 150.00),
+('Psiquiatría', 15, 9, 18, 150.00),
+('Urología', 15, 9, 18, 150.00),
+('Gastroenterología', 15, 9, 18, 150.00),
+('Neumología', 15, 9, 18, 150.00),
+('Endocrinología', 15, 9, 18, 150.00),
+('Nefrología', 15, 9, 18, 150.00),
+('Hematología', 15, 9, 18, 150.00),
+('Reumatología', 15, 9, 18, 150.00),
+('Radiología', 15, 9, 18, 150.00),
+('Anestesiología', 15, 9, 18, 150.00),
+('Unidad de Cuidados Intensivos (UCI)', 15, 9, 18, 150.00),
+('Rehabilitación y Fisioterapia', 15, 9, 18, 150.00),
+('Laboratorio Clínico', 15, 9, 18, 150.00),
+('Farmacia Hospitalaria', 15, 9, 18, 150.00),
+('Nutrición y Dietética', 15, 9, 18, 150.00),
+('Terapia Ocupacional', 15, 9, 18, 150.00),
+('Terapia del Lenguaje', 15, 9, 18, 150.00),
+('Medicina Física y Rehabilitación', 15, 9, 18, 150.00),
+('Cirugía Plástica y Reconstructiva', 15, 9, 18, 150.00),
+('Medicina del Dolor y Cuidados Paliativos', 15, 9, 18, 150.00),
+('Infectología', 15, 9, 18, 150.00),
+('Medicina Nuclear', 15, 9, 18, 150.00),
+('Unidad de Cuidados Coronarios', 15, 9, 18, 150.00),
+('Unidad de Quemados', 15, 9, 18, 150.00),
+('Genética Clínica', 15, 9, 18, 150.00),
+('Neurocirugía', 15, 9, 18, 150.00),
+('Cirugía Vascular', 15, 9, 18, 150.00),
+('Neonatología', 15, 9, 18, 150.00);
 
 CREATE TABLE profesionales (
     idProfesional INT AUTO_INCREMENT PRIMARY KEY,
