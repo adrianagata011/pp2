@@ -71,14 +71,16 @@ if ($mysqli->connect_error) {
     die("Error en la conexión: " . $mysqli->connect_error);
 }
 
-$sql = "SELECT idUsuario, usuario, contrasena FROM usuarios";
-$result = $conn->query($sql);
+$select_result = $mysqli->query("SELECT idUsuario, usuario, contrasena FROM usuarios");
+$row = $select_result->fetch_assoc();
+$existe = $row['existe'];
+$rol = $row['rol'];
 
-if ($result->num_rows > 0) {
+if ($select_result->num_rows > 0) {
     // Output de cada fila
-    while($row = $result->fetch_assoc()) {
+    while($row = $select_result->fetch_assoc()) {
         echo "<tr>";
-        echo "<td>" . $row["idUsuario"] . "</td><td>" . $row["usuario"] . "</td><td>" . $row["contrasena"] . "</td>";
+        echo "<td>" . $row['idUsuario'] . "</td><td>" . $row['usuario'] . "</td><td>" . $row['contrasena'] . "</td>";
         echo "</tr>";
     }
 } else {
@@ -86,7 +88,8 @@ if ($result->num_rows > 0) {
     echo "<td>No se encontraron resultados</td><td></td><td></td>";
     echo "</tr>";    
 }
-$conn->close();
+
+$mysqli->close();
 
 ?>
                                         </table>
