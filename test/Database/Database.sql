@@ -50,13 +50,6 @@ CREATE TABLE profesionales (
     constraint pk_profesionales primary key (idProfesional)
 );
 
-DROP TABLE control_horario;
-CREATE TABLE control_horario (
-    idProfesional INT,
-    fechaHoraIngreso DATETIME,
-    fechaHoraEgreso DATETIME
-);
-
 DROP TABLE consultorios;
 CREATE TABLE consultorios (
     idConsultorio INT,
@@ -81,13 +74,83 @@ CREATE TABLE turnos (
     constraint pk_turnos primary key (idTurnos)
 );
 
-DROP TABLE agendas;
-CREATE TABLE agendas (
+DROP TABLE fichas_medicas;
+CREATE TABLE fichas_medicas (
+    idFichaMedica INT,
+    idPaciente INT,
+    grupoSanguineo VARCHAR(20),
+    observaciones VARCHAR(50),
+    constraint pk_fichas_medicas primary key (idTurnos)
+);
+
+DROP TABLE informes;
+CREATE TABLE informes (
+    idInformes INT,
+    idProfesional INT,
+    idPaciente INT,
+    idEstudio INT,
+    idResultado INT,
+    fecha DATETIME,
+    observacion VARCHAR(100),
+    constraint pk_informes primary key (idInformes)
+);
+
+DROP TABLE servicios;
+CREATE TABLE servicios (
+    idServicio INT,
+    nombre VARCHAR(100),
+    tiempo INT,
+    horario INT,
+    precio FLOAT,
+    constraint pk_servicios primary key (idServicios)
+);
+
+DROP TABLE obras_sociales;
+CREATE TABLE obras_sociales (
+    idObraSocial INT,
+    nombre VARCHAR(100),
+    constraint pk_obras_sociales primary key (idObraSocial)
+);
+
+DROP TABLE administrativos;
+CREATE TABLE administrativos (
+    idAdministrativo INT,
+    nombre VARCHAR(50),
+    apellido VARCHAR(50),
+    dni INT,
+    telefono VARCHAR(50),
+    domicilio VARCHAR(100),
+    email VARCHAR(100),
+    horarioLaboral VARCHAR(50),
+    constraint pk_administrativos primary key (idAdministrativo)
+);
+
+DROP TABLE muestras;
+CREATE TABLE muestras (
+    idMuestra INT,
+    idPaciente INT,
+    fecha DATETIME,
+    descripcion VARCHAR(100),
+    idResultado INT,
+    rotulo VARCHAR(100),
+    constraint pk_muestras primary key (idMuestra)
+);
+
+DROP TABLE control_horario;
+CREATE TABLE control_horario (
     idProfesional INT,
     fechaHoraIngreso DATETIME,
     fechaHoraEgreso DATETIME,
+    constraint fk_control_horario_p foreign key (idProfesional) references profesionales(idProfesional)
+);
+
+DROP TABLE agendas;
+CREATE TABLE agendas (
+    idProfesional INT,
     idConsultorio INT,
-    idServicio INT
+    idServicio INT,
+    fechaHoraIngreso DATETIME,
+    fechaHoraEgreso DATETIME
 );
 
 DROP TABLE pagos;
@@ -98,15 +161,6 @@ CREATE TABLE pagos (
     idObraSocial VARCHAR(50),
     factura VARCHAR(50),
     idServicio INT
-);
-
-DROP TABLE fichas_medicas;
-CREATE TABLE fichas_medicas (
-    idFichaMedica INT,
-    idPaciente INT,
-    grupoSanguineo VARCHAR(20),
-    observaciones VARCHAR(50),
-    constraint pk_fichas_medicas primary key (idTurnos)
 );
 
 DROP TABLE insumos;
@@ -123,18 +177,6 @@ CREATE TABLE recetas (
     idPaciente INT,
     idProfesional INT,
     descripcion VARCHAR(50)
-);
-
-DROP TABLE informes;
-CREATE TABLE informes (
-    idInformes INT,
-    idProfesional INT,
-    idPaciente INT,
-    idEstudio INT,
-    idResultado INT,
-    fecha DATETIME,
-    observacion VARCHAR(100),
-    constraint pk_informes primary key (idInformes)
 );
 
 DROP TABLE historias_clinicas;
@@ -159,49 +201,12 @@ CREATE TABLE resultados (
     comprobanteRetiro BOOLEAN
 );
 
-DROP TABLE servicios;
-CREATE TABLE servicios (
-    idServicio INT,
-    nombre VARCHAR(100),
-    tiempo INT,
-    horario INT,
-    precio FLOAT
-);
-
-DROP TABLE obras_sociales;
-CREATE TABLE obras_sociales (
-    idObraSocial INT,
-    nombre VARCHAR(100)
-);
-
-DROP TABLE administrativos;
-CREATE TABLE administrativos (
-    legajo INT,
-    nombre VARCHAR(50),
-    apellido VARCHAR(50),
-    dni INT,
-    telefono VARCHAR(50),
-    domicilio VARCHAR(100),
-    email VARCHAR(100),
-    horarioLaboral VARCHAR(50)
-);
-
 DROP TABLE horarios;
 CREATE TABLE horarios (
     idProfesional INT,
     fecha DATETIME,
     turno VARCHAR(50)
 );
-
-DROP TABLE muestras;
-CREATE TABLE muestras (
-    idMuestra INT,
-    idPaciente INT,
-    fecha DATETIME,
-    descripcion VARCHAR(100),
-    idResultado INT,
-    rotulo VARCHAR(100)
-)
 
 drop procedure if exists VerificarUsuario;
 delimiter //
