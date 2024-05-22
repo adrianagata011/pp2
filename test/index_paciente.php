@@ -54,15 +54,20 @@ if (!isset($_SESSION['usuario']) || $_SESSION['rol_id'] != 1 ) {
                                     </div>
                                     <hr>      
                                     <div class="text-center">
-                                        <table>
+                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                             <thead>
                                                 <tr>
-                                                    <td>Fecha</td>
-                                                    <td>Servicio</td>
-                                                    <td>Profesional</td>
+                                                    <th>Fecha</th>
+                                                    <th>Servicio</th>
+                                                    <th>Profesional</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                <tr>
+                                                    <td>16/05/2024</td>
+                                                    <td>Cardiología</td>
+                                                    <td>Juan Perez</td>
+                                                </tr>                                                
 <?php
 $usuario = $_SESSION['usuario'];
 // Conectar a la base de datos
@@ -96,7 +101,6 @@ $mysqli->close();
                                         </table>
                                     </div>
                                     <hr>
-                                       
                                         <a href="index.html" class="btn btn-primary btn-user btn-block">
                                             reservar turno
                                         </a>
