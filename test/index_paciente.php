@@ -55,11 +55,14 @@ if (!isset($_SESSION['usuario']) || $_SESSION['rol_id'] != 1 ) {
                                     <hr>      
                                     <div class="text-center">
                                         <table>
-                                            <tr>
-                                                <td>Fecha</td>
-                                                <td>Servicio</td>
-                                                <td>Profesional</td>
-                                            </tr>
+                                            <thead>
+                                                <tr>
+                                                    <td>Fecha</td>
+                                                    <td>Servicio</td>
+                                                    <td>Profesional</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
 <?php
 $usuario = $_SESSION['usuario'];
 // Conectar a la base de datos
@@ -70,6 +73,7 @@ $mysqli = new mysqli('sql10.freemysqlhosting.net', 'sql10707793', 'Rre1s76tSV', 
 if ($mysqli->connect_error) {
     die("Error en la conexión: " . $mysqli->connect_error);
 }
+echo $usuario;
 
 $select_result = $mysqli->query("SELECT t.fechaHora, s.nombre, p.nombre,p.apellido FROM turnos t INNER JOIN profesionales p ON t.idProfesional = p.idProfesional INNER JOIN servicios s ON t.idServicio = s.idServicio INNER JOIN pacientes pa ON t.idPaciente = pa.idPaciente INNER JOIN usuarios u ON pa.idUsuario = u.idUsuario WHERE u.usuario = '$usuario';");
 $row = $select_result->fetch_assoc();
@@ -79,19 +83,16 @@ $rol = $row['rol'];
 if ($select_result->num_rows > 0) {
     // Output de cada fila
     while($row = $select_result->fetch_assoc()) {
-        echo "<tr>";
-        echo "<td>" . $row['fechaHora'] . "</td><td>" . $row['nombre'] . "</td><td>" . $row['nombre'] . $row['apellido'] . "</td>";
-        echo "</tr>";
+        echo "<tr><td>" . $row['fechaHora'] . "</td><td>" . $row['nombre'] . "</td><td>" . $row['nombre'] . $row['apellido'] . "</td></tr>";
     }
 } else {
-    echo "<tr>";    
-    echo "<td>No se encontraron resultados</td><td></td><td></td>";
-    echo "</tr>";    
+    echo "<tr><td>No se encontraron resultados</td><td></td><td></td></tr>";
 }
 
 $mysqli->close();
 
 ?>
+                                            </tbody>
                                         </table>
                                     </div>
                                     <hr>
