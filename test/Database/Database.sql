@@ -1,7 +1,8 @@
 -- mysql> ALTER USER 'root'@'localhost' IDENTIFIED BY 'testing01';
 -- mysql> ALTER USER 'pp2'@'%' IDENTIFIED BY 'Testing_2024';
 
-use pp2;
+-- use pp2;
+use sql10707793;
 
 DROP TABLE control_horario;
 DROP TABLE agendas;
@@ -13,7 +14,6 @@ DROP TABLE turnos;
 DROP TABLE pacientes;
 DROP TABLE fichas_medicas;
 DROP TABLE historias_clinicas;
-DROP TABLE servicios;
 DROP TABLE resultados;
 DROP TABLE estudios;
 DROP TABLE horarios;
@@ -32,8 +32,18 @@ CREATE TABLE usuarios (
     rol INT NOT NULL
 );
 
-INSERT INTO usuarios (usuario,contrasena,rol) values ('paciente','password01',1);
-INSERT INTO usuarios (usuario,contrasena,rol) values ('administrativo','password01',2);
+INSERT INTO usuarios (usuario,contrasena,rol) values 
+('administrativo','password01',2),
+('CarlosGonzalez','password01',1),
+('MariaLopez','password01',1),
+('JuanMartinez','password01',1),
+('LauraGomez','password01',1),
+('LuciaRodriguez','password01',1),
+('PedroFernandez','password01',1),
+('AnaDiaz','password01',1),
+('SofiaPerez','password01',1),
+('MartinSuarez','password01',1),
+('JulietaLopez','password01',1);
 
 CREATE TABLE servicios (
     idServicio INT AUTO_INCREMENT PRIMARY KEY,
@@ -349,6 +359,7 @@ INSERT INTO fichas_medicas (idHistoriaClinica, grupoSanguineo, observaciones) VA
 CREATE TABLE pacientes (
     idPaciente INT AUTO_INCREMENT PRIMARY KEY,
     idFichaMedica INT,
+    idUsuario INT,
     nombre VARCHAR(50) NOT NULL,
     apellido VARCHAR(50) NOT NULL,
     dni VARCHAR(50) NOT NULL,
@@ -357,20 +368,21 @@ CREATE TABLE pacientes (
     email VARCHAR(50),
     obraSocial VARCHAR(50),
     prioridad INT,
-    constraint fk_pacientes_f foreign key (idFichaMedica) references fichas_medicas(idFichaMedica)
+    constraint fk_pacientes_f foreign key (idFichaMedica) references fichas_medicas(idFichaMedica),
+    constraint fk_pacientes_u foreign key (idUsuario) references usuarios(idUsuario)
 );
 
-INSERT INTO pacientes (idFichaMedica, nombre, apellido, dni, telefono, domicilio, email, obraSocial, prioridad) VALUES
-(1, 'Carlos', 'González', '12345678', '555-1234', 'Calle 123', 'carlos@example.com', 'OSDE', 1),
-(2, 'María', 'López', '23456789', '555-2345', 'Avenida 456', 'maria@example.com', 'Swiss Medical', 2),
-(3, 'Juan', 'Martínez', '34567890', '555-3456', 'Ruta 789', 'juan@example.com', 'Galeno', 1),
-(4, 'Laura', 'Gómez', '45678901', '555-4567', 'Boulevard 012', 'laura@example.com', 'Medicus', 2),
-(5, 'Lucía', 'Rodríguez', '56789012', '555-5678', 'Plaza Principal', 'lucia@example.com', 'IAPOS', 3),
-(6, 'Pedro', 'Fernández', '67890123', '555-6789', 'Callejón 345', 'pedro@example.com', 'OSPIM', 1),
-(7, 'Ana', 'Díaz', '78901234', '555-7890', 'Calle 678', 'ana@example.com', 'OSSEG', 2),
-(8, 'Sofía', 'Pérez', '89012345', '555-8901', 'Avenida 901', 'sofia@example.com', 'Sancor Salud', 3),
-(9, 'Martín', 'Suárez', '90123456', '555-9012', 'Calle 234', 'martin@example.com', 'OSPERYH', 1),
-(10, 'Julieta', 'López', '01234567', '555-0123', 'Avenida 345', 'julieta@example.com', 'Federada Salud', 2);
+INSERT INTO pacientes (idFichaMedica, idUsuario, nombre, apellido, dni, telefono, domicilio, email, obraSocial, prioridad) VALUES
+(1, 2, 'Carlos', 'González', '12345678', '555-1234', 'Calle 123', 'carlos@example.com', 'OSDE', 1),
+(2, 3, 'María', 'López', '23456789', '555-2345', 'Avenida 456', 'maria@example.com', 'Swiss Medical', 2),
+(3, 4, 'Juan', 'Martínez', '34567890', '555-3456', 'Ruta 789', 'juan@example.com', 'Galeno', 1),
+(4, 5, 'Laura', 'Gómez', '45678901', '555-4567', 'Boulevard 012', 'laura@example.com', 'Medicus', 2),
+(5, 6, 'Lucía', 'Rodríguez', '56789012', '555-5678', 'Plaza Principal', 'lucia@example.com', 'IAPOS', 3),
+(6, 7, 'Pedro', 'Fernández', '67890123', '555-6789', 'Callejón 345', 'pedro@example.com', 'OSPIM', 1),
+(7, 8, 'Ana', 'Díaz', '78901234', '555-7890', 'Calle 678', 'ana@example.com', 'OSSEG', 2),
+(8, 9, 'Sofía', 'Pérez', '89012345', '555-8901', 'Avenida 901', 'sofia@example.com', 'Sancor Salud', 3),
+(9, 10, 'Martín', 'Suárez', '90123456', '555-9012', 'Calle 234', 'martin@example.com', 'OSPERYH', 1),
+(10, 11, 'Julieta', 'López', '01234567', '555-0123', 'Avenida 345', 'julieta@example.com', 'Federada Salud', 2);
 
 CREATE TABLE informes (
     idInformes INT AUTO_INCREMENT PRIMARY KEY,
