@@ -56,12 +56,12 @@ if (!isset($_SESSION['usuario']) || $_SESSION['rol_id'] != 1 ) {
                                     <div class="text-center">
                                         <table>
                                             <tr>
-                                                <td>ID</td>
-                                                <td>nombre</td>
-                                                <td>contrasena</td>
+                                                <td>Fecha</td>
+                                                <td>Servicio</td>
+                                                <td>Profesional</td>
                                             </tr>
 <?php
-
+$usuario = $_SESSION['usuario'];
 // Conectar a la base de datos
 // $mysqli = new mysqli('localhost', 'pp2', 'Testing_2024', 'pp2');
 $mysqli = new mysqli('sql10.freemysqlhosting.net', 'sql10707793', 'Rre1s76tSV', 'sql10707793');
@@ -71,7 +71,7 @@ if ($mysqli->connect_error) {
     die("Error en la conexión: " . $mysqli->connect_error);
 }
 
-$select_result = $mysqli->query("SELECT idUsuario, usuario, contrasena FROM usuarios");
+$select_result = $mysqli->query("SELECT t.fechaHora, s.nombre, p.nombre,p.apellido FROM turnos t INNER JOIN profesionales p ON t.idProfesional = p.idProfesional INNER JOIN servicios s ON t.idServicio = s.idServicio INNER JOIN pacientes pa ON t.idPaciente = pa.idPaciente INNER JOIN usuarios u ON pa.idUsuario = u.idUsuario WHERE u.usuario = '$usuario';");
 $row = $select_result->fetch_assoc();
 $existe = $row['existe'];
 $rol = $row['rol'];
@@ -80,7 +80,7 @@ if ($select_result->num_rows > 0) {
     // Output de cada fila
     while($row = $select_result->fetch_assoc()) {
         echo "<tr>";
-        echo "<td>" . $row['idUsuario'] . "</td><td>" . $row['usuario'] . "</td><td>" . $row['contrasena'] . "</td>";
+        echo "<td>" . $row['fechaHora'] . "</td><td>" . $row['nombre'] . "</td><td>" . $row['nombre'] . $row['apellido'] . "</td>";
         echo "</tr>";
     }
 } else {
