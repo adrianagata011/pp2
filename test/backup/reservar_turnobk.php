@@ -21,7 +21,7 @@ if (!isset($_SESSION['usuario']) || $_SESSION['rol_id'] != 1 ) {
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Sistema Clínica - Reservar Turnos</title>
+    <title>Sistema Clínica - Reserva de Turnos</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -43,22 +43,26 @@ if (!isset($_SESSION['usuario']) || $_SESSION['rol_id'] != 1 ) {
             <div class="col-xl-10 col-lg-12 col-md-9">
                 <div class="card o-hidden border-0 shadow-lg my-5">
                     <div class="card-body p-0">
-                        <div class="p-5">
+                        <!-- Nested Row within Card Body -->
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="p-5">
+                                    <div class="text-center">
+                                        <h1 class="h4 text-gray-900 mb-4">Reserva de Turnos</h1>
+                                    </div>
+                                    <hr>      
+                                    <div class="text-center">
 
-                            <!-- Columna simple centrada con Card Body -->
-                            <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Reservar Turnos1</h1>
-                            </div>
-                            <hr>      
-                            <div class="text-center">
-                                <hr>
-                                <a class="btn btn-primary btn-user btn-block" href="index_paciente.php">
-                                    volver
-                                </a>
+
+
+                                        <a class="btn btn-primary btn-user btn-block" href="index_paciente.php">
+                                            volver
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
