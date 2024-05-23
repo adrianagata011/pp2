@@ -43,7 +43,24 @@ if (!isset($_SESSION['usuario']) || $_SESSION['rol_id'] != 1 ) {
             <div class="col-xl-10 col-lg-12 col-md-9">
                 <div class="card o-hidden border-0 shadow-lg my-5">
                     <div class="card-body p-0">
-                        <!-- Nested Row within Card Body -->
+                        <div class="p-5">
+
+                            <!-- Columna simple centrada con Card Body -->
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-4">Gestion de turnos</h1>
+                            </div>
+                            <hr>      
+                            <div class="text-center">
+                                <hr>
+                                <a class="btn btn-primary btn-user btn-block" href="#" data-toggle="modal" data-target="#logoutModal">
+                                    Salir
+                                </a>
+                            </div>
+                        </div>
+
+
+                        <!-- Dos columnas con Card Body -->
+                        <!-- //primera columna -->
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="p-5">
@@ -52,9 +69,6 @@ if (!isset($_SESSION['usuario']) || $_SESSION['rol_id'] != 1 ) {
                                     </div>
                                     <hr>      
                                     <div class="text-center">
-
-
-
                                         <hr>
                                         <a class="btn btn-primary btn-user btn-block" href="#" data-toggle="modal" data-target="#logoutModal">
                                             Salir
@@ -62,7 +76,83 @@ if (!isset($_SESSION['usuario']) || $_SESSION['rol_id'] != 1 ) {
                                     </div>
                                 </div>
                             </div>
+
+                            <!-- //segunda columna -->
+                            <div class="col-lg-6">
+                                <div class="p-5">
+                                    <div class="text-center">
+                                        <h1 class="h4 text-gray-900 mb-4">Gestion de turnos</h1>
+                                    </div>
+                                    <hr>      
+                                    <div class="text-center">
+                                        <hr>
+                                        <a class="btn btn-primary btn-user btn-block" href="#" data-toggle="modal" data-target="#logoutModal">
+                                            Salir
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            
                         </div>
+                        
+
+
+
+                        <!-- Tres columnas con Card Body -->
+                        <!-- //primera columna -->
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="p-5">
+                                    <div class="text-center">
+                                        <h1 class="h4 text-gray-900 mb-4">Gestion de turnos</h1>
+                                    </div>
+                                    <hr>      
+                                    <div class="text-center">
+                                        <hr>
+                                        <a class="btn btn-primary btn-user btn-block" href="#" data-toggle="modal" data-target="#logoutModal">
+                                            Salir
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- //segunda columna -->
+                            <div class="col-lg-4">
+                                <div class="p-5">
+                                    <div class="text-center">
+                                        <h1 class="h4 text-gray-900 mb-4">Gestion de turnos</h1>
+                                    </div>
+                                    <hr>      
+                                    <div class="text-center">
+                                        <hr>
+                                        <a class="btn btn-primary btn-user btn-block" href="#" data-toggle="modal" data-target="#logoutModal">
+                                            Salir
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- tercera columna -->
+                            <div class="col-lg-4">
+                                <div class="p-5">
+                                    <div class="text-center">
+                                        <h1 class="h4 text-gray-900 mb-4">Gestion de turnos</h1>
+                                    </div>
+                                    <hr>      
+                                    <div class="text-center">
+                                        <hr>
+                                        <a class="btn btn-primary btn-user btn-block" href="#" data-toggle="modal" data-target="#logoutModal">
+                                            Salir
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+
+
+
+
                     </div>
                 </div>
             </div>
