@@ -21,7 +21,7 @@ if (!isset($_SESSION['usuario']) || $_SESSION['rol_id'] != 1 ) {
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Sistema Clínica - Home del Paciente</title>
+    <title>Sistema Clínica - Reserva de Turnos</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -48,64 +48,15 @@ if (!isset($_SESSION['usuario']) || $_SESSION['rol_id'] != 1 ) {
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Gestion de turnos</h1>
+                                        <h1 class="h4 text-gray-900 mb-4">Reserva de Turnos</h1>
                                     </div>
                                     <hr>      
                                     <div class="text-center">
-                                    <form action="cancelar_turno.php" method="GET">
-                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                            <thead>
-                                                <tr>
-                                                    <th>Seleccionar</th>
-                                                    <th>Fecha</th>
-                                                    <th>Servicio</th>
-                                                    <th>Profesional</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-<?php
-$usuario = $_SESSION['usuario'];
-// Conectar a la base de datos
-// $mysqli = new mysqli('localhost', 'pp2', 'Testing_2024', 'pp2');
-$mysqli = new mysqli('sql10.freemysqlhosting.net', 'sql10707793', 'Rre1s76tSV', 'sql10707793');
-// Verificar conexión
-if ($mysqli->connect_error) {
-    //die("Error en la conexión: " . $mysqli->connect_error);
-}
 
-$query = "SELECT t.fechaHora as fecha, s.nombre as servicio, p.nombre as nombre,p.apellido as apellido FROM turnos t INNER JOIN profesionales p ON t.idProfesional = p.idProfesional INNER JOIN servicios s ON t.idServicio = s.idServicio INNER JOIN pacientes pa ON t.idPaciente = pa.idPaciente INNER JOIN usuarios u ON pa.idUsuario = u.idUsuario WHERE u.usuario = '" . $usuario . "' ORDER BY t.fechaHora ASC;";
-$result = $mysqli->query($query);
-if ($result->num_rows > 0) {
-    // Output de cada fila
-    while($row = $result->fetch_assoc()) {
-        $fecha = $row['fecha'];
-        $servicio = $row['servicio'];
-        $profesional = $row['nombre'] . " " . $row['apellido'];
-        echo "<tr><td><input type='radio' name='turno' value= '" . $fecha . "'></td><td>" . $fecha . "</td><td>" . $servicio . "</td><td>" . $profesional . "</td></tr>";
-    }
-} else {
-    echo "<tr><td>No se encontraron resultados</td><td></td><td></td></tr>";
-}
 
-$mysqli->close();
 
-?>
-                                            </tbody>
-                                        </table>
-                                        <button type="submit" class="btn btn-primary btn-user btn-block">
-                                             cancelar turno
-                                        </button>
-                                    <hr>
-                                    </form>
-                                    </div>
-                                    <div>
-                                        <a href="reservar_turno.php" class="btn btn-primary btn-user btn-block">
-                                            reservar turno
-                                        </a>
-                                    <hr>
-
-                                        <a href="index_paciente.php" class="btn btn-primary btn-user btn-block" href="#" data-toggle="modal" data-target="#logoutModal">
-                                            Salir
+                                        <a class="btn btn-primary btn-user btn-block" href="index_paciente.php">
+                                            volver
                                         </a>
                                     </div>
                                 </div>
@@ -116,6 +67,7 @@ $mysqli->close();
             </div>
         </div>
     </div>
+
 
     <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
