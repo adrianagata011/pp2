@@ -1,18 +1,19 @@
-Tabla de usuarios del sistema
+# User Information
 
-Usuario				Contraseña		Rol
-========================================
-administrativo		password01		2
-CarlosGonzalez		password01		1
-MariaLopez			password01		1
-JuanMartinez		password01		1
-LauraGomez			password01		1
-LuciaRodriguez		password01		1
-PedroFernandez		password01		1
-AnaDiaz				password01		1
-SofiaPerez			password01		1
-MartinSuarez		password01		1
-JulietaLopez		password01		1
+| Usuario         | Contraseña | Rol |
+|-----------------|-------------|-----|
+| administrativo  | password01  | 2   |
+| CarlosGonzalez  | password01  | 1   |
+| MariaLopez      | password01  | 1   |
+| JuanMartinez    | password01  | 1   |
+| LauraGomez      | password01  | 1   |
+| LuciaRodriguez  | password01  | 1   |
+| PedroFernandez  | password01  | 1   |
+| AnaDiaz         | password01  | 1   |
+| SofiaPerez      | password01  | 1   |
+| MartinSuarez    | password01  | 1   |
+| JulietaLopez    | password01  | 1   |
+
 
 
 # [Start Bootstrap - SB Admin 2](https://startbootstrap.com/theme/sb-admin-2/)
