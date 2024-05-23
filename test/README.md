@@ -1,10 +1,11 @@
-#Instrucciones para configurar el entorno:
+# Instrucciones para configurar el entorno
 https://docs.google.com/document/d/1ZMMolmrduNuzFpdWCyDFk-lETMV0DE2mll4A9a7JCwI/edit?usp=drive_link
 
-#Documentacion:
+# Documentacion proyecto
 Wireframes https://drive.google.com/drive/u/0/folders/1STlpBx_yoTHypJpLMdJ8c0_iC-nCmpTL
 
-#El template que vamos a usar de base es el archivo template.php
+#Template
+Vamos a usar de base el archivo template.php
 Para ver el paquete original de bootstrap y todas sus secciones revisar la carpeta Backup
 
 # User Information
