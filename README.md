@@ -10,7 +10,7 @@ https://docs.google.com/document/d/1ZMMolmrduNuzFpdWCyDFk-lETMV0DE2mll4A9a7JCwI/
 Wireframes https://drive.google.com/drive/u/0/folders/1STlpBx_yoTHypJpLMdJ8c0_iC-nCmpTL
 
 
-#Template
+# Template
 Vamos a usar de base el archivo template.php
 Para ver el paquete original de bootstrap y todas sus secciones revisar la carpeta Backup
 
