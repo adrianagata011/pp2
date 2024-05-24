@@ -11,11 +11,11 @@ if (!isset($_SESSION['usuario']) || $_SESSION['rol_id'] != 1 ) {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
 
-    <meta charset="iso-8859-15">
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -64,35 +64,66 @@ if (!isset($_SESSION['usuario']) || $_SESSION['rol_id'] != 1 ) {
                                             </thead>
                                             <tbody>
 <?php
+
 $usuario = $_SESSION['usuario'];
+
 // Conectar a la base de datos
-//$mysqli = new mysqli('localhost', 'pp2', 'Testing_2024', 'pp2');
 $mysqli = new mysqli('sql10.freemysqlhosting.net', 'sql10707793', 'Rre1s76tSV', 'sql10707793');
+
 // Verificar conexión
 if ($mysqli->connect_error) {
-    //die("Error en la conexión: " . $mysqli->connect_error);
+    die("Error en la conexión: " . $mysqli->connect_error);
 }
 
-// ATENCION: Se agrega la siguiente linea para Definir el charset de los datos recolectados
+// Definir el charset de los datos recolectados
 $mysqli->set_charset("utf8");
 
-$query = "SELECT t.fechaHora as fecha, s.nombre as servicio, p.nombre as nombre,p.apellido as apellido FROM turnos t INNER JOIN profesionales p ON t.idProfesional = p.idProfesional INNER JOIN servicios s ON t.idServicio = s.idServicio INNER JOIN pacientes pa ON t.idPaciente = pa.idPaciente INNER JOIN usuarios u ON pa.idUsuario = u.idUsuario WHERE u.usuario = '" . $usuario . "' ORDER BY t.fechaHora ASC;";
-$result = $mysqli->query($query);
-if ($result->num_rows > 0) {
-    // Output de cada fila
-    while($row = $result->fetch_assoc()) {
-        $fecha = $row['fecha'];
-        $servicio = $row['servicio'];
-        $profesional = $row['nombre'] . " " . $row['apellido'];
-        echo "<tr><td><input type='radio' name='turno' value= '" . $fecha . "'></td><td>" . $fecha . "</td><td>" . $servicio . "</td><td>" . $profesional . "</td></tr>";
+// Preparar la consulta para evitar inyección SQL
+$query = "SELECT t.fechaHora as fecha, s.nombre as servicio, p.nombre as nombre, p.apellido as apellido 
+          FROM turnos t 
+          INNER JOIN profesionales p ON t.idProfesional = p.idProfesional 
+          INNER JOIN servicios s ON t.idServicio = s.idServicio 
+          INNER JOIN pacientes pa ON t.idPaciente = pa.idPaciente 
+          INNER JOIN usuarios u ON pa.idUsuario = u.idUsuario 
+          WHERE u.usuario = ? 
+          ORDER BY t.fechaHora ASC";
+
+if ($stmt = $mysqli->prepare($query)) {
+    // Bind del parámetro
+    $stmt->bind_param('s', $usuario);
+
+    // Ejecutar la consulta
+    $stmt->execute();
+
+    // Obtener el resultado
+    $result = $stmt->get_result();
+
+    // Verificar si se obtuvieron resultados
+    if ($result->num_rows > 0) {
+        // Output de cada fila
+        while ($row = $result->fetch_assoc()) {
+            $fecha = htmlspecialchars($row['fecha'], ENT_QUOTES, 'UTF-8');
+            $servicio = htmlspecialchars($row['servicio'], ENT_QUOTES, 'UTF-8');
+            $profesional = htmlspecialchars($row['nombre'] . " " . $row['apellido'], ENT_QUOTES, 'UTF-8');
+            echo "<tr><td><input type='radio' name='turno' value='" . $fecha . "'></td><td>" . $fecha . "</td><td>" . $servicio . "</td><td>" . $profesional . "</td></tr>";
+        }
+    } else {
+        echo "<tr><td>No se encontraron resultados</td><td></td><td></td></tr>";
     }
+
+    // Cerrar el statement
+    $stmt->close();
 } else {
-    echo "<tr><td>No se encontraron resultados</td><td></td><td></td></tr>";
+    // Manejo de errores en la preparación de la consulta
+    die("Error en la preparación de la consulta: " . $mysqli->error);
 }
 
+// Cerrar la conexión
 $mysqli->close();
-
 ?>
+
+
+
                                             </tbody>
                                         </table>
                                         <button type="submit" class="btn btn-primary btn-user btn-block">
