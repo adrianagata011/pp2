@@ -11,11 +11,11 @@ if (!isset($_SESSION['usuario']) || $_SESSION['rol_id'] != 1 ) {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang='es'>
 
 <head>
 
-    <meta charset="utf-8">
+    <meta charset="iso-8859-15">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -66,7 +66,7 @@ if (!isset($_SESSION['usuario']) || $_SESSION['rol_id'] != 1 ) {
 <?php
 $usuario = $_SESSION['usuario'];
 // Conectar a la base de datos
-// $mysqli = new mysqli('localhost', 'pp2', 'Testing_2024', 'pp2');
+//$mysqli = new mysqli('localhost', 'pp2', 'Testing_2024', 'pp2');
 $mysqli = new mysqli('sql10.freemysqlhosting.net', 'sql10707793', 'Rre1s76tSV', 'sql10707793');
 // Verificar conexión
 if ($mysqli->connect_error) {

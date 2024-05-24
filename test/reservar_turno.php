@@ -11,7 +11,7 @@ if (!isset($_SESSION['usuario']) || $_SESSION['rol_id'] != 1 ) {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
 
@@ -49,6 +49,9 @@ if (!isset($_SESSION['usuario']) || $_SESSION['rol_id'] != 1 ) {
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Reservar Turnos</h1>
                             </div>
+
+
+                            
                             <hr>      
                             <div class="text-center">
                                 <hr>

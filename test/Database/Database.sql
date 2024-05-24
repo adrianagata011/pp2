@@ -57,44 +57,44 @@ CREATE TABLE servicios (
 INSERT INTO servicios (nombre, tiempo, horarioInicio, horarioFin, precio) VALUES
 ('Emergencias', 15, 9, 18, 150.00),
 ('Medicina Interna', 15, 9, 18, 150.00),
-('Cirugía General', 15, 9, 18, 150.00),
-('Pediatría', 15, 9, 18, 150.00),
-('Ginecología y Obstetricia', 15, 9, 18, 150.00),
-('Cardiología', 15, 9, 18, 150.00),
-('Neurología', 15, 9, 18, 150.00),
-('Oncología', 15, 9, 18, 150.00),
-('Dermatología', 15, 9, 18, 150.00),
-('Oftalmología', 15, 9, 18, 150.00),
-('Otorrinolaringología', 15, 9, 18, 150.00),
-('Ortopedia y Traumatología', 15, 9, 18, 150.00),
-('Psiquiatría', 15, 9, 18, 150.00),
-('Urología', 15, 9, 18, 150.00),
-('Gastroenterología', 15, 9, 18, 150.00),
-('Neumología', 15, 9, 18, 150.00),
-('Endocrinología', 15, 9, 18, 150.00),
-('Nefrología', 15, 9, 18, 150.00),
-('Hematología', 15, 9, 18, 150.00),
-('Reumatología', 15, 9, 18, 150.00),
-('Radiología', 15, 9, 18, 150.00),
-('Anestesiología', 15, 9, 18, 150.00),
+('Cirugia General', 15, 9, 18, 150.00),
+('Pediatria', 15, 9, 18, 150.00),
+('Ginecologia y Obstetricia', 15, 9, 18, 150.00),
+('Cardiologia', 15, 9, 18, 150.00),
+('Neurologia', 15, 9, 18, 150.00),
+('Oncologia', 15, 9, 18, 150.00),
+('Dermatologia', 15, 9, 18, 150.00),
+('Oftalmologia', 15, 9, 18, 150.00),
+('Otorrinolaringologia', 15, 9, 18, 150.00),
+('Ortopedia y Traumatologia', 15, 9, 18, 150.00),
+('Psiquiatria', 15, 9, 18, 150.00),
+('Urologia', 15, 9, 18, 150.00),
+('Gastroenterologia', 15, 9, 18, 150.00),
+('Neumologia', 15, 9, 18, 150.00),
+('Endocrinologia', 15, 9, 18, 150.00),
+('Nefrologia', 15, 9, 18, 150.00),
+('Hematologia', 15, 9, 18, 150.00),
+('Reumatologia', 15, 9, 18, 150.00),
+('Radiologia', 15, 9, 18, 150.00),
+('Anestesiologia', 15, 9, 18, 150.00),
 ('Unidad de Cuidados Intensivos (UCI)', 15, 9, 18, 150.00),
-('Rehabilitación y Fisioterapia', 15, 9, 18, 150.00),
-('Laboratorio Clínico', 15, 9, 18, 150.00),
+('Rehabilitacion y Fisioterapia', 15, 9, 18, 150.00),
+('Laboratorio Clinico', 15, 9, 18, 150.00),
 ('Farmacia Hospitalaria', 15, 9, 18, 150.00),
-('Nutrición y Dietética', 15, 9, 18, 150.00),
+('Nutricion y Dietetica', 15, 9, 18, 150.00),
 ('Terapia Ocupacional', 15, 9, 18, 150.00),
 ('Terapia del Lenguaje', 15, 9, 18, 150.00),
-('Medicina Física y Rehabilitación', 15, 9, 18, 150.00),
-('Cirugía Plástica y Reconstructiva', 15, 9, 18, 150.00),
+('Medicina Fisica y Rehabilitacion', 15, 9, 18, 150.00),
+('Cirugia Plastica y Reconstructiva', 15, 9, 18, 150.00),
 ('Medicina del Dolor y Cuidados Paliativos', 15, 9, 18, 150.00),
-('Infectología', 15, 9, 18, 150.00),
+('Infectologia', 15, 9, 18, 150.00),
 ('Medicina Nuclear', 15, 9, 18, 150.00),
 ('Unidad de Cuidados Coronarios', 15, 9, 18, 150.00),
 ('Unidad de Quemados', 15, 9, 18, 150.00),
-('Genética Clínica', 15, 9, 18, 150.00),
-('Neurocirugía', 15, 9, 18, 150.00),
-('Cirugía Vascular', 15, 9, 18, 150.00),
-('Neonatología', 15, 9, 18, 150.00);
+('Genetica Clinica', 15, 9, 18, 150.00),
+('Neurocirugia', 15, 9, 18, 150.00),
+('Cirugia Vascular', 15, 9, 18, 150.00),
+('Neonatologia', 15, 9, 18, 150.00);
 
 CREATE TABLE profesionales (
     idProfesional INT AUTO_INCREMENT PRIMARY KEY,
@@ -128,7 +128,7 @@ INSERT INTO profesionales (idServicio, nombre, apellido, dni, telefono, domicili
 (12, 'Patricia', 'Hernandez', '99001122L', '555-5544', 'Calle de los Naranjos 108', 'patricia.hernandez@example.com', 'MAT-012', 9, 18, '2012-01-12'),
 (13, 'Javier', 'Ruiz', '10101010M', '555-6655', 'Calle de los Sauces 109', 'javier.ruiz@example.com', 'MAT-013', 9, 18, '2012-01-13'),
 (14, 'Claudia', 'Ramos', '20202020N', '555-7766', 'Calle de los Cedros 110', 'claudia.ramos@example.com', 'MAT-014', 9, 18, '2012-01-14'),
-(15, 'Victor', 'Gonzalez', '30303030O', '555-8877', 'Calle de los Álamos 111', 'victor.gonzalez@example.com', 'MAT-015', 9, 18, '2012-01-15'),
+(15, 'Victor', 'Gonzalez', '30303030O', '555-8877', 'Calle de los alamos 111', 'victor.gonzalez@example.com', 'MAT-015', 9, 18, '2012-01-15'),
 (16, 'Adriana', 'Torres', '40404040P', '555-9988', 'Calle de los Avellanos 112', 'adriana.torres@example.com', 'MAT-016', 9, 18, '2012-01-16'),
 (17, 'Oscar', 'Vargas', '50505050Q', '555-1100', 'Calle de los Arces 113', 'oscar.vargas@example.com', 'MAT-017', 9, 18, '2012-01-17'),
 (18, 'Laura', 'Reyes', '60606060R', '555-2211', 'Calle de los Fresnos 114', 'laura.reyes@example.com', 'MAT-018', 9, 18, '2012-01-18'),
@@ -137,7 +137,7 @@ INSERT INTO profesionales (idServicio, nombre, apellido, dni, telefono, domicili
 (21, 'Ivan', 'Silva', '90909090U', '555-5544', 'Calle de los Tejos 117', 'ivan.silva@example.com', 'MAT-021', 9, 18, '2012-01-21'),
 (22, 'Gabriela', 'Rivas', '01010101V', '555-6655', 'Calle de los Cipreses 118', 'gabriela.rivas@example.com', 'MAT-022', 9, 18, '2012-01-22'),
 (23, 'Hector', 'Gutierrez', '11111111W', '555-7766', 'Calle de los Cedros 119', 'hector.gutierrez@example.com', 'MAT-023', 9, 18, '2012-01-23'),
-(24, 'Isabel', 'Molina', '22222222X', '555-8877', 'Calle de los Álamos 120', 'isabel.molina@example.com', 'MAT-024', 9, 18, '2012-01-24'),
+(24, 'Isabel', 'Molina', '22222222X', '555-8877', 'Calle de los alamos 120', 'isabel.molina@example.com', 'MAT-024', 9, 18, '2012-01-24'),
 (25, 'Ricardo', 'Castro', '33333333Y', '555-9988', 'Calle de los Avellanos 121', 'ricardo.castro@example.com', 'MAT-025', 9, 18, '2012-01-25'),
 (26, 'Veronica', 'Nunez', '44444444Z', '555-1100', 'Calle de los Arces 122', 'veronica.nunez@example.com', 'MAT-026', 9, 18, '2012-01-26'),
 (27, 'Eduardo', 'Cabrera', '55555555A', '555-2211', 'Calle de los Fresnos 123', 'eduardo.cabrera@example.com', 'MAT-027', 9, 18, '2012-01-27'),
@@ -148,7 +148,7 @@ INSERT INTO profesionales (idServicio, nombre, apellido, dni, telefono, domicili
 (32, 'Nuria', 'Salinas', '00000000F', '555-7766', 'Calle de los Naranjos 128', 'nuria.salinas@example.com', 'MAT-032', 9, 18, '2012-01-01'),
 (33, 'Pablo', 'Blanco', '12121212G', '555-8877', 'Calle de los Sauces 129', 'pablo.blanco@example.com', 'MAT-033', 9, 18, '2012-01-02'),
 (34, 'Beatriz', 'Flores', '34343434H', '555-9988', 'Calle de los Cedros 130', 'beatriz.flores@example.com', 'MAT-034', 9, 18, '2012-01-03'),
-(35, 'Esteban', 'Carrillo', '56565656I', '555-1100', 'Calle de los Álamos 131', 'esteban.carrillo@example.com', 'MAT-035', 9, 18, '2012-01-04'),
+(35, 'Esteban', 'Carrillo', '56565656I', '555-1100', 'Calle de los alamos 131', 'esteban.carrillo@example.com', 'MAT-035', 9, 18, '2012-01-04'),
 (36, 'Andrea', 'Roldan', '78787878J', '555-2211', 'Calle de los Avellanos 132', 'andrea.roldan@example.com', 'MAT-036', 9, 18, '2012-01-05'),
 (37, 'Sergio', 'Fuentes', '90909090K', '555-3322', 'Calle de los Arces 133', 'sergio.fuentes@example.com', 'MAT-037', 9, 18, '2012-01-06'),
 (38, 'Daniela', 'Lozano', '12312312L', '555-4433', 'Calle de los Fresnos 134', 'daniela.lozano@example.com', 'MAT-038', 9, 18, '2012-01-07'),
@@ -167,44 +167,44 @@ CREATE TABLE insumos (
 
 INSERT INTO insumos (nombre, cantidadMinima, cantidadExistente, descripcion, observaciones) VALUES
 ('Guantes', 275, 385, 'Guantes de latex', 'Caja grande'),
-('Mascarillas', 1200, 1680, 'Mascarillas quirúrgicas', 'Paquete de 50'),
+('Mascarillas', 1200, 1680, 'Mascarillas quirurgicas', 'Paquete de 50'),
 ('Jeringas', 450, 630, 'Jeringas desechables', '10 ml'),
-('Agujas Hipodérmicas', 1350, 1890, 'Agujas para inyección', 'Gauge 23'),
-('Algodón', 800, 1120, 'Algodón para curaciones', 'Paquete de 500g'),
-('Alcohol', 250, 350, 'Alcohol isopropílico', 'Botella de 1L'),
+('Agujas Hipodermicas', 1350, 1890, 'Agujas para inyeccion', 'Gauge 23'),
+('Algodon', 800, 1120, 'Algodon para curaciones', 'Paquete de 500g'),
+('Alcohol', 250, 350, 'Alcohol isopropilico', 'Botella de 1L'),
 ('Tiritas', 1100, 1540, 'Tiritas adhesivas', 'Paquete de 100'),
-('Esparadrapo', 600, 840, 'Cinta adhesiva médica', 'Rollo de 5m'),
-('Batas Médicas', 300, 420, 'Batas desechables', 'Talla única'),
-('Gasas', 900, 1260, 'Gasas estériles', 'Paquete de 100'),
-('Termómetros', 700, 980, 'Termómetros digitales', 'Para uso oral'),
-('Oxígeno', 1300, 1820, 'Tanques de oxígeno', 'Capacidad 10L'),
+('Esparadrapo', 600, 840, 'Cinta adhesiva medica', 'Rollo de 5m'),
+('Batas Medicas', 300, 420, 'Batas desechables', 'Talla unica'),
+('Gasas', 900, 1260, 'Gasas esteriles', 'Paquete de 100'),
+('Termometros', 700, 980, 'Termometros digitales', 'Para uso oral'),
+('Oxigeno', 1300, 1820, 'Tanques de oxigeno', 'Capacidad 10L'),
 ('Desinfectante', 500, 700, 'Desinfectante de superficies', 'Botella de 500ml'),
-('Tensiómetros', 400, 560, 'Tensiómetros manuales', 'Con estetoscopio'),
+('Tensiometros', 400, 560, 'Tensiometros manuales', 'Con estetoscopio'),
 ('Estetoscopios', 600, 840, 'Estetoscopios', 'Doble campana'),
-('Vendas', 750, 1050, 'Vendas elásticas', '5m x 10cm'),
-('Bisturíes', 850, 1190, 'Bisturíes desechables', 'Con hoja Nº 11'),
+('Vendas', 750, 1050, 'Vendas elasticas', '5m x 10cm'),
+('Bisturies', 850, 1190, 'Bisturies desechables', 'Con hoja Nº 11'),
 ('Suturas', 950, 1330, 'Suturas absorbibles', '0 Vicryl'),
 ('Tubos de Ensayo', 1150, 1610, 'Tubos de ensayo', 'De vidrio 10ml'),
-('Hisopos', 300, 420, 'Hisopos estériles', 'Paquete de 200'),
+('Hisopos', 300, 420, 'Hisopos esteriles', 'Paquete de 200'),
 ('Lancetas', 400, 560, 'Lancetas para glucosa', 'Paquete de 100'),
-('Reactivos', 700, 980, 'Reactivos para análisis', 'Diversos tipos'),
+('Reactivos', 700, 980, 'Reactivos para analisis', 'Diversos tipos'),
 ('Micro pipetas', 500, 700, 'Micro pipetas', '10-100 µl'),
 ('Placas de Petri', 350, 490, 'Placas de Petri', '100x15mm'),
 ('Frascos Recolectores', 250, 350, 'Frascos recolectores', 'Para muestras de orina'),
-('Solución Salina', 600, 840, 'Solución salina', 'Bolsa de 1L'),
+('Solucion Salina', 600, 840, 'Solucion salina', 'Bolsa de 1L'),
 ('Tiras Reactivas', 800, 1120, 'Tiras reactivas', 'Para glucosa en sangre'),
 ('Guantes Esteriles', 950, 1330, 'Guantes esterilizados', 'Talla mediana'),
 ('Marcadores de Laboratorio', 1000, 1400, 'Marcadores permanentes', 'Para tubos de ensayo'),
 ('Cubrecalzado', 300, 420, 'Cubrecalzado desechables', 'Paquete de 100'),
 ('Bolsas de Bioseguridad', 750, 1050, 'Bolsas de bioseguridad', 'Rojas de 10L'),
-('Contenedores de Residuos', 800, 1120, 'Contenedores plásticos', 'Para objetos punzantes'),
-('Tijeras Médicas', 350, 490, 'Tijeras de acero inoxidable', '15cm'),
+('Contenedores de Residuos', 800, 1120, 'Contenedores plasticos', 'Para objetos punzantes'),
+('Tijeras Medicas', 350, 490, 'Tijeras de acero inoxidable', '15cm'),
 ('Toallas de Papel', 600, 840, 'Toallas de papel', 'Paquete de 100'),
-('Jabón Antiséptico', 700, 980, 'Jabón antiséptico', 'Botella de 500ml'),
-('Lamparillas de Alcohol', 450, 630, 'Lamparillas para esterilización', 'De vidrio'),
+('Jabon Antiseptico', 700, 980, 'Jabon antiseptico', 'Botella de 500ml'),
+('Lamparillas de Alcohol', 450, 630, 'Lamparillas para esterilizacion', 'De vidrio'),
 ('Gasas Vaselinadas', 500, 700, 'Gasas impregnadas en vaselina', '10x10cm'),
 ('Tiras de pH', 300, 420, 'Tiras reactivas de pH', 'Paquete de 100'),
-('Papel de Filtración', 200, 280, 'Papel de filtro', 'Diámetro 90mm');
+('Papel de Filtracion', 200, 280, 'Papel de filtro', 'Diametro 90mm');
 
 CREATE TABLE consultorios (
     idConsultorio INT AUTO_INCREMENT PRIMARY KEY,
@@ -259,12 +259,12 @@ CREATE TABLE administrativos (
 );
 
 INSERT INTO administrativos (nombre, apellido, dni, telefono, domicilio, email, horarioLaboral) VALUES
-('María', 'García', 12345678, '555-1234', 'Calle 123', 'maria@example.com', '9:00 - 18:00'),
-('Juan', 'López', 23456789, '555-2345', 'Avenida 456', 'juan@example.com', '9:00 - 18:00'),
-('Ana', 'Martínez', 34567890, '555-3456', 'Ruta 789', 'ana@example.com', '9:00 - 18:00'),
-('Pedro', 'Gómez', 45678901, '555-4567', 'Boulevard 012', 'pedro@example.com', '9:00 - 18:00'),
-('Lucía', 'Rodríguez', 56789012, '555-5678', 'Plaza Principal', 'lucia@example.com', '9:00 - 18:00'),
-('Carlos', 'Fernández', 67890123, '555-6789', 'Callejón 345', 'carlos@example.com', '9:00 - 18:00');
+('Maria', 'Garcia', 12345678, '555-1234', 'Calle 123', 'maria@example.com', '9:00 - 18:00'),
+('Juan', 'Lopez', 23456789, '555-2345', 'Avenida 456', 'juan@example.com', '9:00 - 18:00'),
+('Ana', 'Martinez', 34567890, '555-3456', 'Ruta 789', 'ana@example.com', '9:00 - 18:00'),
+('Pedro', 'Gomez', 45678901, '555-4567', 'Boulevard 012', 'pedro@example.com', '9:00 - 18:00'),
+('Lucia', 'Rodriguez', 56789012, '555-5678', 'Plaza Principal', 'lucia@example.com', '9:00 - 18:00'),
+('Carlos', 'Fernandez', 67890123, '555-6789', 'Callejon 345', 'carlos@example.com', '9:00 - 18:00');
 
 CREATE TABLE estudios (
     idEstudio INT AUTO_INCREMENT PRIMARY KEY,
@@ -275,15 +275,15 @@ CREATE TABLE estudios (
 );
 
 INSERT INTO estudios (nombre, fechaHora, precio, prioridad) VALUES
-('Ecografía abdominal', '2024-05-20 09:00:00', 150.00, 'Alta'),
-('Análisis de sangre', '2024-05-21 10:00:00', 80.00, 'Media'),
-('Radiografía de tórax', '2024-05-22 11:00:00', 120.00, 'Alta'),
+('Ecografia abdominal', '2024-05-20 09:00:00', 150.00, 'Alta'),
+('Analisis de sangre', '2024-05-21 10:00:00', 80.00, 'Media'),
+('Radiografia de torax', '2024-05-22 11:00:00', 120.00, 'Alta'),
 ('Electrocardiograma', '2024-05-23 12:00:00', 100.00, 'Baja'),
-('Resonancia magnética', '2024-05-24 13:00:00', 300.00, 'Alta'),
-('Tomografía computarizada', '2024-05-25 14:00:00', 250.00, 'Media'),
-('Colonoscopía', '2024-05-26 15:00:00', 200.00, 'Alta'),
-('Mamografía', '2024-05-27 16:00:00', 180.00, 'Media'),
-('Endoscopía', '2024-05-28 17:00:00', 220.00, 'Baja'),
+('Resonancia magnetica', '2024-05-24 13:00:00', 300.00, 'Alta'),
+('Tomografia computarizada', '2024-05-25 14:00:00', 250.00, 'Media'),
+('Colonoscopia', '2024-05-26 15:00:00', 200.00, 'Alta'),
+('Mamografia', '2024-05-27 16:00:00', 180.00, 'Media'),
+('Endoscopia', '2024-05-28 17:00:00', 220.00, 'Baja'),
 ('Prueba de esfuerzo', '2024-05-29 18:00:00', 130.00, 'Media');
 
 CREATE TABLE resultados (
@@ -299,13 +299,13 @@ CREATE TABLE resultados (
 INSERT INTO resultados (idEstudio, fecha, muestra, descripcion, comprobanteRetiro) VALUES
 (1, '2024-05-20 09:30:00', 'Sangre', 'Normal', TRUE),
 (2, '2024-05-21 10:30:00', 'Sangre', 'Hemoglobina dentro de valores normales', TRUE),
-(3, '2024-05-22 11:30:00', 'Radiografía', 'Sin alteraciones significativas', FALSE),
-(4, '2024-05-23 12:30:00', 'Electrodos', 'Se observa ritmo cardíaco regular', TRUE),
-(5, '2024-05-24 13:30:00', 'Imágenes', 'Presencia de lesión en el tejido blando', TRUE),
-(6, '2024-05-25 14:30:00', 'Imágenes', 'Presencia de anomalías en el hígado', TRUE),
-(7, '2024-05-26 15:30:00', 'Colonoscopia', 'Presencia de pólipos benignos', FALSE),
-(8, '2024-05-27 16:30:00', 'Mamografía', 'No se detectan masas ni calcificaciones', TRUE),
-(9, '2024-05-28 17:30:00', 'Endoscopía', 'Úlcera gástrica leve', FALSE),
+(3, '2024-05-22 11:30:00', 'Radiografia', 'Sin alteraciones significativas', FALSE),
+(4, '2024-05-23 12:30:00', 'Electrodos', 'Se observa ritmo cardiaco regular', TRUE),
+(5, '2024-05-24 13:30:00', 'Imagenes', 'Presencia de lesion en el tejido blando', TRUE),
+(6, '2024-05-25 14:30:00', 'Imagenes', 'Presencia de anomalias en el higado', TRUE),
+(7, '2024-05-26 15:30:00', 'Colonoscopia', 'Presencia de polipos benignos', FALSE),
+(8, '2024-05-27 16:30:00', 'Mamografia', 'No se detectan masas ni calcificaciones', TRUE),
+(9, '2024-05-28 17:30:00', 'Endoscopia', 'ulcera gastrica leve', FALSE),
 (10, '2024-05-29 18:30:00', 'Electrocardiograma', 'Ejercicio bien tolerado, sin arritmias', TRUE);
 
 
@@ -324,16 +324,16 @@ CREATE TABLE historias_clinicas (
 );
 
 INSERT INTO historias_clinicas (idEstudio, idServicio, idResultado, fecha, observacion, derivadoDesde, derivadoHacia) VALUES
-(1, 1, 1, '2024-05-20 09:30:00', 'Paciente sin síntomas aparentes', 'Consulta médica', 'Eco Doppler'),
-(2, 2, 2, '2024-05-21 10:30:00', 'Paciente con fatiga crónica', 'Consulta médica', 'Análisis de glucemia postprandial'),
-(3, 3, 3, '2024-05-22 11:30:00', 'Paciente con tos persistente', 'Consulta médica', 'Tomografía de abdomen'),
-(4, 4, 4, '2024-05-23 12:30:00', 'Paciente con antecedentes cardíacos', 'Consulta médica', 'Holter de 24hs'),
-(5, 5, 5, '2024-05-24 13:30:00', 'Paciente con dolor lumbar crónico', 'Consulta médica', 'Revisión por traumatología'),
-(6, 6, 6, '2024-05-25 14:30:00', 'Paciente con síntomas gastrointestinales', 'Consulta médica', 'Colangiorresonancia'),
-(7, 7, 7, '2024-05-26 15:30:00', 'Paciente asintomático', 'Control de rutina', 'Seguimiento médico'),
-(8, 8, 8, '2024-05-27 16:30:00', 'Paciente con antecedentes familiares de cáncer de mama', 'Consulta médica', 'Seguimiento oncológico'),
-(9, 9, 9, '2024-05-28 17:30:00', 'Paciente con dispepsia', 'Consulta médica', 'Esofagoscopia'),
-(10, 10, 10, '2024-05-29 18:30:00', 'Paciente con antecedentes de enfermedad cardiovascular', 'Consulta médica', 'Seguimiento cardiológico');
+(1, 1, 1, '2024-05-20 09:30:00', 'Paciente sin sintomas aparentes', 'Consulta medica', 'Eco Doppler'),
+(2, 2, 2, '2024-05-21 10:30:00', 'Paciente con fatiga cronica', 'Consulta medica', 'Analisis de glucemia postprandial'),
+(3, 3, 3, '2024-05-22 11:30:00', 'Paciente con tos persistente', 'Consulta medica', 'Tomografia de abdomen'),
+(4, 4, 4, '2024-05-23 12:30:00', 'Paciente con antecedentes cardiacos', 'Consulta medica', 'Holter de 24hs'),
+(5, 5, 5, '2024-05-24 13:30:00', 'Paciente con dolor lumbar cronico', 'Consulta medica', 'Revision por traumatologia'),
+(6, 6, 6, '2024-05-25 14:30:00', 'Paciente con sintomas gastrointestinales', 'Consulta medica', 'Colangiorresonancia'),
+(7, 7, 7, '2024-05-26 15:30:00', 'Paciente asintomatico', 'Control de rutina', 'Seguimiento medico'),
+(8, 8, 8, '2024-05-27 16:30:00', 'Paciente con antecedentes familiares de cancer de mama', 'Consulta medica', 'Seguimiento oncologico'),
+(9, 9, 9, '2024-05-28 17:30:00', 'Paciente con dispepsia', 'Consulta medica', 'Esofagoscopia'),
+(10, 10, 10, '2024-05-29 18:30:00', 'Paciente con antecedentes de enfermedad cardiovascular', 'Consulta medica', 'Seguimiento cardiologico');
 
 
 CREATE TABLE fichas_medicas (
@@ -347,12 +347,12 @@ CREATE TABLE fichas_medicas (
 INSERT INTO fichas_medicas (idHistoriaClinica, grupoSanguineo, observaciones) VALUES
 (1, 'A+', 'Sin observaciones'),
 (2, 'O-', 'Sin observaciones'),
-(3, 'B+', 'Hipertensión arterial'),
+(3, 'B+', 'Hipertension arterial'),
 (4, 'AB+', 'Sin observaciones'),
 (5, 'A-', 'Sin observaciones'),
 (6, 'O+', 'Sin observaciones'),
 (7, 'B-', 'Sin observaciones'),
-(8, 'AB-', 'Antecedentes familiares de cáncer de mama'),
+(8, 'AB-', 'Antecedentes familiares de cancer de mama'),
 (9, 'O+', 'Sin observaciones'),
 (10, 'A+', 'Sin observaciones');
 
@@ -373,16 +373,16 @@ CREATE TABLE pacientes (
 );
 
 INSERT INTO pacientes (idFichaMedica, idUsuario, nombre, apellido, dni, telefono, domicilio, email, obraSocial, prioridad) VALUES
-(1, 2, 'Carlos', 'González', '12345678', '555-1234', 'Calle 123', 'carlos@example.com', 'OSDE', 1),
-(2, 3, 'María', 'López', '23456789', '555-2345', 'Avenida 456', 'maria@example.com', 'Swiss Medical', 2),
-(3, 4, 'Juan', 'Martínez', '34567890', '555-3456', 'Ruta 789', 'juan@example.com', 'Galeno', 1),
-(4, 5, 'Laura', 'Gómez', '45678901', '555-4567', 'Boulevard 012', 'laura@example.com', 'Medicus', 2),
-(5, 6, 'Lucía', 'Rodríguez', '56789012', '555-5678', 'Plaza Principal', 'lucia@example.com', 'IAPOS', 3),
-(6, 7, 'Pedro', 'Fernández', '67890123', '555-6789', 'Callejón 345', 'pedro@example.com', 'OSPIM', 1),
-(7, 8, 'Ana', 'Díaz', '78901234', '555-7890', 'Calle 678', 'ana@example.com', 'OSSEG', 2),
-(8, 9, 'Sofía', 'Pérez', '89012345', '555-8901', 'Avenida 901', 'sofia@example.com', 'Sancor Salud', 3),
-(9, 10, 'Martín', 'Suárez', '90123456', '555-9012', 'Calle 234', 'martin@example.com', 'OSPERYH', 1),
-(10, 11, 'Julieta', 'López', '01234567', '555-0123', 'Avenida 345', 'julieta@example.com', 'Federada Salud', 2);
+(1, 2, 'Carlos', 'Gonzalez', '12345678', '555-1234', 'Calle 123', 'carlos@example.com', 'OSDE', 1),
+(2, 3, 'Maria', 'Lopez', '23456789', '555-2345', 'Avenida 456', 'maria@example.com', 'Swiss Medical', 2),
+(3, 4, 'Juan', 'Martinez', '34567890', '555-3456', 'Ruta 789', 'juan@example.com', 'Galeno', 1),
+(4, 5, 'Laura', 'Gomez', '45678901', '555-4567', 'Boulevard 012', 'laura@example.com', 'Medicus', 2),
+(5, 6, 'Lucia', 'Rodriguez', '56789012', '555-5678', 'Plaza Principal', 'lucia@example.com', 'IAPOS', 3),
+(6, 7, 'Pedro', 'Fernandez', '67890123', '555-6789', 'Callejon 345', 'pedro@example.com', 'OSPIM', 1),
+(7, 8, 'Ana', 'Diaz', '78901234', '555-7890', 'Calle 678', 'ana@example.com', 'OSSEG', 2),
+(8, 9, 'Sofia', 'Perez', '89012345', '555-8901', 'Avenida 901', 'sofia@example.com', 'Sancor Salud', 3),
+(9, 10, 'Martin', 'Suarez', '90123456', '555-9012', 'Calle 234', 'martin@example.com', 'OSPERYH', 1),
+(10, 11, 'Julieta', 'Lopez', '01234567', '555-0123', 'Avenida 345', 'julieta@example.com', 'Federada Salud', 2);
 
 CREATE TABLE informes (
     idInformes INT AUTO_INCREMENT PRIMARY KEY,
@@ -400,14 +400,14 @@ CREATE TABLE informes (
 
 INSERT INTO informes (idProfesional, idPaciente, idEstudio, idResultado, fecha, observacion) VALUES
 (1, 1, 1, 1, '2024-05-20 09:30:00', 'Eco abdominal normal'),
-(2, 2, 2, 2, '2024-05-21 10:30:00', 'Análisis de sangre dentro de valores normales'),
-(3, 3, 3, 3, '2024-05-22 11:30:00', 'Radiografía sin hallazgos significativos'),
+(2, 2, 2, 2, '2024-05-21 10:30:00', 'Analisis de sangre dentro de valores normales'),
+(3, 3, 3, 3, '2024-05-22 11:30:00', 'Radiografia sin hallazgos significativos'),
 (4, 4, 4, 4, '2024-05-23 12:30:00', 'Electrocardiograma sin alteraciones'),
-(5, 5, 5, 5, '2024-05-24 13:30:00', 'Lesión detectada en resonancia magnética'),
-(6, 6, 6, 6, '2024-05-25 14:30:00', 'Anomalías en tomografía computarizada'),
-(7, 7, 7, 7, '2024-05-26 15:30:00', 'Pólipos detectados en colonoscopía'),
-(8, 8, 8, 8, '2024-05-27 16:30:00', 'Mamografía normal'),
-(9, 9, 9, 9, '2024-05-28 17:30:00', 'Úlcera gástrica leve en endoscopía'),
+(5, 5, 5, 5, '2024-05-24 13:30:00', 'Lesion detectada en resonancia magnetica'),
+(6, 6, 6, 6, '2024-05-25 14:30:00', 'Anomalias en tomografia computarizada'),
+(7, 7, 7, 7, '2024-05-26 15:30:00', 'Polipos detectados en colonoscopia'),
+(8, 8, 8, 8, '2024-05-27 16:30:00', 'Mamografia normal'),
+(9, 9, 9, 9, '2024-05-28 17:30:00', 'ulcera gastrica leve en endoscopia'),
 (10, 10, 10, 10, '2024-05-29 18:30:00', 'Prueba de esfuerzo bien tolerada');
 
 
@@ -424,13 +424,13 @@ CREATE TABLE muestras (
 INSERT INTO muestras (idPaciente, fecha, descripcion, idResultado, rotulo) VALUES
 (1, '2024-05-20 09:30:00', 'Sangre', 1, 'Muestra A-123'),
 (2, '2024-05-21 10:30:00', 'Sangre', 2, 'Muestra B-456'),
-(3, '2024-05-22 11:30:00', 'Radiografía', 3, 'Muestra C-789'),
+(3, '2024-05-22 11:30:00', 'Radiografia', 3, 'Muestra C-789'),
 (4, '2024-05-23 12:30:00', 'Electrodos', 4, 'Muestra D-012'),
-(5, '2024-05-24 13:30:00', 'Imágenes', 5, 'Muestra E-345'),
-(6, '2024-05-25 14:30:00', 'Imágenes', 6, 'Muestra F-678'),
+(5, '2024-05-24 13:30:00', 'Imagenes', 5, 'Muestra E-345'),
+(6, '2024-05-25 14:30:00', 'Imagenes', 6, 'Muestra F-678'),
 (7, '2024-05-26 15:30:00', 'Colonoscopia', 7, 'Muestra G-901'),
-(8, '2024-05-27 16:30:00', 'Mamografía', 8, 'Muestra H-234'),
-(9, '2024-05-28 17:30:00', 'Endoscopía', 9, 'Muestra I-567'),
+(8, '2024-05-27 16:30:00', 'Mamografia', 8, 'Muestra H-234'),
+(9, '2024-05-28 17:30:00', 'Endoscopia', 9, 'Muestra I-567'),
 (10, '2024-05-29 18:30:00', 'Electrocardiograma', 10, 'Muestra J-890');
 
 CREATE TABLE turnos (
@@ -537,14 +537,14 @@ CREATE TABLE recetas (
 
 INSERT INTO recetas (idPaciente, idProfesional, fecha, descripcion) VALUES
 (1, 1, '2024-05-20 09:30:00', 'Analgesia para el dolor abdominal'),
-(2, 2, '2024-05-21 10:30:00', 'Antibióticos para tratar infección'),
+(2, 2, '2024-05-21 10:30:00', 'Antibioticos para tratar infeccion'),
 (3, 3, '2024-05-22 11:30:00', 'Antiinflamatorios para aliviar dolor'),
-(4, 4, '2024-05-23 12:30:00', 'Medicación para regular ritmo cardíaco'),
-(5, 5, '2024-05-24 13:30:00', 'Tratamiento para lesión en tejido blando'),
-(6, 6, '2024-05-25 14:30:00', 'Medicamentos para afecciones hepáticas'),
-(7, 7, '2024-05-26 15:30:00', 'Laxantes para preparación de colonoscopia'),
-(8, 8, '2024-05-27 16:30:00', 'Indicaciones para seguimiento mamográfico'),
-(9, 9, '2024-05-28 17:30:00', 'Tratamiento para úlcera gástrica'),
+(4, 4, '2024-05-23 12:30:00', 'Medicacion para regular ritmo cardiaco'),
+(5, 5, '2024-05-24 13:30:00', 'Tratamiento para lesion en tejido blando'),
+(6, 6, '2024-05-25 14:30:00', 'Medicamentos para afecciones hepaticas'),
+(7, 7, '2024-05-26 15:30:00', 'Laxantes para preparacion de colonoscopia'),
+(8, 8, '2024-05-27 16:30:00', 'Indicaciones para seguimiento mamografico'),
+(9, 9, '2024-05-28 17:30:00', 'Tratamiento para ulcera gastrica'),
 (10, 10, '2024-05-29 18:30:00', 'Recomendaciones post-prueba de esfuerzo');
 
 CREATE TABLE horarios (
