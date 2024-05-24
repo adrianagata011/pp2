@@ -11,7 +11,7 @@ if (!isset($_SESSION['usuario']) || $_SESSION['rol_id'] != 1 ) {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
 
@@ -72,6 +72,9 @@ $mysqli = new mysqli('sql10.freemysqlhosting.net', 'sql10707793', 'Rre1s76tSV', 
 if ($mysqli->connect_error) {
     //die("Error en la conexión: " . $mysqli->connect_error);
 }
+
+// ATENCION: Se agrega la siguiente linea para Definir el charset de los datos recolectados
+$mysqli->set_charset("utf8");
 
 $query = "SELECT t.fechaHora as fecha, s.nombre as servicio, p.nombre as nombre,p.apellido as apellido FROM turnos t INNER JOIN profesionales p ON t.idProfesional = p.idProfesional INNER JOIN servicios s ON t.idServicio = s.idServicio INNER JOIN pacientes pa ON t.idPaciente = pa.idPaciente INNER JOIN usuarios u ON pa.idUsuario = u.idUsuario WHERE u.usuario = '" . $usuario . "' ORDER BY t.fechaHora ASC;";
 $result = $mysqli->query($query);
