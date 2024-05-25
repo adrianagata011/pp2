@@ -59,7 +59,7 @@ if (!isset($_SESSION['usuario']) || $_SESSION['rol_id'] != 2 ) {
                                             reservar turno
                                         </a>
                                        
-                                        <a href="index.html" class="btn btn-primary btn-user btn-block">
+                                        <a href="cancelar_turno_admin.php" class="btn btn-primary btn-user btn-block">
                                              cancelar turno
                                         </a>
                                         <a href="index.html" class="btn btn-primary btn-user btn-block">

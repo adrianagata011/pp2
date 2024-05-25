@@ -9,10 +9,24 @@
                 "enableSsl": "Disabled"
             },
             "previewLimit": 50,
+            "server": "sql10.freemysqlhosting.net",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "pp2_internet",
+            "database": "sql10707793",
+            "username": "sql10707793",
+            "password": "Rre1s76tSV"
+        },
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "previewLimit": 50,
             "server": "127.0.0.1",
             "port": 3306,
             "driver": "MySQL",
-            "name": "pp2",
+            "name": "pp2_local",
             "database": "pp2",
             "username": "pp2",
             "password": "Testing_2024"
