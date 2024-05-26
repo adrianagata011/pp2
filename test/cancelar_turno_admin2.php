@@ -3,7 +3,7 @@
 session_start();
 
 // Verificar si la sesión está establecida y el usuario está logueado
-if (!isset($_SESSION['usuario']) || $_SESSION['rol_id'] != 2 ) {
+if (!isset($_SESSION['usuario']) || $_SESSION['rol_id'] != 1 ) {
     // Si no está logueado, redirigir al usuario a la página de login
     header("Location: login.html");
     exit;
@@ -11,11 +11,11 @@ if (!isset($_SESSION['usuario']) || $_SESSION['rol_id'] != 2 ) {
 ?>
 
 <!DOCTYPE html>
-<html lang='es'>
+<html lang="en">
 
 <head>
 
-    <meta charset="iso-8859-1">
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -44,55 +44,46 @@ if (!isset($_SESSION['usuario']) || $_SESSION['rol_id'] != 2 ) {
                 <div class="card o-hidden border-0 shadow-lg my-5">
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
-                        <!--<div class="row"> -->
-                        <!--<div class="col-lg-6"> -->
+                        <div class="row">
+                            <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Cancelación de Turnos</h1>
                                     </div>
                                     <hr>      
                                     <div class="text-center">
-                                        <form action="cancelar_turno_admin1.php" method="GET">
-                                            <div class="text-center">
+
 <?php
-// Me conecto a la base
-$mysqli = new mysqli('sql10.freemysqlhosting.net', 'sql10707793', 'Rre1s76tSV', 'sql10707793');
-// Verificar conexión
-if ($mysqli->connect_error) {
-    //die("Error en la conexión: " . $mysqli->connect_error);
-}
-    
-$query = "SELECT idUsuario, nombre, apellido, dni FROM pacientes ORDER BY apellido;";
-$result = $mysqli->query($query);
-if ($result->num_rows > 0) {
-    echo "<tr>";
-//    echo "<label for='pacientes'>Selecciones un Paciente:</label>";
-    echo "<select name='usuario' id=usuario'>";
-    // Output de cada fila
-    while($row = $result->fetch_assoc()) {
-        $idUsuario = $row['idUsuario'];
-        $nombre = $row['nombre'];
-        $apellido = $row['apellido'];
-        $dni = $row['dni'];
-        echo "<option value='".$idUsuario."'>".$apellido.", ".$nombre." (DNI ". $dni . ")</option>";
+
+if (isset($_GET['turno'])) {
+    $turnoSeleccionado = $_GET['turno'];
+    list($idUsuario, $turno) = explode("/", $turnoSeleccionado, 2);
+
+    echo "Cancelando turno " . $turno . "<br>";
+    // Me conecto a la base
+    $mysqli = new mysqli('sql10.freemysqlhosting.net', 'sql10707793', 'Rre1s76tSV', 'sql10707793');
+    // Verificar conexión
+    if ($mysqli->connect_error) {
+        //die("Error en la conexión: " . $mysqli->connect_error);
     }
-    echo "</select><br>";
-} else {
-    echo "No se encontró ningún paciente<br>";
+    
+    $query = "SELECT t.idTurno as idTurno FROM turnos t INNER JOIN profesionales p ON t.idProfesional = p.idProfesional INNER JOIN servicios s ON t.idServicio = s.idServicio INNER JOIN pacientes pa ON t.idPaciente = pa.idPaciente INNER JOIN usuarios u ON pa.idUsuario = u.idUsuario WHERE u.usuario = '" . $usuario . "' AND t.fechahora = '". $turnoSeleccionado ."';";
+    $result = $mysqli->query($query);
+    if ($result->num_rows > 0) {
+        // Output de cada fila
+        $row = $result->fetch_assoc();
+        $idTurno = $row['idTurno'];
+        $query1 = "DELETE FROM turnos WHERE idTurno = " . $idTurno . ";";
+        $result1 = $mysqli->query($query1);
+        echo "Se canceló el turno <br>";
+    } else {
+        echo "No se seleccionó ningún turno<br>";
+    }
+    $mysqli->close();
 }
-$mysqli->close();
 ?>
-                                        </div>
-                                        <div>
-                                            <br>
-                                            <button type="submit" class="btn btn-primary btn-user btn-block">
-                                                seleccionar paciente
-                                            </a>
-                                        </div>
-                                    </form>
-                                    <div>
                                         <hr>
-                                        <a class="btn btn-primary btn-user btn-block" href="index_administrativo.php">
+                                        <a class="btn btn-primary btn-user btn-block" href="index_paciente.php">
                                             volver
                                         </a>
                                     </div>
@@ -104,7 +95,6 @@ $mysqli->close();
             </div>
         </div>
     </div>
-
 
     <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -137,5 +127,4 @@ $mysqli->close();
     <script src="js/sb-admin-2.min.js"></script>
 
 </body>
-
 </html>
