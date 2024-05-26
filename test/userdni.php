@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $action = $_POST['action'];
 
 
-        if ($action != "nuevo_paciente-ale") {
+        if ($action != "nuevo_paciente_admin") {
             // Me conecto a la base
             $conn = new mysqli('sql10.freemysqlhosting.net', 'sql10707793', 'Rre1s76tSV', 'sql10707793');
             // Verificar conexión
@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 }
             }
         else {   
-            header("Location: nuevo_paciente-ale.php" . urlencode($dni));
+            header("Location: nuevo_paciente_admin.php" . urlencode($dni));
             exit();
         }
     }    
