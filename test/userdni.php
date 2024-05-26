@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $action = $_POST['action'];
 
 
-        if ($action != "nuevo_paciente-ale") {
+        if ($action != "nuevo_paciente_admin") {
             // Me conecto a la base
             require_once('conexion_db.php');
 
@@ -34,12 +34,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (mysqli_num_rows($result) >= 1) {
                 header("Location: $action.php?dni=" . urlencode($dni));
                 exit();
-                }
             }
-            else {   
-                header("Location: nuevo_paciente_admin.php" . urlencode($dni));
+            else
+            {
+                header("Location: nuevo_paciente_admin.php?dni=" . urlencode($dni));
                 exit();
             }
+        }
+        else {   
+            header("Location: nuevo_paciente_admin.php?dni=" . urlencode($dni));
+            exit();
+        }
     }    
     else {
         // O no se envía DNI o no se envia action y se redirige a la página de administración
