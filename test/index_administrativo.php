@@ -1,17 +1,9 @@
 <?php
-// Iniciar la sesión
-session_start();
-
-// Verificar si la sesión está establecida y el usuario está logueado
-if (!isset($_SESSION['usuario']) || $_SESSION['rol_id'] != 2 ) {
-    // Si no está logueado, redirigir al usuario a la página de login
-    header("Location: login.html");
-    exit;
-}
+require_once('verificar_sesion_admin.php');
 ?>
 
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
 

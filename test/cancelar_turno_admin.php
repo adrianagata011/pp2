@@ -1,3 +1,7 @@
+<?php
+require_once('verificar_sesion_admin.php');
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -40,7 +44,7 @@
                                     </div>
                                     <hr>      
                                     <div class="text-center">
-                                    <form action="cancelar_turno.php" method="GET">
+                                    <form action="cancelar_turno_admin_t.php" method="GET">
                                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                             <thead>
                                                 <tr>
@@ -110,8 +114,8 @@ if (isset($_GET['dni'])) {
 
                                     <hr>
 
-                                        <a href="index_paciente.php" class="btn btn-primary btn-user btn-block" href="#" data-toggle="modal" data-target="#logoutModal">
-                                            Salir
+                                        <a href="index_administrativo.php" class="btn btn-primary btn-user btn-block" href="#" data-toggle="modal" data-target="#logoutModal">
+                                            Volver
                                         </a>
                                     </div>
                                 </div>
