@@ -35,78 +35,68 @@ require_once('verificar_sesion_admin.php');
             <div class="col-xl-10 col-lg-12 col-md-9">
                 <div class="card o-hidden border-0 shadow-lg my-5">
                     <div class="card-body p-0">
-                        <!-- Nested Row within Card Body -->
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="p-5">
+                        <div class="p-5">
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Cancelación de Turnos</h1>
                                     </div>
                                     <hr>      
                                     <div class="text-center">
-
 <?php
+    if (isset($_GET['dni'])&&(isset($_GET['turno']))) {
+        $dni = $_GET['dni'];  
+        $turnoSeleccionado = $_GET['turno'];
 
-if (isset($_GET['turno'])) {
-    $turnoSeleccionado = $_GET['turno'];
-    $usuario = $_SESSION['usuario'];
+        echo "Cancelando turno " . $turnoSeleccionado . "<br>";
+        
+        // Me conecto a la base
+        require_once('conexion_db.php');
+            
+        $query = "SELECT t.idTurno as idTurno
+                FROM turnos t
+                INNER JOIN profesionales p ON t.idProfesional = p.idProfesional
+                INNER JOIN servicios s ON t.idServicio = s.idServicio
+                INNER JOIN pacientes pa ON t.idPaciente = pa.idPaciente
+                INNER JOIN usuarios u ON pa.idUsuario = u.idUsuario
+                WHERE pa.dni = '" . $dni . "'
+                AND t.fechahora = '". $turnoSeleccionado ."';";
 
-    echo "Cancelando turno " . $turnoSeleccionado . "<br>";
-    // Me conecto a la base
-    $mysqli = new mysqli('sql10.freemysqlhosting.net', 'sql10707793', 'Rre1s76tSV', 'sql10707793');
-    // Verificar conexión
-    if ($mysqli->connect_error) {
-        //die("Error en la conexión: " . $mysqli->connect_error);
-    }
-    
-    $query = "SELECT t.idTurno as idTurno FROM turnos t INNER JOIN profesionales p ON t.idProfesional = p.idProfesional INNER JOIN servicios s ON t.idServicio = s.idServicio INNER JOIN pacientes pa ON t.idPaciente = pa.idPaciente INNER JOIN usuarios u ON pa.idUsuario = u.idUsuario WHERE u.usuario = '" . $usuario . "' AND t.fechahora = '". $turnoSeleccionado ."';";
-    $result = $mysqli->query($query);
-    if ($result->num_rows > 0) {
-        // Output de cada fila
-        $row = $result->fetch_assoc();
-        $idTurno = $row['idTurno'];
-        $query1 = "DELETE FROM turnos WHERE idTurno = " . $idTurno . ";";
-        $result1 = $mysqli->query($query1);
-        echo "Se canceló el turno <br>";
-    } else {
-        echo "No se seleccionó ningún turno<br>";
-    }
-    $mysqli->close();
-}
+            $result = $conn->query($query);
+            if ($result->num_rows > 0) {
+                // Output de cada fila
+                $row = $result->fetch_assoc();
+                $idTurno = $row['idTurno'];
+                $query1 = "DELETE FROM turnos WHERE idTurno = " . $idTurno . ";";
+                $result1 = $conn->query($query1);
+                echo "Se canceló el turno <br>";
+            } else {
+                echo "No se seleccionó ningún turno<br>";
+            }
+            $conn->close();
+        }
+        else {
+                echo "Ha ocurrido un error en el sistema. Vuelva a intentarlo<br>";}
 ?>
                                         <hr>
-                                        <a class="btn btn-primary btn-user btn-block" href="index_paciente.php">
-                                            volver
+                                        <a class="btn btn-primary btn-user btn-block" href="index_administrativo.php">
+                                            Home
                                         </a>
+
+                                        <a href="index.html" class="btn btn-primary btn-user btn-block" href="#" data-toggle="modal" data-target="#logoutModal">
+                                            Salir
+                                        </a>
+
                                     </div>
-                                </div>
-                            </div>
+                                
+                            
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">¿Está seguro que desea cancelar el turno?</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">volver</button>
-                    <a class="btn btn-primary" href="cancelar_turno_t.php">Cancelar Turno</a>
-                </div>
-            </div>
-        </div>
-    </div>
+    
+    <!-- Logout Modal-->  
+    <?php include 'logout_modal.php'; ?>
 
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>

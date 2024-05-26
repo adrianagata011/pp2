@@ -84,6 +84,9 @@ if (isset($_GET['dni'])) {
         $result = mysqli_query($conn, $query2);
 
             if ($result && mysqli_num_rows($result) > 0) {
+                // Creo un campo oculto para pasar el DNI del paciente
+                echo "<input type='hidden' name='dni' value='$dni'>";
+
                 // Output de cada fila
                 while($row = mysqli_fetch_assoc($result)) {
                     $fecha = $row['fecha'];
@@ -103,19 +106,25 @@ if (isset($_GET['dni'])) {
 
                                             </tbody>
                                         </table>
-
+<!--
                                         <button type="submit" class="btn btn-primary btn-user btn-block">
                                              Cancelar turno
-                                        </button>
+                                        </button> -->
+                                        <a class="btn btn-primary btn-user btn-block" href="#" data-toggle="modal" data-target="#ConfirmModal">
+                                            Cancelar turno
+                                        </a>
                                     <hr>
-                                    </form>
+                                    
                                     </div>
                                     <div>
 
                                     <hr>
 
-                                        <a href="index_administrativo.php" class="btn btn-primary btn-user btn-block" href="#" data-toggle="modal" data-target="#logoutModal">
-                                            Volver
+                                        <a href="index_administrativo.php" class="btn btn-primary btn-user btn-block">
+                                            Home
+                                        </a>
+                                        <a class="btn btn-primary btn-user btn-block" href="#" data-toggle="modal" data-target="#logoutModal">
+                                            Salir
                                         </a>
                                     </div>
                                 </div>
@@ -127,25 +136,30 @@ if (isset($_GET['dni'])) {
         </div>
     </div>
 
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <!-- Modal de confirmación-->
+    <div class="modal fade" id="ConfirmModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">ATENCIÓN !!!</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-body">Esta acción es irreversible<br>Estas seguro de querer eliminar este turno? </div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="logout.php">Logout</a>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">No</button>
+                    <button type="submit" class="btn btn-primary">Si</button>
+                    </form>
+               
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- Logout Modal-->  
+     <?php include 'logout_modal.php'; ?>
 
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
