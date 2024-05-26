@@ -11,7 +11,7 @@ if (!isset($_SESSION['usuario']) || $_SESSION['rol_id'] != 2 ) {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
 
@@ -32,6 +32,23 @@ if (!isset($_SESSION['usuario']) || $_SESSION['rol_id'] != 2 ) {
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
+    <script>
+        function handleSubmit(button) {
+            // Crear un campo de entrada oculto para almacenar el ID del botón
+            var hiddenField = document.createElement("input");
+            hiddenField.type = "hidden";
+            hiddenField.name = "action";
+            hiddenField.value = button.id;
+
+            // Agregar el campo oculto al formulario
+            var form = document.getElementById("userForm");
+            form.appendChild(hiddenField);
+
+            // Enviar el formulario
+            form.submit();
+        }
+    </script>
+
 </head>
 
 <body class="bg-gradient-primary">
@@ -50,50 +67,7 @@ if (!isset($_SESSION['usuario']) || $_SESSION['rol_id'] != 2 ) {
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Gestión de turnos para administrativo</h1>
-                                    </div>
-                                    
-                                    <hr>
-                                       
-                                        <a href="index.html" class="btn btn-primary btn-user btn-block">
-                                            reservar turnos
-                                        </a>
-                                       
-                                        <a href="cancelar_turno_admin.php" class="btn btn-primary btn-user btn-block">
-                                             cancelar turnos
-                                        </a>
-                                        <a href="index.html" class="btn btn-primary btn-user btn-block">
-                                            acreditar turnos
-                                        </a>
-                                                                            
-                                
-                                    <hr>
-
-                                    <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Gestion de pacientes</h1>
-                                    </div>
-                                     
-                                    <hr>
-                                       
-                                        <a href="index.html" class="btn btn-primary btn-user btn-block">
-                                            abm pacientes
-                                        </a>
-                                       
-                                        <a href="index.html" class="btn btn-primary btn-user btn-block">
-                                            registrar atencion
-                                        </a>
-
-                                        <a href="index.html" class="btn btn-primary btn-user btn-block">
-                                            buscar por dni
-                                        </a>
-                                    <hr>
-                                   
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="p-5">
-                                    <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Gestión de Profesionales</h1>
+                                        <h1 class="h4 text-gray-900 mb-4">Profesionales</h1>
                                     </div>
                                     
                                     <hr>
@@ -102,35 +76,69 @@ if (!isset($_SESSION['usuario']) || $_SESSION['rol_id'] != 2 ) {
                                             control horario
                                         </a>
                                        
-                                        <a href="cancelar_turno_admin.php" class="btn btn-primary btn-user btn-block">
-                                             liquidar honorarios
+                                        <a href="index.html" class="btn btn-primary btn-user btn-block">
+                                        liquidar honorarios
                                         </a>
                                         <a href="index.html" class="btn btn-primary btn-user btn-block">
-                                            gestionar agenda
-                                        </a>
+                                        gestionar agenda</a>
+
                                         <a href="index.html" class="btn btn-primary btn-user btn-block">
-                                            abm de profesionales
-                                        </a>     
-                                   
+                                        prof abm</a>
+
                                     <hr>
 
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Gestion de insumos</h1>
+                                        <h1 class="h4 text-gray-900 mb-4">Insumos</h1>
                                     </div>
                                      
                                     <hr>
                                        
                                         <a href="index.html" class="btn btn-primary btn-user btn-block">
-                                            abm insumos
-                                            
-                                        </a>
-                                       
-                                   
+                                            insumos</a>
+                 
                                     <hr>
+                                   
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+
+                        
+
+
+
+                                <div class="p-5">
+                                    <div class="text-center">
+                                        <h1 class="h4 text-gray-900 mb-4">Pacientes</h1>
+                                    </div>
+                                    
+                                    <hr>
+                                       
+                                       
+                                    <form id="userForm" class="user" method="post" action="userdni.php">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control form-control-user" id="dni" name="dni" aria-describedby="dni" placeholder="Ingrese el dni" required>
+                                            </div>
+
+                                            <button type="button" id="cancelar_turno-ale" class="btn btn-primary btn-user btn-block" onclick="handleSubmit(this)">Cancelar turno</button>                                                                                    
+                                            
+                                            <button type="button" id="acreditar_turno-ale" class="btn btn-primary btn-user btn-block" onclick="handleSubmit(this)">Acreditar turno</button>
+                                            
+                                            <button type="button" id="reservar_turno-ale" class="btn btn-primary btn-user btn-block" onclick="handleSubmit(this)">Reservar turno</button>
+                                        
+                                            <button type="button" id="registrar_atencion-ale" class="btn btn-primary btn-user btn-block" onclick="handleSubmit(this)">Registrar atencion</button>
+                                            
+                                            <button type="button" id="paciente_abm-ale" class="btn btn-primary btn-user btn-block" onclick="handleSubmit(this)">Paciente abm</button>
+                                        
+                                            <button type="button" id="nuevo_paciente-ale" class="btn btn-primary btn-user btn-block" onclick="handleSubmit(this)">Nuevo paciente</button>
+                                        </form>
+
+
+                                    <hr>
+
                                         <a href="index.html" class="btn btn-primary btn-user btn-block" href="#" data-toggle="modal" data-target="#logoutModal">
                                             Salir
                                         </a>
-                                   
+
                                 </div>
                             </div>
                         </div>
