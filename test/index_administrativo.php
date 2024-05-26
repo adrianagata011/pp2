@@ -50,22 +50,23 @@ if (!isset($_SESSION['usuario']) || $_SESSION['rol_id'] != 2 ) {
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Gestion de turnos para administrativo</h1>
+                                        <h1 class="h4 text-gray-900 mb-4">Gestión de turnos para administrativo</h1>
                                     </div>
                                     
                                     <hr>
                                        
                                         <a href="index.html" class="btn btn-primary btn-user btn-block">
-                                            reservar turno
+                                            reservar turnos
                                         </a>
                                        
                                         <a href="cancelar_turno_admin.php" class="btn btn-primary btn-user btn-block">
-                                             cancelar turno
+                                             cancelar turnos
                                         </a>
                                         <a href="index.html" class="btn btn-primary btn-user btn-block">
-                                            acreditar turno
+                                            acreditar turnos
                                         </a>
-                                   
+                                                                            
+                                
                                     <hr>
 
                                     <div class="text-center">
@@ -76,13 +77,15 @@ if (!isset($_SESSION['usuario']) || $_SESSION['rol_id'] != 2 ) {
                                        
                                         <a href="index.html" class="btn btn-primary btn-user btn-block">
                                             abm pacientes
-                                            
                                         </a>
                                        
                                         <a href="index.html" class="btn btn-primary btn-user btn-block">
                                             registrar atencion
                                         </a>
-                                    
+
+                                        <a href="index.html" class="btn btn-primary btn-user btn-block">
+                                            buscar por dni
+                                        </a>
                                     <hr>
                                    
                                 </div>
@@ -90,39 +93,39 @@ if (!isset($_SESSION['usuario']) || $_SESSION['rol_id'] != 2 ) {
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Gestion de turnos</h1>
+                                        <h1 class="h4 text-gray-900 mb-4">Gestión de Profesionales</h1>
                                     </div>
                                     
                                     <hr>
                                        
                                         <a href="index.html" class="btn btn-primary btn-user btn-block">
-                                            reservar turno
+                                            control horario
                                         </a>
                                        
-                                        <a href="index.html" class="btn btn-primary btn-user btn-block">
-                                             cancelar turno
+                                        <a href="cancelar_turno_admin.php" class="btn btn-primary btn-user btn-block">
+                                             liquidar honorarios
                                         </a>
                                         <a href="index.html" class="btn btn-primary btn-user btn-block">
-                                            acreditar turno
+                                            gestionar agenda
                                         </a>
+                                        <a href="index.html" class="btn btn-primary btn-user btn-block">
+                                            abm de profesionales
+                                        </a>     
                                    
                                     <hr>
 
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Gestion de pacientes</h1>
+                                        <h1 class="h4 text-gray-900 mb-4">Gestion de insumos</h1>
                                     </div>
                                      
                                     <hr>
                                        
                                         <a href="index.html" class="btn btn-primary btn-user btn-block">
-                                            abm pacientes
+                                            abm insumos
                                             
                                         </a>
                                        
-                                        <a href="index.html" class="btn btn-primary btn-user btn-block">
-                                            registrar atencion
-                                        </a>
-                                    
+                                   
                                     <hr>
                                         <a href="index.html" class="btn btn-primary btn-user btn-block" href="#" data-toggle="modal" data-target="#logoutModal">
                                             Salir
