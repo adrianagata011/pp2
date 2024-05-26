@@ -31,13 +31,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }    
     else {
         // O no se envía DNI o no se envia action y se redirige a la página de administración
-        header("Location: index_administrativo_bis.php");
+        header("Location: index_administrativo.php");
         exit();
     }
 }
 else {
     // Si no se recibió una solicitud POST, redirigir de nuevo a la página de administración
-    header("Location: index_administrativo_bis.php");
+    header("Location: index_administrativo.php");
     exit();
 }
 
