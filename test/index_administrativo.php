@@ -119,17 +119,17 @@ if (!isset($_SESSION['usuario']) || $_SESSION['rol_id'] != 2 ) {
                                                 <input type="text" class="form-control form-control-user" id="dni" name="dni" aria-describedby="dni" placeholder="Ingrese el dni" required>
                                             </div>
 
-                                            <button type="button" id="cancelar_turno-ale" class="btn btn-primary btn-user btn-block" onclick="handleSubmit(this)">Cancelar turno</button>                                                                                    
+                                            <button type="button" id="cancelar_turno_admin" class="btn btn-primary btn-user btn-block" onclick="handleSubmit(this)">Cancelar turno</button>                                                                                    
                                             
-                                            <button type="button" id="acreditar_turno-ale" class="btn btn-primary btn-user btn-block" onclick="handleSubmit(this)">Acreditar turno</button>
+                                            <button type="button" id="acreditar_turno_admin" class="btn btn-primary btn-user btn-block" onclick="handleSubmit(this)">Acreditar turno</button>
                                             
-                                            <button type="button" id="reservar_turno-ale" class="btn btn-primary btn-user btn-block" onclick="handleSubmit(this)">Reservar turno</button>
+                                            <button type="button" id="reservar_turno_admin" class="btn btn-primary btn-user btn-block" onclick="handleSubmit(this)">Reservar turno</button>
                                         
-                                            <button type="button" id="registrar_atencion-ale" class="btn btn-primary btn-user btn-block" onclick="handleSubmit(this)">Registrar atencion</button>
+                                            <button type="button" id="registrar_atencion_admin" class="btn btn-primary btn-user btn-block" onclick="handleSubmit(this)">Registrar atencion</button>
                                             
-                                            <button type="button" id="paciente_abm-ale" class="btn btn-primary btn-user btn-block" onclick="handleSubmit(this)">Paciente abm</button>
+                                            <button type="button" id="paciente_abm_admin" class="btn btn-primary btn-user btn-block" onclick="handleSubmit(this)">Paciente abm</button>
                                         
-                                            <button type="button" id="nuevo_paciente-ale" class="btn btn-primary btn-user btn-block" onclick="handleSubmit(this)">Nuevo paciente</button>
+                                            <button type="button" id="nuevo_paciente_admin" class="btn btn-primary btn-user btn-block" onclick="handleSubmit(this)">Nuevo paciente</button>
                                         </form>
 
 
