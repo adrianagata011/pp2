@@ -48,9 +48,11 @@ if (!isset($_SESSION['usuario']) || $_SESSION['rol_id'] != 1 ) {
                             <!-- Columna simple centrada con Card Body -->
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Reservar Turnos</h1>
+
+
                             </div>
 
-
+<hr>
                             
                             <hr>      
                             <div class="text-center">
