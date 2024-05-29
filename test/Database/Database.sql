@@ -86,13 +86,14 @@ INSERT INTO servicios (nombre, tiempo, horarioInicio, horarioFin, precio) VALUES
 ('Unidad de Quemados', 15, 7, 17, 150.00),
 ('Neonatologia', 15, 7, 17, 150.00);
 
-CREATE TABLE hdt(
+CREATE TABLE htd (
     idServicio INT,
     horario VARCHAR (5),
     sobreturno BOOLEAN,
     constraint fk_hdt_s foreign key (idServicio) references servicios(idServicio)
 );
-INSERT INTO (idServicio, horario, sobreturno) VALUES
+
+INSERT INTO htd (idServicio, horario, sobreturno) VALUES
 (1,'07:00',0),
 (1,'07:25',0),
 (1,'07:50',0),
@@ -366,7 +367,7 @@ CREATE TABLE estudios (
     prioridad VARCHAR(50)
 );
 
-INSERT INTO estudios (nombre, fechaHoraInicio, HoraFin, precio, prioridad) VALUES
+INSERT INTO estudios (nombre, fechaHora, precio, prioridad) VALUES
 ('Ecografia abdominal', '2024-05-20 09:00:00', 150.00, 'Alta'),
 ('Analisis de sangre', '2024-05-21 07:00:00', 80.00, 'Media'),
 ('Radiografia de torax', '2024-05-22 11:00:00', 120.00, 'Alta'),
