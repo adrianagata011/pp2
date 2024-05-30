@@ -143,7 +143,7 @@ $mysqli->close();
                                         
                                             <button type="button" id="registrar_atencion_admin" class="btn btn-primary btn-user btn-block" onclick="handleSubmit(this)">Registrar atencion</button>
                                             
-                                            <button type="button" id="paciente_abm_admin" class="btn btn-primary btn-user btn-block" onclick="handleSubmit(this)">Paciente abm</button>
+                                            <button type="button" id="paciente_abm_admin" class="btn btn-primary btn-user btn-block" onclick="handleSubmit(this)">Modificar pacientes</button>
                                         
                                             <button type="button" id="nuevo_paciente_admin" class="btn btn-primary btn-user btn-block" onclick="handleSubmit(this)">Nuevo paciente</button>
                                         </form>
