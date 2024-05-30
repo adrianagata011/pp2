@@ -1,7 +1,8 @@
 <?php
 require_once('verificar_sesion_admin.php');
 
-if (!isset($_POST['idProfesional']) || empty($_POST['idProfesional'])) {
+if (!isset($_POST['idProfesional'])) {
+//    || empty($_POST['idProfesional'])
     header("Location: index_administrativo.php");
     exit();
 }
@@ -27,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
             else
             {
-                header("Location: nuevo_profesional_admin.php");
+                header("Location: index_administrativo.php");
                 exit();
             }
         }

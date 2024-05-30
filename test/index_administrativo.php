@@ -91,11 +91,12 @@ $query = "SELECT idProfesional,nombre,apellido FROM profesionales ORDER BY apell
 $result = $mysqli->query($query);
 if ($result->num_rows > 0) {
     echo "<select name='idProfesional' id='idProfesional'>";
+    echo "<option value=''>Seleccione Profesional</option>";
     while($row = $result->fetch_assoc()) {
       $idProfesional = $row['idProfesional'];
       $nombre = $row['nombre'];
       $apellido = $row['apellido'];
-      echo "<option value='$idProfesional'>$apellido, $nombre";
+      echo "<option value='$idProfesional'>$apellido, $nombre</option>";
     }
     echo "</select>";
 } else {
@@ -110,7 +111,7 @@ $mysqli->close();
                                             
                                             <button type="button" id="gestionar_agenda_admin" class="btn btn-primary btn-user btn-block" onclick="handleSubmitProf(this)">Gestionar agenda</button>
                                         
-                                            <button type="button" id="nuevo profesional_admin" class="btn btn-primary btn-user btn-block" onclick="handleSubmitProf(this)">Nuevo profesional</button>
+                                            <button type="button" id="nuevo_profesional_admin" class="btn btn-primary btn-user btn-block" onclick="handleSubmitProf(this)">Nuevo profesional</button>
                                             
                                             <button type="button" id="modificacion_profesional_admin" class="btn btn-primary btn-user btn-block" onclick="handleSubmitProf(this)">Modificación profesional</button>
                                         </form>
