@@ -61,9 +61,7 @@ require_once('verificar_sesion_admin.php');
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Profesionales</h1>
                                     </div>
-                                    
                                     <hr>
-
                                     <form id="profForm" class="prof" method="post" action="prof_id.php">
                                         <div class="form-group">
 <?php
