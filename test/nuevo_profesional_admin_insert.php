@@ -1,7 +1,7 @@
 <?php
 require_once('verificar_sesion_admin.php');
 
-if (!isset($_POST['nombre']) || empty($_POST['nombre']) || !isset($_POST['apellido']) || empty($_POST['apellido']) || !isset($_POST['dni']) || empty($_POST['dni']) || !isset($_POST['numeroMatricula']) || empty($_POST['numeroMatricula']) || !isset($_POST['horarioIngreso']) || empty($_POST['horarioIngreso']) || !isset($_POST['horarioEgreso']) || empty($_POST['horarioEgreso']) ||!isset($_POST['inicioActividad']) || empty($_POST['inicioActividad'])) {
+if ( !isset($_POST['idServicio']) || empty($_POST['idServicio']) || !isset($_POST['nombre']) || empty($_POST['nombre']) || !isset($_POST['apellido']) || empty($_POST['apellido']) || !isset($_POST['dni']) || empty($_POST['dni']) || !isset($_POST['numeroMatricula']) || empty($_POST['numeroMatricula']) || !isset($_POST['horarioIngreso']) || empty($_POST['horarioIngreso']) || !isset($_POST['horarioEgreso']) || empty($_POST['horarioEgreso'])) {
     echo "Uno de los campos obligatorios está vacío:<br>";
     echo "- nombre<br>";
     echo "- apellido<br>";
@@ -10,7 +10,6 @@ if (!isset($_POST['nombre']) || empty($_POST['nombre']) || !isset($_POST['apelli
     echo "- numero de Matricula<br>";
     echo "- horario de Ingreso<br>";
     echo "- horario de Engreso<br>";
-    echo "- inicio de Actividad<br>";
     header("refresh:3; url=nuevo_profesional_admin.php");
     exit();
 }
@@ -40,13 +39,27 @@ $horarioIngreso = $_POST['horarioIngreso'];
 $horarioEgreso = $_POST['horarioEgreso'];
 $inicioActividad = $_POST['inicioActividad'];
 
+/*
+echo "Se ingresaron estos datos: <br>";
+echo "$nombre<br>";
+echo "$apellido<br>";
+echo "$dni<br>";
+echo "$telefono<br>";
+echo "$domicilio<br>";
+echo "$email<br>";
+echo "$idServicio<br>";
+echo "$numeroMatricula<br>";
+echo "$horarioIngreso<br>";
+echo "$horarioEgreso <br>";
+echo "$inicioActividad <br>";*/
+
 $mysqli = new mysqli('sql10.freemysqlhosting.net', 'sql10707793', 'Rre1s76tSV', 'sql10707793');
 
 if ($mysqli->connect_error) {
     die("Error en la conexión: " . $mysqli->connect_error);
 }
 
-$query = "INSERT INTO profesionales (idServicio, nombre, apellido, dni, telefono, domicilio, email, numeroMatricula, horarioIngreso, horarioEgreso, inicioActividad) VALUES ($idServicio, '$nombre', '$apellido', '$dni', '$telefono', '$direccion', '$email', '$numeroMatricula', 'horarioIngreso', 'horarioEgreso', '$inicioActividad');";
+$query = "INSERT INTO profesionales (idServicio, nombre, apellido, dni, telefono, domicilio, email, numeroMatricula, horarioIngreso, horarioEgreso, inicioActividad) VALUES ($idServicio, '$nombre', '$apellido', '$dni', '$telefono', '$direccion', '$email', '$numeroMatricula', '$horarioIngreso', '$horarioEgreso', CURDATE());";
 $result = $mysqli->query($query);
 // Obtener el resultado del procedimiento almacenado
 $mysqli->close();

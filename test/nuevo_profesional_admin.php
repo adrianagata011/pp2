@@ -80,6 +80,30 @@ require_once('verificar_sesion_admin.php');
                                         placeholder="Ingrese e-mail">
                                 </div>
                                 <div class="form-group">
+<?php
+$mysqli = new mysqli('sql10.freemysqlhosting.net', 'sql10707793', 'Rre1s76tSV', 'sql10707793');
+if ($mysqli->connect_error) {
+    die("Error en la conexión: " . $mysqli->connect_error);
+}
+$mysqli->set_charset("utf8");
+$query = "SELECT idServicio,nombre FROM servicios ORDER BY nombre ASC;";
+$result = $mysqli->query($query);
+if ($result->num_rows > 0) {
+    echo "<label for='idServicio'> Elija el Servicio: </label>";
+    echo "<select name='idServicio' id='idServicio'>";
+    while($row = $result->fetch_assoc()) {
+      $idServicio = $row['idServicio'];
+      $nombre = $row['nombre'];
+      echo "<option value='$idServicio'>$nombre</option>";
+    }
+    echo "</select>";
+} else {
+    echo "Error al traer datos de Servicios<br>";
+}
+$mysqli->close();
+?>
+                                </div>
+                                <div class="form-group">
                                     <input type="numeroMatricula" class="form-control form-control-user"
                                         id="numeroMatricula" name="numeroMatricula" aria-describedby="emailHelp"
                                         placeholder="Ingrese el número de matricula">
@@ -94,11 +118,6 @@ require_once('verificar_sesion_admin.php');
                                         id="horarioEgreso" name="horarioEgreso" aria-describedby="emailHelp"
                                         placeholder="Ingrese el horario de Egreso">
                                 </div>
-                                <div class="form-group">
-                                    <input type="inicioActividad" class="form-control form-control-user"
-                                        id="inicioActividad" name="inicioActividad" aria-describedby="emailHelp"
-                                        placeholder="Ingrese la fecha de Inicio de la actividad">
-                                </div> 
                                 <button type="submit" value="Iniciar Sesion" class="btn btn-primary btn-user btn-block"> Entrar </button>
 
                             </form>
