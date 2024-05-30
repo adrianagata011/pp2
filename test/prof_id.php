@@ -18,16 +18,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Me conecto a la base
             require_once('conexion_db.php');
 
-/*
-            $conn = new mysqli('sql10.freemysqlhosting.net', 'sql10707793', 'Rre1s76tSV', 'sql10707793');
-            // Verificar conexión
-            if ($conn->connect_error) {
-                die("Error en la conexión: " . $conn->connect_error);
-            }
-            // seteo charset=utf8
-            $conn->set_charset("utf8");
-*/
-
             // Verifico si el idProfesional existe
             $query = "SELECT idProfesional FROM profesionales WHERE idProfesional = '$idProfesional'";
             $result = mysqli_query($conn, $query);
