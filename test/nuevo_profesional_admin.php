@@ -47,6 +47,65 @@ require_once('verificar_sesion_admin.php');
                                 <h1 class="h4 text-gray-900 mb-4">Nuevo Profesional</h1>
                             </div>
                             <hr>
+
+                            <form class="user" method="post" action="nuevo_profesional_admin_insert.php">
+                                <div class="form-group">
+                                    <input type="nombre" class="form-control form-control-user"
+                                        id="nombre" name="nombre" aria-describedby="emailHelp"
+                                        placeholder="Ingrese el nombre">
+                                </div>
+                                <div class="form-group">
+                                    <input type="apellido" class="form-control form-control-user"
+                                        id="apellido" name="apellido" aria-describedby="emailHelp"
+                                        placeholder="Ingrese el apellido">
+                                </div>
+                                <div class="form-group">
+                                    <input type="dni" class="form-control form-control-user"
+                                        id="dni" name="dni" aria-describedby="emailHelp"
+                                        placeholder="Ingrese el DNI">
+                                </div>
+                                <div class="form-group">
+                                    <input type="telefono" class="form-control form-control-user"
+                                        id="telefono" name="telefono" aria-describedby="emailHelp"
+                                        placeholder="Ingrese el teléfono">
+                                </div>
+                                <div class="form-group">
+                                    <input type="direccion" class="form-control form-control-user"
+                                        id="direccion" name="direccion" aria-describedby="emailHelp"
+                                        placeholder="Ingrese la dirección">
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control form-control-user"
+                                        id="email" name="email" aria-describedby="emailHelp"
+                                        placeholder="Ingrese e-mail">
+                                </div>
+                                <div class="form-group">
+                                    <input type="matricula" class="form-control form-control-user"
+                                        id="matricula" name="matricula" aria-describedby="emailHelp"
+                                        placeholder="Ingrese el número de matricula">
+                                </div>
+                                <div class="form-group">
+                                    <input type="horarioingreso" class="form-control form-control-user"
+                                        id="horarioingreso" name="horarioingreso" aria-describedby="emailHelp"
+                                        placeholder="Ingrese el horario de Ingreso">
+                                </div>
+                                <div class="form-group">
+                                    <input type="horarioegreso" class="form-control form-control-user"
+                                        id="horarioegreso" name="horarioegreso" aria-describedby="emailHelp"
+                                        placeholder="Ingrese el horario de Egreso">
+                                </div>
+                                <div class="form-group">
+                                    <input type="inicioactividad" class="form-control form-control-user"
+                                        id="inicioactividad" name="inicioactividad" aria-describedby="emailHelp"
+                                        placeholder="Ingrese la fecha de Inicio de la actividad">
+                                </div> 
+                                <button type="submit" value="Iniciar Sesion" class="btn btn-primary btn-user btn-block"> Entrar </button>
+
+                            </form>
+
+
+
+                            <hr>
                             <div>                            
                                 <a href="index_administrativo.php" class="btn btn-primary btn-user btn-block">
                                     Home
