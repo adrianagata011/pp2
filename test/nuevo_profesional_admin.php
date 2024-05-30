@@ -80,23 +80,23 @@ require_once('verificar_sesion_admin.php');
                                         placeholder="Ingrese e-mail">
                                 </div>
                                 <div class="form-group">
-                                    <input type="matricula" class="form-control form-control-user"
-                                        id="matricula" name="matricula" aria-describedby="emailHelp"
+                                    <input type="numeroMatricula" class="form-control form-control-user"
+                                        id="numeroMatricula" name="numeroMatricula" aria-describedby="emailHelp"
                                         placeholder="Ingrese el número de matricula">
                                 </div>
                                 <div class="form-group">
-                                    <input type="horarioingreso" class="form-control form-control-user"
-                                        id="horarioingreso" name="horarioingreso" aria-describedby="emailHelp"
+                                    <input type="horarioIngreso" class="form-control form-control-user"
+                                        id="horarioIngreso" name="horarioIngreso" aria-describedby="emailHelp"
                                         placeholder="Ingrese el horario de Ingreso">
                                 </div>
                                 <div class="form-group">
-                                    <input type="horarioegreso" class="form-control form-control-user"
-                                        id="horarioegreso" name="horarioegreso" aria-describedby="emailHelp"
+                                    <input type="horarioEgreso" class="form-control form-control-user"
+                                        id="horarioEgreso" name="horarioEgreso" aria-describedby="emailHelp"
                                         placeholder="Ingrese el horario de Egreso">
                                 </div>
                                 <div class="form-group">
-                                    <input type="inicioactividad" class="form-control form-control-user"
-                                        id="inicioactividad" name="inicioactividad" aria-describedby="emailHelp"
+                                    <input type="inicioActividad" class="form-control form-control-user"
+                                        id="inicioActividad" name="inicioActividad" aria-describedby="emailHelp"
                                         placeholder="Ingrese la fecha de Inicio de la actividad">
                                 </div> 
                                 <button type="submit" value="Iniciar Sesion" class="btn btn-primary btn-user btn-block"> Entrar </button>
