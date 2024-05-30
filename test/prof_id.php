@@ -32,17 +32,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $query = "SELECT idProfesional FROM profesionales WHERE idProfesional = '$idProfesional'";
             $result = mysqli_query($conn, $query);
             if (mysqli_num_rows($result) >= 1) {
-                header("Location: $action.php?dni=" . urlencode($dni));
+                header("Location: $action.php?idProfesional=" . urlencode($idProfesional));
                 exit();
             }
             else
             {
-                header("Location: nuevo_profesional_admin.php?dni=" . urlencode($dni));
+                header("Location: nuevo_profesional_admin.php");
                 exit();
             }
         }
         else {   
-            header("Location: nuevo_profesional_admin.php?dni=" . urlencode($dni));
+            header("Location: nuevo_profesional_admin.php");
             exit();
         }
     }    

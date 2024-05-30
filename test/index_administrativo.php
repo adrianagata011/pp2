@@ -41,6 +41,23 @@ require_once('verificar_sesion_admin.php');
         }
     </script>
 
+    <script>
+        function handleSubmitProf(button) {
+            // Crear un campo de entrada oculto para almacenar el ID del botón
+            var hiddenField = document.createElement("input");
+            hiddenField.type = "hidden";
+            hiddenField.name = "action";
+            hiddenField.value = button.id;
+
+            // Agregar el campo oculto al formulario
+            var form = document.getElementById("profForm");
+            form.appendChild(hiddenField);
+
+            // Enviar el formulario
+            form.submit();
+        }
+    </script>    
+
 </head>
 
 <body class="bg-gradient-primary">
@@ -73,7 +90,7 @@ $mysqli->set_charset("utf8");
 $query = "SELECT idProfesional,nombre,apellido FROM profesionales ORDER BY apellido ASC;";
 $result = $mysqli->query($query);
 if ($result->num_rows > 0) {
-    echo "<select name='profesionales' id='profesionales'>";
+    echo "<select name='idProfesional' id='idProfesional'>";
     while($row = $result->fetch_assoc()) {
       $idProfesional = $row['idProfesional'];
       $nombre = $row['nombre'];
@@ -87,51 +104,36 @@ if ($result->num_rows > 0) {
 $mysqli->close();
 ?>
                                         </div>
-                                            <button type="button" id="control_horario_admin" class="btn btn-primary btn-user btn-block" onclick="handleSubmit(this)">Control horario</button>                                                                                    
+                                            <button type="button" id="control_horario_admin" class="btn btn-primary btn-user btn-block" onclick="handleSubmitProf(this)">Control horario</button>                                                                                    
                                             
-                                            <button type="button" id="liquidar_honorarios_admin" class="btn btn-primary btn-user btn-block" onclick="handleSubmit(this)">Liquidar honorarios</button>
+                                            <button type="button" id="liquidar_honorarios_admin" class="btn btn-primary btn-user btn-block" onclick="handleSubmitProf(this)">Liquidar honorarios</button>
                                             
-                                            <button type="button" id="gestionar_agenda_admin" class="btn btn-primary btn-user btn-block" onclick="handleSubmit(this)">Gestionar agenda</button>
+                                            <button type="button" id="gestionar_agenda_admin" class="btn btn-primary btn-user btn-block" onclick="handleSubmitProf(this)">Gestionar agenda</button>
                                         
-                                            <button type="button" id="nuevo profesional_admin" class="btn btn-primary btn-user btn-block" onclick="handleSubmit(this)">Nuevo profesional</button>
+                                            <button type="button" id="nuevo profesional_admin" class="btn btn-primary btn-user btn-block" onclick="handleSubmitProf(this)">Nuevo profesional</button>
                                             
-                                            <button type="button" id="modificacion_profesional_admin" class="btn btn-primary btn-user btn-block" onclick="handleSubmit(this)">Modificación profesional</button>
+                                            <button type="button" id="modificacion_profesional_admin" class="btn btn-primary btn-user btn-block" onclick="handleSubmitProf(this)">Modificación profesional</button>
                                         </form>
-
                                     <hr>
-
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Insumos</h1>
                                     </div>
-                                     
                                     <hr>
-                                       
                                         <a href="index.html" class="btn btn-primary btn-user btn-block">
                                             insumos</a>
-                 
                                     <hr>
-                                   
                                 </div>
                             </div>
                             <div class="col-lg-6">
-
-                        
-
-
-
                                 <div class="p-5">
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Pacientes</h1>
                                     </div>
-                                    
                                     <hr>
-                                       
-                                       
                                     <form id="userForm" class="user" method="post" action="userdni.php">
                                             <div class="form-group">
                                                 <input type="text" class="form-control form-control-user" id="dni" name="dni" aria-describedby="dni" placeholder="Ingrese el dni" required>
                                             </div>
-
                                             <button type="button" id="cancelar_turno_admin" class="btn btn-primary btn-user btn-block" onclick="handleSubmit(this)">Cancelar turno</button>                                                                                    
                                             
                                             <button type="button" id="acreditar_turno_admin" class="btn btn-primary btn-user btn-block" onclick="handleSubmit(this)">Acreditar turno</button>
@@ -144,14 +146,10 @@ $mysqli->close();
                                         
                                             <button type="button" id="nuevo_paciente_admin" class="btn btn-primary btn-user btn-block" onclick="handleSubmit(this)">Nuevo paciente</button>
                                         </form>
-
-
                                     <hr>
-
                                         <a href="index.html" class="btn btn-primary btn-user btn-block" href="#" data-toggle="modal" data-target="#logoutModal">
                                             Salir
                                         </a>
-
                                 </div>
                             </div>
                         </div>
