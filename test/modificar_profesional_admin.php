@@ -18,7 +18,7 @@ require_once('verificar_sesion_admin.php');
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Sistema Clínica - Acreditar Turno</title>
+    <title>Sistema Clínica - Modificar Profesional</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -44,7 +44,7 @@ require_once('verificar_sesion_admin.php');
 
                             <!-- Columna simple centrada con Card Body -->
                             <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Acreditar Turno</h1>
+                                <h1 class="h4 text-gray-900 mb-4">Modificar Profesional</h1>
                             </div>
                             <hr>
                             <div>                            
