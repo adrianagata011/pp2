@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         }
         else {   
-            header("Location: nuevo_profesional_admin.php");
+            header("Location: admin_nuevo_profesional.php");
             exit();
         }
     }    
