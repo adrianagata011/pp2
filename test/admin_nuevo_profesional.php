@@ -111,66 +111,27 @@ $mysqli->close();
                                 <div class="form-group">
                                     <label for="horarioIngreso"> Seleccione un Horario de Ingreso: </label>
                                     <select name="horarioIngreso" id="horarioIngreso">
-                                        <option value=0 >00</option>
-                                        <option value=1 >01</option>
-                                        <option value=2 >02</option>
-                                        <option value=3 >03</option>
-                                        <option value=4 >04</option>
-                                        <option value=5 >05</option>
-                                        <option value=6 >06</option>
-                                        <option value=7 >07</option>
-                                        <option value=8 >08</option>
-                                        <option value=9 >09</option>
-                                        <option value=10 >10</option>
-                                        <option value=11 >11</option>
-                                        <option value=12 >12</option>
-                                        <option value=13 >13</option>
-                                        <option value=14 >14</option>
-                                        <option value=15 >15</option>
-                                        <option value=16 >16</option>
-                                        <option value=17 >17</option>
-                                        <option value=18 >18</option>
-                                        <option value=19 >19</option>
-                                        <option value=20 >20</option>
-                                        <option value=21 >21</option>
-                                        <option value=22 >22</option>
-                                        <option value=23 >23</option>
+                                    <script>
+                                        for (let i = 0; i <= 23; i++) {
+                                            document.write('<option value="' + i + '">' + i + '</option>');
+                                        }
+                                    </script>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="horarioEgreso"> Seleccione un Horario de Engreso: </label>
                                     <select name="horarioEgreso" id="horarioEgreso">
-                                        <option value=0 >00</option>
-                                        <option value=1 >01</option>
-                                        <option value=2 >02</option>
-                                        <option value=3 >03</option>
-                                        <option value=4 >04</option>
-                                        <option value=5 >05</option>
-                                        <option value=6 >06</option>
-                                        <option value=7 >07</option>
-                                        <option value=8 >08</option>
-                                        <option value=9 >09</option>
-                                        <option value=10 >10</option>
-                                        <option value=11 >11</option>
-                                        <option value=12 >12</option>
-                                        <option value=13 >13</option>
-                                        <option value=14 >14</option>
-                                        <option value=15 >15</option>
-                                        <option value=16 >16</option>
-                                        <option value=17 >17</option>
-                                        <option value=18 >18</option>
-                                        <option value=19 >19</option>
-                                        <option value=20 >20</option>
-                                        <option value=21 >21</option>
-                                        <option value=22 >22</option>
-                                        <option value=23 >23</option>
+                                    <script>
+                                        for (let i = 0; i <= 23; i++) {
+                                            document.write('<option value="' + i + '">' + i + '</option>');
+                                        }
+                                    </script>
                                     </select>
-                                </div>
                                 </div>
                                 <button type="submit" value="Iniciar Sesion" class="btn btn-primary btn-user btn-block"> Ingresar nuevo profesional </button>
                             </form>
                             <hr>
-                            <div>                            
+                            <div class="form-group">                            
                                 <a href="index_administrativo.php" class="btn btn-primary btn-user btn-block">
                                     Volver sin grabar
                                 </a>
@@ -192,6 +153,27 @@ $mysqli->close();
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
+
+    <script>
+        document.getElementById('horarioIngreso').selectedIndex = 0;
+        document.getElementById('horarioEgreso').selectedIndex = 23;
+        document.getElementById('horarioIngreso').addEventListener('change', validateSelects);
+        document.getElementById('horarioEgreso').addEventListener('change', validateSelects);
+
+        function validateSelects() {
+            var horarioIngreso = document.getElementById('horarioIngreso');
+            var horarioEgreso = document.getElementById('horarioEgreso');
+            var value1 = parseInt(horarioIngreso.value);
+            var value2 = parseInt(horarioEgreso.value);
+
+            if (value1 > value2) {
+                alert('Error: El Horario de Ingreso no puede ser mayor al Horario de Egreso');
+                // Reset both selects
+                horarioIngreso.selectedIndex = 0;
+                horarioEgreso.selectedIndex = 23;
+            }
+        }
+    </script>
 
 </body>
 
