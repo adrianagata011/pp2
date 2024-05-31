@@ -1,13 +1,5 @@
 <?php
-// Iniciar la sesión
-session_start();
-
-// Verificar si la sesión está establecida y el usuario está logueado
-if (!isset($_SESSION['usuario']) || $_SESSION['rol_id'] != 1 ) {
-    // Si no está logueado, redirigir al usuario a la página de login
-    header("Location: login.html");
-    exit;
-}
+require_once('verificar_sesion_paciente.php');
 ?>
 
 <!DOCTYPE html>
@@ -52,7 +44,7 @@ if (!isset($_SESSION['usuario']) || $_SESSION['rol_id'] != 1 ) {
                                     </div>
                                     <hr>      
                                     <div class="text-center">
-                                    <form action="cancelar_turno.php" method="GET">
+                                    <form action="paciente_cancelar_turno.php" method="GET">
                                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                             <thead>
                                                 <tr>
@@ -102,12 +94,12 @@ $mysqli->close();
                                     </form>
                                     </div>
                                     <div>
-                                        <a href="reservar_turno.php" class="btn btn-primary btn-user btn-block">
+                                        <a href="paciente_reservar_turno.php" class="btn btn-primary btn-user btn-block">
                                             reservar turno
                                         </a>
                                     <hr>
 
-                                        <a href="index_paciente.php" class="btn btn-primary btn-user btn-block" href="#" data-toggle="modal" data-target="#logoutModal">
+                                        <a href="logout.php" class="btn btn-primary btn-user btn-block" href="#" data-toggle="modal" data-target="#logoutModal">
                                             Salir
                                         </a>
                                     </div>

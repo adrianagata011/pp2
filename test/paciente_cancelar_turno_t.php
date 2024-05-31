@@ -1,13 +1,5 @@
 <?php
-// Iniciar la sesión
-session_start();
-
-// Verificar si la sesión está establecida y el usuario está logueado
-if (!isset($_SESSION['usuario']) || $_SESSION['rol_id'] != 1 ) {
-    // Si no está logueado, redirigir al usuario a la página de login
-    header("Location: login.html");
-    exit;
-}
+require_once('verificar_sesion_paciente.php');
 ?>
 
 <!DOCTYPE html>
@@ -110,7 +102,7 @@ if (isset($_GET['turno'])) {
                 <div class="modal-body">¿Está seguro que desea cancelar el turno?</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">volver</button>
-                    <a class="btn btn-primary" href="cancelar_turno_t.php">Cancelar Turno</a>
+                    <a class="btn btn-primary" href="paciente_cancelar_turno_t.php">Cancelar Turno</a>
                 </div>
             </div>
         </div>
