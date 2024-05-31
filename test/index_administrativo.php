@@ -56,7 +56,25 @@ require_once('verificar_sesion_admin.php');
             // Enviar el formulario
             form.submit();
         }
-    </script>    
+    </script>
+
+<script>
+        function handleSubmitInsumo(button) {
+            // Crear un campo de entrada oculto para almacenar el ID del botón
+            var hiddenField = document.createElement("input");
+            hiddenField.type = "hidden";
+            hiddenField.name = "action";
+            hiddenField.value = button.id;
+
+            // Agregar el campo oculto al formulario
+            var form = document.getElementById("insumoForm");
+            form.appendChild(hiddenField);
+
+            // Enviar el formulario
+            form.submit();
+        }
+    </script>
+
 
 </head>
 
@@ -120,8 +138,34 @@ $mysqli->close();
                                         <h1 class="h4 text-gray-900 mb-4">Insumos</h1>
                                     </div>
                                     <hr>
-                                        <a href="index.html" class="btn btn-primary btn-user btn-block">
-                                            insumos</a>
+                                    <form id="insumoForm" class="insumos" method="post" action="insumos_id.php">
+                                        <div class="form-group">
+<?php
+$mysqli = new mysqli('sql10.freemysqlhosting.net', 'sql10707793', 'Rre1s76tSV', 'sql10707793');
+if ($mysqli->connect_error) {
+    die("Error en la conexión: " . $mysqli->connect_error);
+}
+$mysqli->set_charset("utf8");
+$query = "SELECT idInsumo,nombre FROM insumos ORDER BY nombre ASC;";
+$result = $mysqli->query($query);
+if ($result->num_rows > 0) {
+    echo "<select name='idInsumo' id='idInsumo'>";
+    echo "<option value=''>Seleccione un Insumo</option>";
+    while($row = $result->fetch_assoc()) {
+      $idInsumo = $row['idInsumo'];
+      $nombre = $row['nombre'];
+      echo "<option value='$idInsumo'>$nombre</option>";
+    }
+    echo "</select>";
+} else {
+    echo "No se encontraron insumos";
+}
+$mysqli->close();
+?>
+                                        </div>
+                                            <button type="button" id="admin_ingreso_insumo" class="btn btn-primary btn-user btn-block" onclick="handleSubmitInsumo(this)">Ingresar insumo</button>                                                                                    
+                                            <button type="button" id="admin_egreso_insumo" class="btn btn-primary btn-user btn-block" onclick="handleSubmitInsumo(this)">Egresar insumo</button>
+                                        </form>
                                     <hr>
                                 </div>
                             </div>
