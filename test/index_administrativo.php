@@ -58,7 +58,7 @@ require_once('verificar_sesion_admin.php');
         }
     </script>
 
-<script>
+    <script>
         function handleSubmitInsumo(button) {
             // Crear un campo de entrada oculto para almacenar el ID del botón
             var hiddenField = document.createElement("input");
@@ -165,6 +165,7 @@ $mysqli->close();
                                         </div>
                                             <button type="button" id="admin_ingreso_insumo" class="btn btn-primary btn-user btn-block" onclick="handleSubmitInsumo(this)">Ingresar insumo</button>                                                                                    
                                             <button type="button" id="admin_egreso_insumo" class="btn btn-primary btn-user btn-block" onclick="handleSubmitInsumo(this)">Egresar insumo</button>
+                                            <button type="button" id="admin_nuevo_insumo" class="btn btn-primary btn-user btn-block" onclick="handleSubmitInsumo(this)">Nuevo insumo</button>                                            
                                         </form>
                                     <hr>
                                 </div>
