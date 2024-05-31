@@ -48,7 +48,7 @@ require_once('verificar_sesion_admin.php');
                             </div>
                             <hr>
 
-                            <form class="user" method="post" action="nuevo_profesional_admin_insert.php">
+                            <form class="user" method="post" action="admin_nuevo_profesional_insert.php">
                                 <div class="form-group">
                                     <input type="nombre" class="form-control form-control-user"
                                         id="nombre" name="nombre" aria-describedby="emailHelp"

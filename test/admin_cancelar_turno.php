@@ -44,7 +44,7 @@ require_once('verificar_sesion_admin.php');
                                     </div>
                                     <hr>      
                                     <div class="text-center">
-                                    <form action="cancelar_turno_admin_t.php" method="GET">
+                                    <form action="admin_cancelar_turno_t.php" method="GET">
                                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                             <thead>
                                                 <tr>
