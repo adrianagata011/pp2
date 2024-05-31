@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $action = $_POST['action'];
 
 
-        if ($action != "nuevo_profesional_admin") {
+        if ($action != "admin_nuevo_profesional") {
             // Me conecto a la base
             require_once('conexion_db.php');
 

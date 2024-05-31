@@ -10,7 +10,7 @@ if ( !isset($_POST['idServicio']) || empty($_POST['idServicio']) || !isset($_POS
     echo "- numero de Matricula<br>";
     echo "- horario de Ingreso<br>";
     echo "- horario de Engreso<br>";
-    header("refresh:3; url=nuevo_profesional_admin.php");
+    header("refresh:3; url=admin_nuevo_profesional.php");
     exit();
 }
 

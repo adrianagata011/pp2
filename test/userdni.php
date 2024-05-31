@@ -14,19 +14,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $action = $_POST['action'];
 
 
-        if ($action != "nuevo_paciente_admin") {
+        if ($action != "admin_nuevo_paciente") {
             // Me conecto a la base
             require_once('conexion_db.php');
-
-/*
-            $conn = new mysqli('sql10.freemysqlhosting.net', 'sql10707793', 'Rre1s76tSV', 'sql10707793');
-            // Verificar conexión
-            if ($conn->connect_error) {
-                die("Error en la conexión: " . $conn->connect_error);
-            }
-            // seteo charset=utf8
-            $conn->set_charset("utf8");
-*/
 
             // Verifico si el DNI existe
             $query = "SELECT idpaciente FROM pacientes WHERE dni = '$dni'";
@@ -37,12 +27,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
             else
             {
-                header("Location: nuevo_paciente_admin.php?dni=" . urlencode($dni));
+                header("Location: admin_nuevo_paciente.php?dni=" . urlencode($dni));
                 exit();
             }
         }
         else {   
-            header("Location: nuevo_paciente_admin.php?dni=" . urlencode($dni));
+            header("Location: admin_nuevo_paciente.php?dni=" . urlencode($dni));
             exit();
         }
     }    
