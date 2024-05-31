@@ -105,15 +105,15 @@ if ($result->num_rows > 0) {
 $mysqli->close();
 ?>
                                         </div>
-                                            <button type="button" id="control_horario_admin" class="btn btn-primary btn-user btn-block" onclick="handleSubmitProf(this)">Control horario</button>                                                                                    
+                                            <button type="button" id="admin_control_horario" class="btn btn-primary btn-user btn-block" onclick="handleSubmitProf(this)">Control horario</button>                                                                                    
                                             
-                                            <button type="button" id="liquidar_honorarios_admin" class="btn btn-primary btn-user btn-block" onclick="handleSubmitProf(this)">Liquidar honorarios</button>
+                                            <button type="button" id="admin_liquidar_honorarios" class="btn btn-primary btn-user btn-block" onclick="handleSubmitProf(this)">Liquidar honorarios</button>
                                             
-                                            <button type="button" id="gestionar_agenda_admin" class="btn btn-primary btn-user btn-block" onclick="handleSubmitProf(this)">Gestionar agenda</button>
+                                            <button type="button" id="admin_gestionar_agenda" class="btn btn-primary btn-user btn-block" onclick="handleSubmitProf(this)">Gestionar agenda</button>
                                         
-                                            <button type="button" id="modificar_profesional_admin" class="btn btn-primary btn-user btn-block" onclick="handleSubmitProf(this)">Modificar profesional</button>
+                                            <button type="button" id="admin_modificar_profesional" class="btn btn-primary btn-user btn-block" onclick="handleSubmitProf(this)">Modificar profesional</button>
 
-                                            <button type="button" id="nuevo_profesional_admin" class="btn btn-primary btn-user btn-block" onclick="handleSubmitProf(this)">Nuevo profesional</button>
+                                            <button type="button" id="admin_nuevo_profesional" class="btn btn-primary btn-user btn-block" onclick="handleSubmitProf(this)">Nuevo profesional</button>
                                         </form>
                                     <hr>
                                     <div class="text-center">
@@ -135,17 +135,17 @@ $mysqli->close();
                                             <div class="form-group">
                                                 <input type="text" class="form-control form-control-user" id="dni" name="dni" aria-describedby="dni" placeholder="Ingrese el dni" required>
                                             </div>
-                                            <button type="button" id="cancelar_turno_admin" class="btn btn-primary btn-user btn-block" onclick="handleSubmit(this)">Cancelar turno</button>                                                                                    
+                                            <button type="button" id="admin_cancelar_turno" class="btn btn-primary btn-user btn-block" onclick="handleSubmit(this)">Cancelar turno</button>                                                                                    
                                             
-                                            <button type="button" id="acreditar_turno_admin" class="btn btn-primary btn-user btn-block" onclick="handleSubmit(this)">Acreditar turno</button>
+                                            <button type="button" id="admin_acreditar_turno" class="btn btn-primary btn-user btn-block" onclick="handleSubmit(this)">Acreditar turno</button>
                                             
-                                            <button type="button" id="reservar_turno_admin" class="btn btn-primary btn-user btn-block" onclick="handleSubmit(this)">Reservar turno</button>
+                                            <button type="button" id="admin_reservar_turno" class="btn btn-primary btn-user btn-block" onclick="handleSubmit(this)">Reservar turno</button>
                                         
-                                            <button type="button" id="registrar_atencion_admin" class="btn btn-primary btn-user btn-block" onclick="handleSubmit(this)">Registrar atención</button>
+                                            <button type="button" id="admin_registrar_atencion" class="btn btn-primary btn-user btn-block" onclick="handleSubmit(this)">Registrar atención</button>
                                             
-                                            <button type="button" id="modificar_paciente_admin" class="btn btn-primary btn-user btn-block" onclick="handleSubmit(this)">Modificar paciente</button>
+                                            <button type="button" id="admin_modificar_paciente" class="btn btn-primary btn-user btn-block" onclick="handleSubmit(this)">Modificar paciente</button>
                                         
-                                            <button type="button" id="nuevo_paciente_admin" class="btn btn-primary btn-user btn-block" onclick="handleSubmit(this)">Nuevo paciente</button>
+                                            <button type="button" id="admin_nuevo_paciente" class="btn btn-primary btn-user btn-block" onclick="handleSubmit(this)">Nuevo paciente</button>
                                         </form>
                                     <hr>
                                         <a href="index.html" class="btn btn-primary btn-user btn-block" href="#" data-toggle="modal" data-target="#logoutModal">
@@ -160,7 +160,7 @@ $mysqli->close();
         </div>
     </div>
     <!-- Logout Modal-->
-<?php include 'logout_modal.php'; ?>
+    <?php include 'logout_modal.php'; ?>
 
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
