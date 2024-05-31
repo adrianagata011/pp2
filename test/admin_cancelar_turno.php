@@ -114,17 +114,10 @@ if (isset($_GET['dni'])) {
                                             Cancelar turno
                                         </a>
                                     <hr>
-                                    
                                     </div>
-                                    <div>
-
-                                    <hr>
-
+                                    <div>                            
                                         <a href="index_administrativo.php" class="btn btn-primary btn-user btn-block">
-                                            Home
-                                        </a>
-                                        <a class="btn btn-primary btn-user btn-block" href="#" data-toggle="modal" data-target="#logoutModal">
-                                            Salir
+                                            Volver
                                         </a>
                                     </div>
                                 </div>
@@ -152,14 +145,11 @@ if (isset($_GET['dni'])) {
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">No</button>
                     <button type="submit" class="btn btn-primary">Si</button>
                     </form>
-               
                 </div>
+                
             </div>
         </div>
     </div>
-
-    <!-- Logout Modal-->  
-     <?php include 'logout_modal.php'; ?>
 
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>

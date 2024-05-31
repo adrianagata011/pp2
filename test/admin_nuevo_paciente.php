@@ -1,9 +1,14 @@
 <?php
+// usar si es una pagina para el admin
 require_once('verificar_sesion_admin.php');
+
+// y usar este si es una pagina para el paciente
+// require_once('verificar_sesion_paciente.php');
+
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
 
@@ -13,7 +18,7 @@ require_once('verificar_sesion_admin.php');
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Sistema Clínica - Nuevo paciente</title>
+    <title>Sistema Clínica - Control Horario</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -39,109 +44,15 @@ require_once('verificar_sesion_admin.php');
 
                             <!-- Columna simple centrada con Card Body -->
                             <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Sección en construcción</h1>
+                                <h1 class="h4 text-gray-900 mb-4">Nuevo Paciente</h1>
                             </div>
-                            <hr>      
-                            <div class="text-center">
-                                <hr>
-                                <a class="btn btn-primary btn-user btn-block" href="#" data-toggle="modal" data-target="#logoutModal">
-                                    Salir
+                            <hr>
+                            <div>                            
+                                <a href="index_administrativo.php" class="btn btn-primary btn-user btn-block">
+                                    Volver
                                 </a>
                             </div>
                         </div>
-
-
-                        <!-- Dos columnas con Card Body -->
-                        <!-- //primera columna -->
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="p-5">
-                                    <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Gestion de turnos</h1>
-                                    </div>
-                                    <hr>      
-                                    <div class="text-center">
-                                        <hr>
-                                        <a class="btn btn-primary btn-user btn-block" href="#" data-toggle="modal" data-target="#logoutModal">
-                                            Salir
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- //segunda columna -->
-                            <div class="col-lg-6">
-                                <div class="p-5">
-                                    <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Gestion de turnos</h1>
-                                    </div>
-                                    <hr>      
-                                    <div class="text-center">
-                                        <hr>
-                                        <a class="btn btn-primary btn-user btn-block" href="#" data-toggle="modal" data-target="#logoutModal">
-                                            Salir
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                        </div>
-                        
-
-
-
-                        <!-- Tres columnas con Card Body -->
-                        <!-- //primera columna -->
-                        <div class="row">
-                            <div class="col-lg-4">
-                                <div class="p-5">
-                                    <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Gestion de turnos</h1>
-                                    </div>
-                                    <hr>      
-                                    <div class="text-center">
-                                        <hr>
-                                        <a class="btn btn-primary btn-user btn-block" href="#" data-toggle="modal" data-target="#logoutModal">
-                                            Salir
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- //segunda columna -->
-                            <div class="col-lg-4">
-                                <div class="p-5">
-                                    <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Gestion de turnos</h1>
-                                    </div>
-                                    <hr>      
-                                    <div class="text-center">
-                                        <hr>
-                                        <a class="btn btn-primary btn-user btn-block" href="#" data-toggle="modal" data-target="#logoutModal">
-                                            Salir
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- tercera columna -->
-                            <div class="col-lg-4">
-                                <div class="p-5">
-                                    <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Gestion de turnos</h1>
-                                    </div>
-                                    <hr>      
-                                    <div class="text-center">
-                                        <hr>
-                                        <a class="btn btn-primary btn-user btn-block" href="#" data-toggle="modal" data-target="#logoutModal">
-                                            Salir
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                        </div>
-
 
 
 
@@ -150,10 +61,6 @@ require_once('verificar_sesion_admin.php');
             </div>
         </div>
     </div>
-
-
-<!-- Logout Modal-->  
-<?php include 'logout_modal.php'; ?>
 
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
@@ -168,3 +75,4 @@ require_once('verificar_sesion_admin.php');
 </body>
 
 </html>
+s
