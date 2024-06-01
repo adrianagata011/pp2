@@ -31,7 +31,7 @@ if ($mysqli->connect_error) {
     die("Error en la conexión: " . $mysqli->connect_error);
 }
 
-$query = "INSERT INTO insumos (nombre, cantidadMinima, cantidadExistente, descripcion, observaciones) VALUES ('$nombre', , $cantidadMinima, $cantidadExistente, '$descripcion', '$observaciones');";
+$query = "INSERT INTO insumos (nombre, cantidadMinima, cantidadExistente, descripcion, observaciones) VALUES ('$nombre', $cantidadMinima, $cantidadExistente, '$descripcion', '$observaciones');";
 $result = $mysqli->query($query);
 
 $mysqli->close();
