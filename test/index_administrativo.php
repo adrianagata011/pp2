@@ -138,7 +138,7 @@ if ($mysqli->connect_error) {
     die("Error en la conexión: " . $mysqli->connect_error);
 }
 $mysqli->set_charset("utf8");
-$query = "SELECT idInsumo,nombre FROM insumos ORDER BY nombre ASC;";
+$query = "SELECT idInsumo,nombre FROM insumos WHERE baja = 0 ORDER BY nombre ASC;";
 $result = $mysqli->query($query);
 if ($result->num_rows > 0) {
     echo "<select name='idInsumo' id='idInsumo'>";
@@ -155,9 +155,9 @@ if ($result->num_rows > 0) {
 $mysqli->close();
 ?>
                                         </div>
-                                            <button type="button" id="admin_ingreso_insumo" class="btn btn-primary btn-user btn-block" onclick="handleSubmitInsumo(this)">Ingresar cantidad de insumo</button>                                                                                    
-                                            <button type="button" id="admin_egreso_insumo" class="btn btn-primary btn-user btn-block" onclick="handleSubmitInsumo(this)">Egresar cantidad de insumo</button>
-                                            <button type="button" id="admin_listado_faltantes_insumo" class="btn btn-primary btn-user btn-block" onclick="handleSubmitInsumo(this)">Listado de Faltantes</button>
+                                            <button type="button" id="admin_ingresar_insumo" class="btn btn-primary btn-user btn-block" onclick="handleSubmitInsumo(this)">Ingresar cantidad de insumo</button>                                                                                    
+                                            <button type="button" id="admin_egresar_insumo" class="btn btn-primary btn-user btn-block" onclick="handleSubmitInsumo(this)">Egresar cantidad de insumo</button>
+                                            <button type="button" id="admin_listar_faltantes_insumo" class="btn btn-primary btn-user btn-block" onclick="handleSubmitInsumo(this)">Listado de Faltantes</button>
                                             <button type="button" id="admin_modificar_insumo" class="btn btn-primary btn-user btn-block" onclick="handleSubmitInsumo(this)">Modificar insumo</button>                                            
                                             <button type="button" id="admin_nuevo_insumo" class="btn btn-primary btn-user btn-block" onclick="handleSubmitInsumo(this)">Nuevo insumo</button>
                                         </form>

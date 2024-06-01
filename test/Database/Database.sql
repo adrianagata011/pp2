@@ -264,7 +264,8 @@ CREATE TABLE insumos (
     cantidadMinima INT,
     cantidadExistente INT,
     descripcion VARCHAR(50),
-    observaciones VARCHAR(50)
+    observaciones VARCHAR(50),
+    baja tinyint default 0
 );
 
 INSERT INTO insumos (nombre, cantidadMinima, cantidadExistente, descripcion, observaciones) VALUES
