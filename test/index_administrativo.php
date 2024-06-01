@@ -101,7 +101,7 @@ if ($mysqli->connect_error) {
     die("Error en la conexión: " . $mysqli->connect_error);
 }
 $mysqli->set_charset("utf8");
-$query = "SELECT idProfesional,nombre,apellido FROM profesionales ORDER BY apellido ASC;";
+$query = "SELECT idProfesional,nombre,apellido FROM profesionales WHERE finActividad IS NULL ORDER BY apellido ASC;";
 $result = $mysqli->query($query);
 if ($result->num_rows > 0) {
     echo "<select name='idProfesional' id='idProfesional'>";
