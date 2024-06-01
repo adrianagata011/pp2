@@ -12,12 +12,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['dni']) && isset($_POST['action'])) {
         $dni = $_POST['dni'];  
         $action = $_POST['action'];
-
-
         if ($action != "admin_nuevo_paciente") {
             // Me conecto a la base
             require_once('conexion_db.php');
-
             // Verifico si el DNI existe
             $query = "SELECT idpaciente FROM pacientes WHERE dni = '$dni'";
             $result = mysqli_query($conn, $query);
@@ -31,9 +28,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 exit();
             }
         }
-        else {   
-            header("Location: admin_nuevo_paciente.php?dni=" . urlencode($dni));
-            exit();
+        else {
+            require_once('conexion_db.php');
+            $query = "SELECT idpaciente FROM pacientes WHERE dni = '$dni'";
+            $result = mysqli_query($conn, $query);
+            if (mysqli_num_rows($result) == 0) {
+                header("Location: $action.php?dni=" . urlencode($dni));
+                exit();
+            }
+            else 
+            {
+                header("Location: admin_modificar_paciente.php?dni=" . urlencode($dni));
+                exit();
+            }
         }
     }    
     else {

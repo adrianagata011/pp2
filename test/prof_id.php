@@ -13,12 +13,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['idProfesional']) && isset($_POST['action'])) {
         $idProfesional = $_POST['idProfesional'];  
         $action = $_POST['action'];
-
-
         if ($action != "admin_nuevo_profesional") {
             // Me conecto a la base
             require_once('conexion_db.php');
-
             // Verifico si el idProfesional existe
             $query = "SELECT idProfesional FROM profesionales WHERE idProfesional = '$idProfesional'";
             $result = mysqli_query($conn, $query);

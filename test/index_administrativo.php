@@ -155,8 +155,9 @@ if ($result->num_rows > 0) {
 $mysqli->close();
 ?>
                                         </div>
-                                            <button type="button" id="admin_ingreso_insumo" class="btn btn-primary btn-user btn-block" onclick="handleSubmitInsumo(this)">Ingresar insumo</button>                                                                                    
-                                            <button type="button" id="admin_egreso_insumo" class="btn btn-primary btn-user btn-block" onclick="handleSubmitInsumo(this)">Egresar insumo</button>
+                                            <button type="button" id="admin_ingreso_insumo" class="btn btn-primary btn-user btn-block" onclick="handleSubmitInsumo(this)">Ingresar cantidad de insumo</button>                                                                                    
+                                            <button type="button" id="admin_egreso_insumo" class="btn btn-primary btn-user btn-block" onclick="handleSubmitInsumo(this)">Egresar cantidad de insumo</button>
+                                            <button type="button" id="admin_listado_faltantes_insumo" class="btn btn-primary btn-user btn-block" onclick="handleSubmitInsumo(this)">Listado de Faltantes</button>
                                             <button type="button" id="admin_modificar_insumo" class="btn btn-primary btn-user btn-block" onclick="handleSubmitInsumo(this)">Modificar insumo</button>                                            
                                             <button type="button" id="admin_nuevo_insumo" class="btn btn-primary btn-user btn-block" onclick="handleSubmitInsumo(this)">Nuevo insumo</button>
                                         </form>

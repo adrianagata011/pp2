@@ -13,9 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['idInsumo']) && isset($_POST['action'])) {
         $idInsumo = $_POST['idInsumo'];  
         $action = $_POST['action'];
-
-
-        if ($action != "admin_nuevo_insumo") {
+        if (($action != "admin_nuevo_insumo") && ($action != "admin_listado_faltantes_insumo") ) {
             // Me conecto a la base
             require_once('conexion_db.php');
 
@@ -33,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         }
         else {   
-            header("Location: admin_nuevo_insumo.php");
+            header("Location: $action.php");
             exit();
         }
     }    
