@@ -2,9 +2,6 @@
 // usar si es una pagina para el admin
 require_once('verificar_sesion_admin.php');
 
-// y usar este si es una pagina para el paciente
-// require_once('verificar_sesion_paciente.php');
-
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +15,7 @@ require_once('verificar_sesion_admin.php');
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Sistema Clínica - Nuevo Insumo</title>
+    <title>Sistema Clínica - Egresar Insumo</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -44,23 +41,74 @@ require_once('verificar_sesion_admin.php');
 
                             <!-- Columna simple centrada con Card Body -->
                             <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Nuevo Insumo</h1>
+                                <h1 class="h4 text-gray-900 mb-4">Egresar Insumo</h1>
                             </div>
                             <hr>
-                            <div>                            
+<?php
+if (isset($_GET['idInsumo'])) {
+    $idInsumo = $_GET['idInsumo'];
+    // Me conecto a la base
+    require_once('conexion_db.php');
+    $query = "SELECT idInsumo,nombre,cantidadMinima,cantidadExistente,descripcion,observaciones from insumos where idInsumo = '$idInsumo';";
+    $result = $conn->query($query);
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $nombre = $row['nombre'];
+        $cantidadMinima = $row['cantidadMinima'];
+        $cantidadExistente = $row['cantidadExistente'];
+        $descripcion = $row['descripcion'];
+        $observaciones = $row['observaciones'];
+    }
+    else 
+    {
+        echo "No se seleccionó el insumo<br>";
+    }
+    $conn->close();
+}
+?>
+
+                            <form id="profForm" class="user" method="post" action="admin_egresar_insumo_update.php">
+                                <div class="form-group">                                
+                                    <table>
+                                        <tr>
+                                            <td>Insumo</td><td><?php echo $nombre; ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Cantidad Mínima</td><td><?php echo $cantidadMinima; ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Cantidad Existente</td><td><?php echo $cantidadExistente; ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Descripción</td><td><?php echo $descripcion; ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Observaciones</td><td><?php echo $observaciones; ?></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="form-group">
+                                    <input type="number" class="form-control form-control-user"
+                                        id="cantidad" name="cantidad" aria-describedby="emailHelp"
+                                        placeholder="Ingrese la cantidad" min="0" max="1000000" step="1">
+                                </div>
+                                <input type="hidden" id="idInsumo" name="idInsumo" value="<?php echo $idInsumo; ?>">
+                                <input type="hidden" id="cantidadExistente" name="cantidadExistente" value="<?php echo $cantidadExistente; ?>">
+                                <button type="submit" value="GrabarModificaciones" class="btn btn-primary btn-user btn-block"> Egresar Cantidad </button>
+                            </form>
+                            <hr>
+                            <div class="form-group">                            
                                 <a href="index_administrativo.php" class="btn btn-primary btn-user btn-block">
-                                    Volver
+                                    Volver sin grabar
                                 </a>
                             </div>
                         </div>
-
-
-
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
 
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
@@ -75,4 +123,3 @@ require_once('verificar_sesion_admin.php');
 </body>
 
 </html>
-s
