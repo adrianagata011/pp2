@@ -2,9 +2,6 @@
 // usar si es una pagina para el admin
 require_once('verificar_sesion_admin.php');
 
-// y usar este si es una pagina para el paciente
-// require_once('verificar_sesion_paciente.php');
-
 ?>
 
 <!DOCTYPE html>
@@ -47,20 +44,48 @@ require_once('verificar_sesion_admin.php');
                                 <h1 class="h4 text-gray-900 mb-4">Nuevo Insumo</h1>
                             </div>
                             <hr>
-                            <div>                            
+
+                            <form class="user" method="post" action="admin_nuevo_insumo_insert.php">
+                                <div class="form-group">
+                                    <input type="nombre" class="form-control form-control-user"
+                                        id="nombre" name="nombre" aria-describedby="emailHelp"
+                                        placeholder="Ingrese el nombre del insumo">
+                                </div>
+                                <div class="form-group">
+                                    <input type="cantidadMinima" class="form-control form-control-user"
+                                        id="cantidadMinima" name="cantidadMinima" aria-describedby="emailHelp"
+                                        placeholder="Ingrese la cantidad mínima">
+                                </div>
+                                <div class="form-group">
+                                    <input type="cantidadExistente" class="form-control form-control-user"
+                                        id="cantidadExistente" name="cantidadExistente" aria-describedby="emailHelp"
+                                        placeholder="Ingrese la cantidad existente">
+                                </div>
+                                <div class="form-group">
+                                    <input type="descripcion" class="form-control form-control-user"
+                                        id="descripcion" name="descripcion" aria-describedby="emailHelp"
+                                        placeholder="Ingrese la descripción del insumo">
+                                </div>
+                                <div class="form-group">
+                                    <input type="observacion" class="form-control form-control-user"
+                                        id="observacion" name="observacion" aria-describedby="emailHelp"
+                                        placeholder="Ingrese una observación del insumo">
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-user btn-block"> Ingresar nuevo insumo </button>
+                            </form>
+                            <hr>
+                            <div class="form-group">                            
                                 <a href="index_administrativo.php" class="btn btn-primary btn-user btn-block">
-                                    Volver
+                                    Volver sin grabar
                                 </a>
                             </div>
                         </div>
-
-
-
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
 
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
@@ -75,4 +100,3 @@ require_once('verificar_sesion_admin.php');
 </body>
 
 </html>
-s
