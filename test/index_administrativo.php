@@ -79,14 +79,10 @@ require_once('verificar_sesion_admin.php');
 </head>
 
 <body class="bg-gradient-primary">
-
     <div class="container">
-
         <!-- Outer Row -->
         <div class="row justify-content-center">
-
             <div class="col-xl-10 col-lg-12 col-md-9">
-
                 <div class="card o-hidden border-0 shadow-lg my-5">
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
@@ -124,13 +120,9 @@ $mysqli->close();
 ?>
                                         </div>
                                             <button type="button" id="admin_control_horario" class="btn btn-primary btn-user btn-block" onclick="handleSubmitProf(this)">Control horario</button>                                                                                    
-                                            
                                             <button type="button" id="admin_liquidar_honorarios" class="btn btn-primary btn-user btn-block" onclick="handleSubmitProf(this)">Liquidar honorarios</button>
-                                            
                                             <button type="button" id="admin_gestionar_agenda" class="btn btn-primary btn-user btn-block" onclick="handleSubmitProf(this)">Gestionar agenda</button>
-                                        
                                             <button type="button" id="admin_modificar_profesional" class="btn btn-primary btn-user btn-block" onclick="handleSubmitProf(this)">Modificar profesional</button>
-
                                             <button type="button" id="admin_nuevo_profesional" class="btn btn-primary btn-user btn-block" onclick="handleSubmitProf(this)">Nuevo profesional</button>
                                         </form>
                                     <hr>
@@ -165,7 +157,8 @@ $mysqli->close();
                                         </div>
                                             <button type="button" id="admin_ingreso_insumo" class="btn btn-primary btn-user btn-block" onclick="handleSubmitInsumo(this)">Ingresar insumo</button>                                                                                    
                                             <button type="button" id="admin_egreso_insumo" class="btn btn-primary btn-user btn-block" onclick="handleSubmitInsumo(this)">Egresar insumo</button>
-                                            <button type="button" id="admin_nuevo_insumo" class="btn btn-primary btn-user btn-block" onclick="handleSubmitInsumo(this)">Nuevo insumo</button>                                            
+                                            <button type="button" id="admin_modificar_insumo" class="btn btn-primary btn-user btn-block" onclick="handleSubmitInsumo(this)">Modificar insumo</button>                                            
+                                            <button type="button" id="admin_nuevo_insumo" class="btn btn-primary btn-user btn-block" onclick="handleSubmitInsumo(this)">Nuevo insumo</button>
                                         </form>
                                     <hr>
                                 </div>
@@ -181,15 +174,10 @@ $mysqli->close();
                                                 <input type="text" class="form-control form-control-user" id="dni" name="dni" aria-describedby="dni" placeholder="Ingrese el dni" required>
                                             </div>
                                             <button type="button" id="admin_cancelar_turno" class="btn btn-primary btn-user btn-block" onclick="handleSubmit(this)">Cancelar turno</button>                                                                                    
-                                            
                                             <button type="button" id="admin_acreditar_turno" class="btn btn-primary btn-user btn-block" onclick="handleSubmit(this)">Acreditar turno</button>
-                                            
                                             <button type="button" id="admin_reservar_turno" class="btn btn-primary btn-user btn-block" onclick="handleSubmit(this)">Reservar turno</button>
-                                        
                                             <button type="button" id="admin_registrar_atencion" class="btn btn-primary btn-user btn-block" onclick="handleSubmit(this)">Registrar atención</button>
-                                            
                                             <button type="button" id="admin_modificar_paciente" class="btn btn-primary btn-user btn-block" onclick="handleSubmit(this)">Modificar paciente</button>
-                                        
                                             <button type="button" id="admin_nuevo_paciente" class="btn btn-primary btn-user btn-block" onclick="handleSubmit(this)">Nuevo paciente</button>
                                         </form>
                                     <hr>
@@ -218,5 +206,4 @@ $mysqli->close();
     <script src="js/sb-admin-2.min.js"></script>
 
 </body>
-
 </html>

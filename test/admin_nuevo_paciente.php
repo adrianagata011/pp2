@@ -1,10 +1,6 @@
 <?php
 // usar si es una pagina para el admin
 require_once('verificar_sesion_admin.php');
-
-// y usar este si es una pagina para el paciente
-// require_once('verificar_sesion_paciente.php');
-
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +14,7 @@ require_once('verificar_sesion_admin.php');
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Sistema Clínica - Control Horario</title>
+    <title>Sistema Clínica - Nuevo Paciente</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -47,20 +43,102 @@ require_once('verificar_sesion_admin.php');
                                 <h1 class="h4 text-gray-900 mb-4">Nuevo Paciente</h1>
                             </div>
                             <hr>
-                            <div>                            
+
+                            <form class="user" method="post" action="admin_nuevo_paciente_insert.php">
+                                <div class="form-group">
+                                    <input type="nombre" class="form-control form-control-user"
+                                        id="nombre" name="nombre" aria-describedby="emailHelp"
+                                        placeholder="Ingrese el nombre">
+                                </div>
+                                <div class="form-group">
+                                    <input type="apellido" class="form-control form-control-user"
+                                        id="apellido" name="apellido" aria-describedby="emailHelp"
+                                        placeholder="Ingrese el apellido">
+                                </div>
+                                <div class="form-group">
+                                    <input type="dni" class="form-control form-control-user"
+                                        id="dni" name="dni" aria-describedby="emailHelp"
+                                        placeholder="Ingrese el DNI">
+                                </div>
+                                <div class="form-group">
+                                    <input type="telefono" class="form-control form-control-user"
+                                        id="telefono" name="telefono" aria-describedby="emailHelp"
+                                        placeholder="Ingrese el teléfono">
+                                </div>
+                                <div class="form-group">
+                                    <input type="direccion" class="form-control form-control-user"
+                                        id="direccion" name="direccion" aria-describedby="emailHelp"
+                                        placeholder="Ingrese la dirección">
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control form-control-user"
+                                        id="email" name="email" aria-describedby="emailHelp"
+                                        placeholder="Ingrese e-mail">
+                                </div>
+                                <div class="form-group">
+<?php
+$mysqli = new mysqli('sql10.freemysqlhosting.net', 'sql10707793', 'Rre1s76tSV', 'sql10707793');
+if ($mysqli->connect_error) {
+    die("Error en la conexión: " . $mysqli->connect_error);
+}
+$mysqli->set_charset("utf8");
+$query = "SELECT idServicio,nombre FROM servicios ORDER BY nombre ASC;";
+$result = $mysqli->query($query);
+if ($result->num_rows > 0) {
+    echo "<label for='idServicio'> Elija el Servicio: </label>";
+    echo "<select name='idServicio' id='idServicio'>";
+    while($row = $result->fetch_assoc()) {
+      $idServicio = $row['idServicio'];
+      $nombre = $row['nombre'];
+      echo "<option value='$idServicio'>$nombre</option>";
+    }
+    echo "</select>";
+} else {
+    echo "Error al traer datos de Servicios<br>";
+}
+$mysqli->close();
+?>
+                                </div>
+                                <div class="form-group">
+                                    <input type="numeroMatricula" class="form-control form-control-user"
+                                        id="numeroMatricula" name="numeroMatricula" aria-describedby="emailHelp"
+                                        placeholder="Ingrese el número de matricula">
+                                </div>
+                                <div class="form-group">
+                                    <label for="horarioIngreso"> Seleccione un Horario de Ingreso: </label>
+                                    <select name="horarioIngreso" id="horarioIngreso">
+                                    <script>
+                                        for (let i = 0; i <= 23; i++) {
+                                            document.write('<option value="' + i + '">' + i + '</option>');
+                                        }
+                                    </script>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="horarioEgreso"> Seleccione un Horario de Engreso: </label>
+                                    <select name="horarioEgreso" id="horarioEgreso">
+                                    <script>
+                                        for (let i = 0; i <= 23; i++) {
+                                            document.write('<option value="' + i + '">' + i + '</option>');
+                                        }
+                                    </script>
+                                    </select>
+                                </div>
+                                <button type="submit" value="Iniciar Sesion" class="btn btn-primary btn-user btn-block"> Ingresar nuevo paciente </button>
+                            </form>
+                            <hr>
+                            <div class="form-group">                            
                                 <a href="index_administrativo.php" class="btn btn-primary btn-user btn-block">
-                                    Volver
+                                    Volver sin grabar
                                 </a>
                             </div>
                         </div>
-
-
-
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
 
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
@@ -71,6 +149,27 @@ require_once('verificar_sesion_admin.php');
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
+
+    <script>
+        document.getElementById('horarioIngreso').selectedIndex = 0;
+        document.getElementById('horarioEgreso').selectedIndex = 23;
+        document.getElementById('horarioIngreso').addEventListener('change', validateSelects);
+        document.getElementById('horarioEgreso').addEventListener('change', validateSelects);
+
+        function validateSelects() {
+            var horarioIngreso = document.getElementById('horarioIngreso');
+            var horarioEgreso = document.getElementById('horarioEgreso');
+            var value1 = parseInt(horarioIngreso.value);
+            var value2 = parseInt(horarioEgreso.value);
+
+            if (value1 > value2) {
+                alert('Error: El Horario de Ingreso no puede ser mayor al Horario de Egreso');
+                // Reset both selects
+                horarioIngreso.selectedIndex = 0;
+                horarioEgreso.selectedIndex = 23;
+            }
+        }
+    </script>
 
 </body>
 
