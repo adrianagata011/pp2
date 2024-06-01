@@ -45,21 +45,21 @@ require_once('verificar_sesion_admin.php');
                             </div>
                             <hr>
 
-                            <form class="user" method="post" action="admin_nuevo_insumo_insert.php">
+                            <form id="numForm" class="user" method="post" action="admin_nuevo_insumo_insert.php">
                                 <div class="form-group">
                                     <input type="nombre" class="form-control form-control-user"
                                         id="nombre" name="nombre" aria-describedby="emailHelp"
                                         placeholder="Ingrese el nombre del insumo">
                                 </div>
                                 <div class="form-group">
-                                    <input type="cantidadMinima" class="form-control form-control-user"
+                                    <input type="number" class="form-control form-control-user"
                                         id="cantidadMinima" name="cantidadMinima" aria-describedby="emailHelp"
-                                        placeholder="Ingrese la cantidad mínima">
+                                        placeholder="Ingrese la cantidad mínima" min="0" max="1000000" step="1">
                                 </div>
                                 <div class="form-group">
-                                    <input type="cantidadExistente" class="form-control form-control-user"
+                                    <input type="number" class="form-control form-control-user"
                                         id="cantidadExistente" name="cantidadExistente" aria-describedby="emailHelp"
-                                        placeholder="Ingrese la cantidad existente">
+                                        placeholder="Ingrese la cantidad existente" min="0" max="1000000" step="1">
                                 </div>
                                 <div class="form-group">
                                     <input type="descripcion" class="form-control form-control-user"
@@ -86,6 +86,25 @@ require_once('verificar_sesion_admin.php');
         </div>
     </div>
 
+    <script>
+        document.getElementById('numForm').addEventListener('submit', function(event) {
+            var numInput = document.getElementById('cantidadMinima').value;
+            if (isNaN(numInput) || numInput < 0 || numInput > 1000000) {
+                alert('Por favor, ingrese un número válido entre 0 y 1000000.');
+                event.preventDefault();
+            }
+        });
+    </script>
+
+<script>
+        document.getElementById('numForm').addEventListener('submit', function(event) {
+            var cantidadExistente = document.getElementById('cantidadExistente').value;
+            if (isNaN(cantidadExistente) || cantidadExistente < 0 || cantidadExistente > 1000000) {
+                alert('Por favor, ingrese un número válido entre 0 y 1000000.');
+                event.preventDefault();
+            }
+        });
+    </script>
 
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
