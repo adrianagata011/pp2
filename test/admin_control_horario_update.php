@@ -19,6 +19,20 @@ if (!isset($_POST['tipoFichada']) || empty($_POST['tipoFichada'])) {
 
 $idProfesional = $_POST['idProfesional'];
 $tipoFichada= $_POST['tipoFichada'];
+
+// si tipoFichada = ingreso
+// reviso si ya no hay uno para el día de hoy
+// si hay rechazo, si no hay insert
+
+// si tipoFichada = egreso
+// reviso si hay un tipoFichada = ingreso para este día
+//      si hay reviso si hay un tipoFichada = egreso para este día
+//           si hay rechazo, si no hay insert
+//      si no hay rechazo
+
+
+
+
 if ($cantidad > $cantidadExistente) {
     echo "No se puede egresar una cantidad mayor a la Existente ($cantidadExistente)<br>";
     $idInsumo = $_POST['idInsumo'];
