@@ -64,9 +64,9 @@ require_once('verificar_sesion_admin.php');
                                         placeholder="Ingrese el teléfono">
                                 </div>
                                 <div class="form-group">
-                                    <input type="direccion" class="form-control form-control-user"
-                                        id="direccion" name="direccion" aria-describedby="emailHelp"
-                                        placeholder="Ingrese la dirección">
+                                    <input type="domicilio" class="form-control form-control-user"
+                                        id="domicilio" name="domicilio" aria-describedby="emailHelp"
+                                        placeholder="Ingrese el domicilio">
                                 </div>
                                 <div class="form-group">
                                     <input type="email" class="form-control form-control-user"
@@ -81,7 +81,7 @@ require_once('verificar_sesion_admin.php');
                                 <div class="form-group">
                                     <label for="grupoSanguineo"> Seleccione el Grupo Sanguineo: </label>
                                     <select name="grupoSanguineo" id="grupoSanguineo">
-                                        <option value="A+">A+</option>
+                                        <option value="A+" selected>A+</option>
                                         <option value="A-">A-</option>
                                         <option value="B+">B+</option>
                                         <option value="B-">B-</option>
@@ -96,7 +96,7 @@ require_once('verificar_sesion_admin.php');
                                         id="observaciones" name="observaciones" aria-describedby="emailHelp"
                                         placeholder="Observaciones">
                                 </div>
-                                <input type="hidden" id="dni" name="dni" value="<?php echo $_GET['dni']; ?>>">
+                                <input type="hidden" id="dni" name="dni" value="<?php echo $_GET['dni']; ?>">
                                 <button type="submit" value="Iniciar Sesion" class="btn btn-primary btn-user btn-block"> Ingresar nuevo paciente </button>
                             </form>
                             <hr>
