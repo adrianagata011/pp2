@@ -2,9 +2,6 @@
 // usar si es una pagina para el admin
 require_once('verificar_sesion_admin.php');
 
-// y usar este si es una pagina para el paciente
-// require_once('verificar_sesion_paciente.php');
-
 ?>
 
 <!DOCTYPE html>
@@ -47,20 +44,102 @@ require_once('verificar_sesion_admin.php');
                                 <h1 class="h4 text-gray-900 mb-4">Control Horario</h1>
                             </div>
                             <hr>
-                            <div>                            
+<?php
+if (isset($_GET['idProfesional'])) {
+    $idProfesional = $_GET['idProfesional'];
+    // Me conecto a la base
+    require_once('conexion_db.php');
+    $query = "SELECT nombre,apellido,idServicio,horarioIngreso,horarioEgreso from profesionales where idProfesional = '$idProfesional';";
+    $result = $conn->query($query);
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $nombre = $row['nombre'];
+        $apellido = $row['apellido'];
+        $idServicio = $row['idServicio'];
+        $horarioIngreso = $row['horarioIngreso'];
+        $horarioEgreso = $row['horarioEgreso'];
+        $query1 = "SELECT nombre from servicios where idServicio = '$idServicio';";
+        $result = $conn->query($query1);
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $servicio = $row['nombre'];
+        }
+    }
+    else 
+    {
+        echo "No se seleccionó el profesional<br>";
+    }
+}
+?>
+                            <div class="form-group">
+                                <table>
+                                    <tr>
+                                        <td><b>Profesional</b></td><td><?php echo "Dr. $nombre $apellido"; ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Servicio</b></td><td><?php echo $servicio; ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Horario Ingreso</b></td><td><?php echo $horarioIngreso; ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Horario Egreso</b></td><td><?php echo $horarioEgreso; ?></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <hr>                            
+                            <div class="form-group">
+                                <table width="100%">
+                                    <tr>
+                                        <td>
+                                            <form id="profForm" class="user" method="post" action="admin_control_horario_update.php">
+                                                <input type="hidden" id="idProfesional" name="idProfesional" value="<?php echo $idProfesional; ?>">
+                                                <input type="hidden" id="tipoFichada" name="tipoFichada" value="ingreso">
+                                                <button type="submit" value="ficharIngreso" class="btn btn-primary btn-user btn-block"> Fichar Ingreso </button>
+                                            </form>
+                                        </td>
+                                        <td>
+                                            <form id="profForm" class="user" method="post" action="admin_control_horario_update.php">
+                                                <input type="hidden" id="idProfesional" name="idProfesional" value="<?php echo $idProfesional; ?>">
+                                                <input type="hidden" id="tipoFichada" name="tipoFichada" value="egreso">
+                                                <button type="submit" value="ficharEgreso" class="btn btn-primary btn-user btn-block"> Fichar Egreso </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <hr>
+                            <div class="form-group">                            
                                 <a href="index_administrativo.php" class="btn btn-primary btn-user btn-block">
                                     Volver
                                 </a>
                             </div>
+                            <hr>
+                            <div class="form-group">                                
+
+<?php
+$query = "SELECT fechaHoraIngreso, fechaHoraEgreso from control_horario where idProfesional = $idProfesional order by fechaHoraIngreso desc;";
+$result = $conn->query($query);
+if ($result->num_rows > 0) {
+    echo "<table width='100%'><tr><td><b>Ingreso Registrado</b></td><td><b>Egreso Registrado</b></td></tr>";
+    while($row = $result->fetch_assoc()) {
+        $fechaHoraIngreso = $row['fechaHoraIngreso'];
+        $fechaHoraEgreso = $row['fechaHoraEgreso'];
+        echo "<tr><td>$fechaHoraIngreso</td><td>$fechaHoraEgreso</td></tr>";
+    }
+    echo "</table>";
+}
+$conn->close();
+?>
+                            </div>
+                            <hr>
                         </div>
-
-
-
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
 
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
@@ -73,6 +152,4 @@ require_once('verificar_sesion_admin.php');
     <script src="js/sb-admin-2.min.js"></script>
 
 </body>
-
 </html>
-s
