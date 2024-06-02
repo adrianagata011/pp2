@@ -20,6 +20,7 @@ if (!isset($_POST['tipoFichada']) || empty($_POST['tipoFichada'])) {
 $idProfesional = $_POST['idProfesional'];
 $tipoFichada= $_POST['tipoFichada'];
 
+if ($tipo)
 // si tipoFichada = ingreso
 // reviso si ya no hay uno para el día de hoy
 // si hay rechazo, si no hay insert
