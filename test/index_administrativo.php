@@ -119,7 +119,7 @@ if ($result->num_rows > 0) {
 $mysqli->close();
 ?>
                                         </div>
-                                            <button type="button" id="admin_control_horario" class="btn btn-danger btn-user btn-block" onclick="handleSubmitProf(this)">Control horario</button>                                                                                    
+                                            <button type="button" id="admin_control_horario" class="btn btn-warning btn-user btn-block" onclick="handleSubmitProf(this)">Control horario</button>                                                                                    
                                             <button type="button" id="admin_liquidar_honorarios" class="btn btn-danger btn-user btn-block" onclick="handleSubmitProf(this)">Liquidar honorarios</button>
                                             <button type="button" id="admin_gestionar_agenda" class="btn btn-danger btn-user btn-block" onclick="handleSubmitProf(this)">Gestionar agenda</button>
                                             <button type="button" id="admin_modificar_profesional" class="btn btn-primary btn-user btn-block" onclick="handleSubmitProf(this)">Modificar profesional</button>
