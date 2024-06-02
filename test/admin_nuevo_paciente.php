@@ -44,6 +44,9 @@ require_once('verificar_sesion_admin.php');
                             </div>
                             <hr>
 
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-4">DNI <?php echo $_GET['dni']; ?></h1>
+                            </div>
                             <form class="user" method="post" action="admin_nuevo_paciente_insert.php">
                                 <div class="form-group">
                                     <input type="nombre" class="form-control form-control-user"
@@ -54,11 +57,6 @@ require_once('verificar_sesion_admin.php');
                                     <input type="apellido" class="form-control form-control-user"
                                         id="apellido" name="apellido" aria-describedby="emailHelp"
                                         placeholder="Ingrese el apellido">
-                                </div>
-                                <div class="form-group">
-                                    <input type="dni" class="form-control form-control-user"
-                                        id="dni" name="dni" aria-describedby="emailHelp"
-                                        placeholder="Ingrese el DNI">
                                 </div>
                                 <div class="form-group">
                                     <input type="telefono" class="form-control form-control-user"
@@ -76,60 +74,35 @@ require_once('verificar_sesion_admin.php');
                                         placeholder="Ingrese e-mail">
                                 </div>
                                 <div class="form-group">
-<?php
-$mysqli = new mysqli('sql10.freemysqlhosting.net', 'sql10707793', 'Rre1s76tSV', 'sql10707793');
-if ($mysqli->connect_error) {
-    die("Error en la conexión: " . $mysqli->connect_error);
-}
-$mysqli->set_charset("utf8");
-$query = "SELECT idServicio,nombre FROM servicios ORDER BY nombre ASC;";
-$result = $mysqli->query($query);
-if ($result->num_rows > 0) {
-    echo "<label for='idServicio'> Elija el Servicio: </label>";
-    echo "<select name='idServicio' id='idServicio'>";
-    while($row = $result->fetch_assoc()) {
-      $idServicio = $row['idServicio'];
-      $nombre = $row['nombre'];
-      echo "<option value='$idServicio'>$nombre</option>";
-    }
-    echo "</select>";
-} else {
-    echo "Error al traer datos de Servicios<br>";
-}
-$mysqli->close();
-?>
+                                    <input type="obraSocial" class="form-control form-control-user"
+                                        id="obraSocial" name="obraSocial" aria-describedby="emailHelp"
+                                        placeholder="Ingrese la Obra Social">
                                 </div>
                                 <div class="form-group">
-                                    <input type="numeroMatricula" class="form-control form-control-user"
-                                        id="numeroMatricula" name="numeroMatricula" aria-describedby="emailHelp"
-                                        placeholder="Ingrese el número de matricula">
-                                </div>
-                                <div class="form-group">
-                                    <label for="horarioIngreso"> Seleccione un Horario de Ingreso: </label>
-                                    <select name="horarioIngreso" id="horarioIngreso">
-                                    <script>
-                                        for (let i = 0; i <= 23; i++) {
-                                            document.write('<option value="' + i + '">' + i + '</option>');
-                                        }
-                                    </script>
+                                    <label for="grupoSanguineo"> Seleccione el Grupo Sanguineo: </label>
+                                    <select name="grupoSanguineo" id="grupoSanguineo">
+                                        <option value="A+">A+</option>
+                                        <option value="A-">A-</option>
+                                        <option value="B+">B+</option>
+                                        <option value="B-">B-</option>
+                                        <option value="AB+">AB+</option>
+                                        <option value="AB-">AB-</option>
+                                        <option value="O+">O+</option>
+                                        <option value="O-">O-</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="horarioEgreso"> Seleccione un Horario de Engreso: </label>
-                                    <select name="horarioEgreso" id="horarioEgreso">
-                                    <script>
-                                        for (let i = 0; i <= 23; i++) {
-                                            document.write('<option value="' + i + '">' + i + '</option>');
-                                        }
-                                    </script>
-                                    </select>
+                                    <input type="observaciones" class="form-control form-control-user"
+                                        id="observaciones" name="observaciones" aria-describedby="emailHelp"
+                                        placeholder="Observaciones">
                                 </div>
+                                <input type="hidden" id="dni" name="dni" value="<?php echo $_GET['dni']; ?>>">
                                 <button type="submit" value="Iniciar Sesion" class="btn btn-primary btn-user btn-block"> Ingresar nuevo paciente </button>
                             </form>
                             <hr>
                             <div class="form-group">                            
                                 <a href="index_administrativo.php" class="btn btn-primary btn-user btn-block">
-                                    Volver sin grabar
+                                    Volver
                                 </a>
                             </div>
                         </div>
