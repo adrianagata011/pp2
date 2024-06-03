@@ -14,6 +14,7 @@ require_once('verificar_sesion_admin.php');
     <meta name="author" content="">
 
     <title>Sistema Clínica - Home del Administrativo</title>
+    <link rel="icon" href="img/logo.ico" sizes="32x32" type="image/ico">
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
