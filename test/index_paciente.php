@@ -36,26 +36,23 @@ require_once('verificar_sesion_paciente.php');
             <div class="col-xl-10 col-lg-12 col-md-9">
                 <div class="card o-hidden border-0 shadow-lg my-5">
                     <div class="card-body p-0">
-                        <!-- Nested Row within Card Body -->
-                        <!-- //<div class="row">
-                            //<div class="col-lg-6"> -->
-                                <div class="p-5">
-                                    <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Gestion de turnos</h1>
-                                    </div>
-                                    <hr>      
-                                    <div class="text-center">
-                                    <form action="paciente_cancelar_turno.php" method="GET">
-                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                            <thead>
-                                                <tr>
-                                                    <th>Seleccionar</th>
-                                                    <th>Fecha</th>
-                                                    <th>Servicio</th>
-                                                    <th>Profesional</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-4">Gestion de turnos</h1>
+                            </div>
+                            <hr>      
+                            <div class="text-center">
+                                <form action="paciente_cancelar_turno.php" method="GET">
+                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>Seleccionar</th>
+                                                <th>Fecha</th>
+                                                <th>Servicio</th>
+                                                <th>Profesional</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
 <?php
 $usuario = $_SESSION['usuario'];
 // Conectar a la base de datos
@@ -69,11 +66,12 @@ if ($mysqli->connect_error) {
 // ATENCION: Se agrega la siguiente linea para Definir el charset de los datos recolectados
 $mysqli->set_charset("utf8");
 
-$query = "SELECT t.fechaHora as fecha, s.nombre as servicio, p.nombre as nombre,p.apellido as apellido FROM turnos t INNER JOIN profesionales p ON t.idProfesional = p.idProfesional INNER JOIN servicios s ON t.idServicio = s.idServicio INNER JOIN pacientes pa ON t.idPaciente = pa.idPaciente INNER JOIN usuarios u ON pa.idUsuario = u.idUsuario WHERE u.usuario = '" . $usuario . "' ORDER BY t.fechaHora ASC;";
+$query = "SELECT pa.idPaciente as idPaciente, t.fechaHora as fecha, s.nombre as servicio, p.nombre as nombre,p.apellido as apellido FROM turnos t INNER JOIN profesionales p ON t.idProfesional = p.idProfesional INNER JOIN servicios s ON t.idServicio = s.idServicio INNER JOIN pacientes pa ON t.idPaciente = pa.idPaciente INNER JOIN usuarios u ON pa.idUsuario = u.idUsuario WHERE u.usuario = '" . $usuario . "' ORDER BY t.fechaHora ASC;";
 $result = $mysqli->query($query);
 if ($result->num_rows > 0) {
     // Output de cada fila
     while($row = $result->fetch_assoc()) {
+        $idPaciente = $row['idPaciente'];
         $fecha = $row['fecha'];
         $servicio = $row['servicio'];
         $profesional = $row['nombre'] . " " . $row['apellido'];
@@ -86,27 +84,25 @@ if ($result->num_rows > 0) {
 $mysqli->close();
 
 ?>
-                                            </tbody>
-                                        </table>
-                                        <button type="submit" class="btn btn-primary btn-user btn-block">
-                                             cancelar turno
-                                        </button>
-                                    <hr>
-                                    </form>
-                                    </div>
-                                    <div>
-                                        <a href="paciente_reservar_turno.php" class="btn btn-primary btn-user btn-block">
-                                            reservar turno
-                                        </a>
-                                    <hr>
+                                        </tbody>
+                                    </table>
+                                    <button type="submit" class="btn btn-primary btn-user btn-block">
+                                            cancelar turno
+                                    </button>
+                                <hr>
+                                </form>
+                            </div>
+                            <div>
+                                <a href="paciente_reservar_turno.php?idPaciente=<?php echo $idPaciente;?>" class="btn btn-primary btn-user btn-block">
+                                    reservar turno
+                                </a>
+                            <hr>
 
-                                        <a href="logout.php" class="btn btn-primary btn-user btn-block" href="#" data-toggle="modal" data-target="#logoutModal">
-                                            Salir
-                                        </a>
-                                    </div>
-                                </div>
-                            <!-- //</div>
-                        //</div> -->
+                                <a href="logout.php" class="btn btn-primary btn-user btn-block" href="#" data-toggle="modal" data-target="#logoutModal">
+                                    Salir
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

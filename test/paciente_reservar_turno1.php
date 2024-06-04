@@ -45,11 +45,12 @@ require_once('verificar_sesion_paciente.php');
                                 <h1 class="h4 text-gray-900 mb-4">Reservar Turno</h1>
                             </div>
                             <hr>
-                            <form id="profForm" class="user" method="post" action="paciente_reservar_turno1.php">
+                            <form id="profForm" class="user" method="post" action="paciente_reservar_turno2.php">
                                 <div class="form-group">
 <?php
-if (isset($_GET['idPaciente'])) {
-    $idPaciente = $_GET['idPaciente'];
+if (isset($_POST['idPaciente']) && isset($_POST['idServicio'])) {
+    $idPaciente = $_POST['idPaciente'];
+    $idServicio = $_POST['idServicio'];
     // Me conecto a la base
     require_once('conexion_db.php');
     $query = "SELECT idServicio,nombre from servicios order by nombre ASC;";
@@ -58,9 +59,15 @@ if (isset($_GET['idPaciente'])) {
         echo "<label for='idServicio'> Servicio: </label>";
         echo "<select name='idServicio' id='idServicio'>";
         while($row = $result->fetch_assoc()) {
-            $idServicio = $row['idServicio'];
+            $idServicioTemp = $row['idServicio'];
             $nombre = $row['nombre'];
-            echo "<option value='$idServicio'>$nombre</option>";
+            if ($idServicioTemp == $idServicio) {
+              echo "<option value='$idServicioTemp' selected>$nombre</option>";
+            }
+            else
+            {
+              echo "<option value='$idServicioTemp'>$nombre</option>";
+            }
         }
         echo "</select>";
     }
@@ -68,12 +75,14 @@ if (isset($_GET['idPaciente'])) {
     {
         echo "No se encontraron servicios<br>";
     }
+
+    // MOSTRAR EL LISTADO DE PROFESIONALES
+
     $conn->close();
 }
 ?>
                                 </div>
-                                <input type="hidden" id="idPaciente" name="idPaciente" value="<?php echo $idPaciente; ?>">
-                                <button type="submit" value="SeleccionarServicio" class="btn btn-primary btn-user btn-block"> Seleccionar Servicio </button>
+                                <button type="submit" value="SeleccionarProfesional" class="btn btn-primary btn-user btn-block"> Seleccionar Profesional </button>
                             </form>
                             <hr>
                             <div class="form-group">                            

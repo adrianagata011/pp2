@@ -599,9 +599,6 @@ INSERT INTO control_horario (idProfesional, fechaHoraIngreso, fechaHoraEgreso) V
 (19, '2024-05-28 09:00:00', '2024-05-28 18:00:00'),
 (19, '2024-05-29 09:00:00', '2024-05-29 18:00:00');
 
-
-;
-
 CREATE TABLE agendas (
     idProfesional INT,
     idConsultorio INT,
