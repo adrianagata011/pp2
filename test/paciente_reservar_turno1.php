@@ -53,21 +53,27 @@ if (isset($_POST['idPaciente']) && isset($_POST['idServicio'])) {
     $idServicio = $_POST['idServicio'];
     // Me conecto a la base
     require_once('conexion_db.php');
-    $query = "SELECT idServicio,nombre from servicios order by nombre ASC;";
+
+    // Muestro listado de servicios
+
+    $query = "SELECT nombre from servicios where idServicio = $idServicio;";
+    $result = $conn->query($query);
+    $row = $result->fetch_assoc();
+    $nombre = $row['nombre'];
+    echo "Servicio: $nombre<br>";
+
+    // Muestro listado de profesionales
+
+    $query = "SELECT idProfesional,nombre,apellido from profesionales where idServicio = $idServicio order by apellido ASC;";
     $result = $conn->query($query);
     if ($result->num_rows > 0) {
-        echo "<label for='idServicio'> Servicio: </label>";
-        echo "<select name='idServicio' id='idServicio'>";
+        echo "<label for='idProfesional'> Profesional: </label>";
+        echo "<select name='idProfesional' id='idProfesional'>";
         while($row = $result->fetch_assoc()) {
-            $idServicioTemp = $row['idServicio'];
+            $idProfesional = $row['idProfesional'];
             $nombre = $row['nombre'];
-            if ($idServicioTemp == $idServicio) {
-              echo "<option value='$idServicioTemp' selected>$nombre</option>";
-            }
-            else
-            {
-              echo "<option value='$idServicioTemp'>$nombre</option>";
-            }
+            $apellido = $row['apellido'];
+            echo "<option value='$idProfesional'>$apellido, $nombre</option>";
         }
         echo "</select>";
     }
@@ -75,13 +81,12 @@ if (isset($_POST['idPaciente']) && isset($_POST['idServicio'])) {
     {
         echo "No se encontraron servicios<br>";
     }
-
-    // MOSTRAR EL LISTADO DE PROFESIONALES
-
     $conn->close();
 }
 ?>
                                 </div>
+                                <input type="hidden" id="idPaciente" name="idPaciente" value="<?php echo $idPaciente; ?>">
+                                <input type="hidden" id="idServicio" name="idServicio" value="<?php echo $idServicio; ?>">
                                 <button type="submit" value="SeleccionarProfesional" class="btn btn-primary btn-user btn-block"> Seleccionar Profesional </button>
                             </form>
                             <hr>
