@@ -1027,8 +1027,8 @@ CREATE TABLE turnos (
     idServicio INT,
     idPaciente INT,
     fechaHora DATETIME,
-    sobreturno BOOLEAN,
-    acreditado BOOLEAN,
+    sobreturno BOOLEAN DEFAULT FALSE,
+    acreditado BOOLEAN DEFAULT FALSE,
     constraint fk_turnos_p foreign key (idProfesional) references profesionales(idProfesional),
     constraint fk_turnos_c foreign key (idConsultorio) references consultorios(idConsultorio),
     constraint fk_turnos_s foreign key (idServicio) references servicios(idServicio),
@@ -1036,16 +1036,16 @@ CREATE TABLE turnos (
 );
 
 INSERT INTO turnos (idProfesional, idConsultorio, idServicio, idPaciente, fechaHora, sobreturno, acreditado) VALUES
-(1, 1, 1, 1, '2024-05-20 09:30:00', FALSE, TRUE),
-(2, 2, 2, 2, '2024-05-21 10:30:00', FALSE, TRUE),
-(3, 3, 3, 3, '2024-05-22 11:30:00', FALSE, TRUE),
-(4, 4, 4, 4, '2024-05-23 12:30:00', FALSE, TRUE),
-(5, 5, 5, 5, '2024-05-24 13:30:00', FALSE, TRUE),
-(6, 6, 6, 6, '2024-05-25 14:30:00', FALSE, TRUE),
-(7, 7, 7, 7, '2024-05-26 15:30:00', FALSE, TRUE),
-(8, 8, 8, 8, '2024-05-27 16:30:00', FALSE, TRUE),
-(9, 9, 9, 9, '2024-05-28 17:30:00', FALSE, TRUE),
-(10, 10, 10, 10, '2024-05-29 18:30:00', FALSE, TRUE);
+(1, 1, 1, 1, '2024-05-20 09:30:00', FALSE, FALSE),
+(2, 2, 2, 2, '2024-05-21 10:30:00', FALSE, FALSE),
+(3, 3, 3, 3, '2024-05-22 11:30:00', FALSE, FALSE),
+(4, 4, 4, 4, '2024-05-23 12:30:00', FALSE, FALSE),
+(5, 5, 5, 5, '2024-05-24 13:30:00', FALSE, FALSE),
+(6, 6, 6, 6, '2024-05-25 14:30:00', FALSE, FALSE),
+(7, 7, 7, 7, '2024-05-26 15:30:00', FALSE, FALSE),
+(8, 8, 8, 8, '2024-05-27 16:30:00', FALSE, FALSE),
+(9, 9, 9, 9, '2024-05-28 17:30:00', FALSE, FALSE),
+(10, 10, 10, 10, '2024-05-29 18:30:00', FALSE, FALSE);
 
 CREATE TABLE control_horario (
     idProfesional INT,

@@ -58,8 +58,6 @@ require_once('verificar_sesion_admin.php');
                                             <tbody>
 <?php
 
-use LDAP\Result;
-
 if (isset($_GET['dni'])) {
     $dni = $_GET['dni'];
 

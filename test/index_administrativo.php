@@ -176,7 +176,7 @@ $mysqli->close();
                                                 <input type="text" class="form-control form-control-user" id="dni" name="dni" aria-describedby="dni" placeholder="Ingrese el dni" required>
                                             </div>
                                             <button type="button" id="admin_cancelar_turno" class="btn btn-primary btn-user btn-block" onclick="handleSubmit(this)">Cancelar turno</button>                                                                                    
-                                            <button type="button" id="admin_acreditar_turno" class="btn btn-danger btn-user btn-block" onclick="handleSubmit(this)">Acreditar turno</button>
+                                            <button type="button" id="admin_acreditar_turno" class="btn btn-primary btn-user btn-block" onclick="handleSubmit(this)">Acreditar turno</button>
                                             <button type="button" id="admin_reservar_turno" class="btn btn-primary btn-user btn-block" onclick="handleSubmit(this)">Reservar turno</button>
                                             <button type="button" id="admin_registrar_atencion" class="btn btn-danger btn-user btn-block" onclick="handleSubmit(this)">Registrar atención</button>
                                             <button type="button" id="admin_modificar_paciente" class="btn btn-primary btn-user btn-block" onclick="handleSubmit(this)">Modificar paciente</button>
