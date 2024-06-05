@@ -121,7 +121,7 @@ echo "$fecha<br>";
                             </form>
                             <hr>
                             <div class="form-group">                            
-                                <a href="index_paciente.php" class="btn btn-primary btn-user btn-block">
+                                <a href="index_administrativo.php" class="btn btn-primary btn-user btn-block">
                                     Volver
                                 </a>
                             </div>
