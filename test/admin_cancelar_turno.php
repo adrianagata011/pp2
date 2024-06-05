@@ -13,7 +13,7 @@ require_once('verificar_sesion_admin.php');
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Cancelar turno</title>
+    <title>Sistema Clínica - Cancelar turno</title>
     <link rel="icon" href="img/logo.ico" sizes="32x32" type="image/ico">
 
     <!-- Custom fonts for this template-->
