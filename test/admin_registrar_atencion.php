@@ -1,10 +1,5 @@
 <?php
-// usar si es una pagina para el admin
 require_once('verificar_sesion_admin.php');
-
-// y usar este si es una pagina para el paciente
-// require_once('verificar_sesion_paciente.php');
-
 ?>
 
 <!DOCTYPE html>
@@ -12,7 +7,7 @@ require_once('verificar_sesion_admin.php');
 
 <head>
 
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -41,47 +36,86 @@ require_once('verificar_sesion_admin.php');
             <div class="col-xl-10 col-lg-12 col-md-9">
                 <div class="card o-hidden border-0 shadow-lg my-5">
                     <div class="card-body p-0">
-                        <div class="p-5">
+                        <!-- Nested Row within Card Body -->
+                        <!-- //<div class="row">
+                            //<div class="col-lg-6"> -->
+                                <div class="p-5">
+                                    <div class="text-center">
+                                        <h1 class="h4 text-gray-900 mb-4">Registrar Atención</h1>
+                                    </div>
+                                    <hr>      
+                                    <div class="text-center">
+                                    <form id="profForm" class="user" method="post" action="admin_registrar_atencion1.php">
+                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                            <thead>
+                                                <tr>
+                                                    <th>Seleccionar</th>
+                                                    <th>Fecha</th>
+                                                    <th>Servicio</th>
+                                                    <th>Profesional</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+<?php
 
-                            <!-- Columna simple centrada con Card Body -->
-                            <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Registrar Atención</h1>
-                            </div>
-                            <hr>
-                            <div>                            
-                                <a href="index_administrativo.php" class="btn btn-primary btn-user btn-block">
-                                    Home
-                                </a>
-                                <a class="btn btn-primary btn-user btn-block" href="#" data-toggle="modal" data-target="#logoutModal">
-                                    Salir
-                                </a>
-                            </div>
-                        </div>
+if (isset($_GET['dni'])) {
+    $dni = $_GET['dni'];
 
+    require_once('conexion_db.php');
+    $conn->set_charset("utf8");
+    
+    $query = "SELECT s.idServicio as idServicio,t.idPaciente as idPaciente,p.idProfesional as idProfesional, t.idTurno as idTurno, t.fechaHora as fecha, s.nombre as servicio, p.nombre as nombre, p.apellido as apellido 
+        FROM turnos t 
+        INNER JOIN profesionales p ON t.idProfesional = p.idProfesional 
+        INNER JOIN servicios s ON t.idServicio = s.idServicio 
+        INNER JOIN pacientes pa ON t.idPaciente = pa.idPaciente 
+        INNER JOIN usuarios u ON pa.idUsuario = u.idUsuario
+        WHERE pa.dni = $dni and DATE(t.fechaHora) = CURDATE() AND t.acreditado IS TRUE AND t.idturno NOT IN (select idTurno from historias_clinicas)
+        ORDER BY t.fechaHora ASC;";
+    
+        $result = mysqli_query($conn, $query);
 
+            if ($result && mysqli_num_rows($result) > 0) {
+                while($row = mysqli_fetch_assoc($result)) {
+                    $idPaciente = $row['idPaciente'];
+                    $idTurno = $row['idTurno'];
+                    $fecha = $row['fecha'];
+                    $idServicio = $row['idServicio'];
+                    $idProfesional = $row['idProfesional'];
+                    $profesional = $row['nombre']. " " . $row['apellido'];
+                    $servicio = $row['servicio'];
+                    echo "<tr><td><input type='radio' name='idTurno' value= '" . $idTurno . "'></td><td>" . $fecha . "</td><td>" . $servicio . "</td><td>" . $profesional . "</td></tr>";
+                }           
+            } 
+            else {
+                echo "<tr><td>No se encontraron resultados</td><td></td><td></td></tr>";
+            }
+        }
+        else {
+            echo "<tr><td>No se pudo identificar el ID de Usuario del paciente</td><td></td><td></td></tr>";
+        }
+?>
 
+                                            </tbody>
+                                        </table>
+                                        <input type="hidden" id="dni" name="dni" value="<?php echo $dni; ?>">
+                                        <input type="hidden" id="idPaciente" name="idPaciente" value="<?php echo $idPaciente; ?>">
+                                        <input type="hidden" id="idServicio" name="idServicio" value="<?php echo $idServicio; ?>">
+                                        <input type="hidden" id="idProfesional" name="idProfesional" value="<?php echo $idProfesional; ?>">
+                                        <input type="hidden" id="fecha" name="fecha" value="<?php echo $fecha; ?>">
+                                        <button type="submit" value="registrarAtencion" class="btn btn-primary btn-user btn-block"> Registrar Atención </button>
+                                    </form>
+                                    <hr>
+                                    </div>
+                                    <div>
+                                        <a href="index_administrativo.php" class="btn btn-primary btn-user btn-block">
+                                            Volver
+                                        </a>
+                                    </div>
+                                </div>
+                            <!-- //</div>
+                        //</div> -->
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="logout.php">Logout</a>
                 </div>
             </div>
         </div>
@@ -100,4 +134,5 @@ require_once('verificar_sesion_admin.php');
 </body>
 
 </html>
-s
+
+

@@ -898,6 +898,7 @@ INSERT INTO resultados (idEstudio, fecha, muestra, descripcion, comprobanteRetir
 
 CREATE TABLE historias_clinicas (
     idHistoriaClinica INT AUTO_INCREMENT PRIMARY KEY,
+    idTurno INT,
     idEstudio INT,
     idServicio INT,
     idResultado INT,
