@@ -77,10 +77,11 @@ if (isset($_POST['idPaciente']) && isset($_POST['idServicio']) && isset($_POST['
                                 </div>
                                 <div class="form-group">
 <?php 
-echo "idPaciente: $idPaciente<br>";
+/*echo "idPaciente: $idPaciente<br>";
 echo "idServicio: $idServicio<br>";
 echo "idProfesional: $idProfesional<br>";
 echo "$fecha<br>";
+*/
 
     $query = "SELECT DATE_FORMAT(STR_TO_DATE(horario, '%H:%i'), '%H:%i') AS horario FROM htd WHERE idServicio = $idServicio AND sobreturno = 0 AND DATE_FORMAT(STR_TO_DATE(horario, '%H:%i'), '%H:%i') NOT IN (SELECT DATE_FORMAT(fechaHora,'%H:%i') FROM turnos WHERE idProfesional = $idProfesional AND DATE(fechaHora) = '$fecha');";
     $result = $conn->query($query);

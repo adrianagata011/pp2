@@ -49,16 +49,13 @@ require_once('verificar_sesion_admin.php');
                             </div>
                             <hr>
                             <div class="text-center">
-                                <table border="1">
-                                    <tr>
-                                        <td>Nombre</td><td>Cantidad Mínima</td><td>Cantidad Existente</td><td>Descripción</td><td>Observaciones</td>
-                                    </tr>
-
 <?php
 require_once('conexion_db.php');
 $query = "SELECT idInsumo,nombre,cantidadMinima,cantidadExistente,descripcion,observaciones from insumos where cantidadExistente < cantidadMinima ORDER BY nombre;";
 $result = $conn->query($query);
 if ($result->num_rows > 0) {
+    echo "<table border='1'>";
+    echo "<tr><td>Nombre</td><td>Cantidad Mínima</td><td>Cantidad Existente</td><td>Descripción</td><td>Observaciones</td></tr>";
     while($row = $result->fetch_assoc()) {
         $nombre = $row['nombre'];
         $cantidadMinima = $row['cantidadMinima'];
@@ -67,14 +64,14 @@ if ($result->num_rows > 0) {
         $observaciones = $row['observaciones'];
         echo "<tr><td>$nombre</td><td>$cantidadMinima</td><td>$cantidadExistente</td><td>$descripcion</td><td>$observaciones</td></tr>";
     }
+    echo "</table>";
 }
 else 
 {
-    echo "<tr>No hay faltante de stock de ningun insumoNo se seleccionó el insumo</tr>";
+    echo "No hay faltante de stock de ningun insumo<br>";
 }
 $conn->close();
 ?>
-                                </table>
                             </div>
                             <hr>
                             <div>                            

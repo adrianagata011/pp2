@@ -122,7 +122,7 @@ $mysqli->close();
                                         </div>
                                             <button type="button" id="admin_control_horario" class="btn btn-primary btn-user btn-block" onclick="handleSubmitProf(this)">Control horario</button>                                                                                    
                                             <button type="button" id="admin_liquidar_honorarios" class="btn btn-danger btn-user btn-block" onclick="handleSubmitProf(this)">Liquidar honorarios</button>
-                                            <button type="button" id="admin_gestionar_agenda" class="btn btn-danger btn-user btn-block" onclick="handleSubmitProf(this)">Gestionar agenda</button>
+                                            <button type="button" id="admin_gestionar_agenda" class="btn btn-primary btn-user btn-block" onclick="handleSubmitProf(this)">Gestionar agenda</button>
                                             <button type="button" id="admin_modificar_profesional" class="btn btn-primary btn-user btn-block" onclick="handleSubmitProf(this)">Modificar profesional</button>
                                             <button type="button" id="admin_nuevo_profesional" class="btn btn-primary btn-user btn-block" onclick="handleSubmitProf(this)">Nuevo profesional</button>
                                         </form>
@@ -177,7 +177,7 @@ $mysqli->close();
                                             </div>
                                             <button type="button" id="admin_cancelar_turno" class="btn btn-primary btn-user btn-block" onclick="handleSubmit(this)">Cancelar turno</button>                                                                                    
                                             <button type="button" id="admin_acreditar_turno" class="btn btn-danger btn-user btn-block" onclick="handleSubmit(this)">Acreditar turno</button>
-                                            <button type="button" id="admin_reservar_turno" class="btn btn-danger btn-user btn-block" onclick="handleSubmit(this)">Reservar turno</button>
+                                            <button type="button" id="admin_reservar_turno" class="btn btn-primary btn-user btn-block" onclick="handleSubmit(this)">Reservar turno</button>
                                             <button type="button" id="admin_registrar_atencion" class="btn btn-danger btn-user btn-block" onclick="handleSubmit(this)">Registrar atención</button>
                                             <button type="button" id="admin_modificar_paciente" class="btn btn-primary btn-user btn-block" onclick="handleSubmit(this)">Modificar paciente</button>
                                             <button type="button" id="admin_nuevo_paciente" class="btn btn-primary btn-user btn-block" onclick="handleSubmit(this)">Nuevo paciente</button>

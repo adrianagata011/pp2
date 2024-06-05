@@ -84,7 +84,7 @@ if (isset($_GET['dni'])) {
     }
     else 
     {
-        echo "No se seleccionó el profesional<br>";
+        echo "No se seleccionó el paciente<br>";
     }
     $conn->close();
 }

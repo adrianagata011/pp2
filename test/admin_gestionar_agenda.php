@@ -2,9 +2,6 @@
 // usar si es una pagina para el admin
 require_once('verificar_sesion_admin.php');
 
-// y usar este si es una pagina para el paciente
-// require_once('verificar_sesion_paciente.php');
-
 ?>
 
 <!DOCTYPE html>
@@ -48,15 +45,63 @@ require_once('verificar_sesion_admin.php');
                                 <h1 class="h4 text-gray-900 mb-4">Gestionar Agenda</h1>
                             </div>
                             <hr>
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-4">Fecha: 
+<?php
+setlocale(LC_TIME, 'es_ES.UTF-8', 'es_ES', 'esp');
+$fecha_actual = strftime("%d de %B del %Y");
+$fecha_actual = ucfirst($fecha_actual);
+echo $fecha_actual;
+?>
+                                </h1>
+                            </div>
+                            <div class="text-center">
+<?php
+if (isset($_GET['idProfesional'])) {
+    $idProfesional = $_GET['idProfesional'];
+} else {
+    echo "No se trajo el id del Profesional desde el menú anterior<br>";
+    header("refresh:3; url=index_administrativo.php");
+    exit();
+}
+require_once('conexion_db.php');
+$query = "SELECT nombre,apellido from profesionales where idProfesional = $idProfesional;";
+$result = $conn->query($query);
+$row = $result->fetch_assoc();
+$nombre = $row['nombre'];
+$apellido = $row['apellido'];
+?>
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-4">Agenda del Dr. <?php echo "$nombre $apellido"; ?></h1>
+                            </div>
+                            <hr>
+<?php
+$query = "SELECT p.nombre as nombre,p.apellido as apellido,t.fechaHora as horario from turnos t inner join pacientes p on t.idPaciente = p.idPaciente where t.idProfesional = $idProfesional and DATE(t.fechaHora) = CURDATE() ORDER BY t.fechaHora ASC;";
+$result = $conn->query($query);
+if ($result->num_rows > 0) {
+    echo "<table border='1'>";
+    echo "<tr><td>Nombre del Paciente</td><td>Horario</td></tr>";
+    while($row = $result->fetch_assoc()) {
+        $inombre = $row['nombre'];
+        $apellido = $row['apellido'];
+        $horario = $row['horario'];
+        echo "<tr><td>$nombre $apellido</td><td>$horario</td></tr>";
+    }
+    echo "</table>";
+}
+else 
+{
+    echo "No hay turnos agendados para hoy<br>";
+}
+$conn->close();
+?>
+                            <hr>
                             <div>                            
                                 <a href="index_administrativo.php" class="btn btn-primary btn-user btn-block">
                                     Volver
                                 </a>
                             </div>
                         </div>
-
-
-
                     </div>
                 </div>
             </div>
@@ -76,4 +121,3 @@ require_once('verificar_sesion_admin.php');
 </body>
 
 </html>
-s

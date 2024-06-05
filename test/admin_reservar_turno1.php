@@ -45,26 +45,37 @@ require_once('verificar_sesion_admin.php');
                                 <h1 class="h4 text-gray-900 mb-4">Reservar Turno</h1>
                             </div>
                             <hr>
-                            <form id="profForm" class="user" method="post" action="admin_reservar_turno1.php">
+                            <form id="profForm" class="user" method="post" action="admin_reservar_turno2.php">
                                 <div class="form-group">
 <?php
-if (isset($_GET['dni'])) {
-    $dni = $_GET['dni'];
+if (isset($_POST['idPaciente']) && isset($_POST['idServicio'])) {
+    $dni = $_POST['dni'];
+    $idPaciente = $_POST['idPaciente'];
+    $idServicio = $_POST['idServicio'];
     echo "<div class='text-center'><h1 class='h4 text-gray-900 mb-4'>DNI: $dni</h1></div>";
+    // Me conecto a la base
     require_once('conexion_db.php');
-    $query = "SELECT idPaciente from pacientes where dni = $dni;";
+
+    // Muestro listado de servicios
+
+    $query = "SELECT nombre from servicios where idServicio = $idServicio;";
     $result = $conn->query($query);
     $row = $result->fetch_assoc();
-    $idPaciente = $row['idPaciente'];
-    $query = "SELECT idServicio,nombre from servicios order by nombre ASC;";
+    $nombre = $row['nombre'];
+    echo "Servicio: $nombre<br>";
+
+    // Muestro listado de profesionales
+
+    $query = "SELECT idProfesional,nombre,apellido from profesionales where idServicio = $idServicio order by apellido ASC;";
     $result = $conn->query($query);
     if ($result->num_rows > 0) {
-        echo "<label for='idServicio'> Servicio: </label>";
-        echo "<select name='idServicio' id='idServicio'>";
+        echo "<label for='idProfesional'> Profesional: </label>";
+        echo "<select name='idProfesional' id='idProfesional'>";
         while($row = $result->fetch_assoc()) {
-            $idServicio = $row['idServicio'];
+            $idProfesional = $row['idProfesional'];
             $nombre = $row['nombre'];
-            echo "<option value='$idServicio'>$nombre</option>";
+            $apellido = $row['apellido'];
+            echo "<option value='$idProfesional'>$apellido, $nombre</option>";
         }
         echo "</select>";
     }
@@ -78,7 +89,8 @@ if (isset($_GET['dni'])) {
                                 </div>
                                 <input type="hidden" id="dni" name="dni" value="<?php echo $dni; ?>">
                                 <input type="hidden" id="idPaciente" name="idPaciente" value="<?php echo $idPaciente; ?>">
-                                <button type="submit" value="SeleccionarServicio" class="btn btn-primary btn-user btn-block"> Seleccionar Servicio </button>
+                                <input type="hidden" id="idServicio" name="idServicio" value="<?php echo $idServicio; ?>">
+                                <button type="submit" value="SeleccionarProfesional" class="btn btn-primary btn-user btn-block"> Seleccionar Profesional </button>
                             </form>
                             <hr>
                             <div class="form-group">                            
