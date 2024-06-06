@@ -33,6 +33,15 @@ if ($tipoFichada == "ingreso"){
         $query1 = "INSERT INTO control_horario (idProfesional, fechaHoraIngreso) VALUES ($idProfesional, NOW());";
         $result = $conn->query($query1);
         echo "Se fichó el ingreso";
+        // Buscar un consultorio libre idConsultorio 
+        $query2 = "SELECT idConsultorio from consultorios where idProfesional IS NULL LIMIT 1;";
+        $result = $conn->query($query2);
+        $row = $result->fetch_assoc();
+        $idConsultorio = $row['idConsultorio'];
+        // Update idProfesional en tabla consultorios
+        $query3 = "UPDATE consultorios set idProfesional = $idProfesional where idConsultorio = $idConsultorio;";
+        $row = $result->fetch_assoc();
+        $result = $conn->query($query3);
         header("refresh:3; url=admin_control_horario.php?idProfesional=$idProfesional");
         exit();
     }
@@ -50,6 +59,15 @@ if ($tipoFichada == "ingreso"){
             $query2 = "UPDATE control_horario SET fechaHoraEgreso = NOW() WHERE idProfesional = $idProfesional AND DATE(fechaHoraIngreso) = CURDATE();";
             $result = $conn->query($query2);
             echo "Se fichó el egreso";
+            // Buscar el consultorio donde esta el idProfesional
+            $query2 = "SELECT idConsultorio from consultorios where idProfesional = $idProfesional;";
+            $result = $conn->query($query2);
+            $row = $result->fetch_assoc();
+            $idConsultorio = $row['idConsultorio'];
+            // Update idProfesional = null en tabla consultorios
+            $query3 = "UPDATE consultorios set idProfesional = null where idConsultorio = $idConsultorio;";
+            $row = $result->fetch_assoc();
+            $result = $conn->query($query3);
             header("refresh:3; url=admin_control_horario.php?idProfesional=$idProfesional");
             exit();
         }

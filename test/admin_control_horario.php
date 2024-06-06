@@ -70,6 +70,25 @@ if (isset($_GET['idProfesional'])) {
     {
         echo "No se seleccionó el profesional<br>";
     }
+    $query = "SELECT fechaHoraIngreso, fechaHoraEgreso from control_horario where idProfesional = $idProfesional order by fechaHoraIngreso desc limit 1;";
+    $result = $conn->query($query);
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $fechaHoraIngreso = $row['fechaHoraIngreso'];
+        $fechaHoraEgreso = $row['fechaHoraEgreso'];
+        if ($fechaHoraIngreso != null){
+            if ($fechaHoraEgreso == null){
+                $query = "SELECT idConsultorio from consultorios where idProfesional = $idProfesional;";
+                $result = $conn->query($query);
+                $row = $result->fetch_assoc();
+                $idConsultorio = $row['idConsultorio'];
+            } else {
+                $idConsultorio = "No tiene consultorio asignado";
+            }
+        }
+    } else {
+        $idConsultorio = "No tiene consultorio asignado";
+    }
 }
 ?>
                             <div class="form-group">
@@ -85,6 +104,9 @@ if (isset($_GET['idProfesional'])) {
                                     </tr>
                                     <tr>
                                         <td><b>Horario Egreso</b></td><td><?php echo $horarioEgreso; ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Consultorio</b></td><td><?php echo $idConsultorio; ?></td>
                                     </tr>
                                 </table>
                             </div>
