@@ -1,5 +1,5 @@
 <?php
-// usar si es una pagina para el admin
+// usar si es una pagina para el paciente
 require_once('verificar_sesion_admin.php');
 
 ?>
@@ -15,7 +15,7 @@ require_once('verificar_sesion_admin.php');
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Sistema Clínica - Gestionar Agenda</title>
+    <title>Sistema Clínica - Reservar Turno</title>
     <link rel="icon" href="img/logo.ico" sizes="32x32" type="image/ico">
 
     <!-- Custom fonts for this template-->
@@ -23,7 +23,6 @@ require_once('verificar_sesion_admin.php');
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
-
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
@@ -42,63 +41,29 @@ require_once('verificar_sesion_admin.php');
 
                             <!-- Columna simple centrada con Card Body -->
                             <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Gestionar Agenda</h1>
+                                <h1 class="h4 text-gray-900 mb-4">Reservar Turno</h1>
                             </div>
                             <hr>
-                            <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Fecha: 
 <?php
+
 setlocale(LC_TIME, 'es_ES.UTF-8', 'es_ES', 'esp');
-date_default_timezone_set('America/Argentina/Buenos_Aires');
 $fecha_actual = strftime("%d de %B del %Y");
+date_default_timezone_set('America/Argentina/Buenos_Aires');
 $fecha_actual = ucfirst($fecha_actual);
 echo $fecha_actual;
-$horaActual = date('Y-m-d');
-?>
-                                </h1>
-                            </div>
-                            <div class="text-center">
-<?php
-if (isset($_GET['idProfesional'])) {
-    $idProfesional = $_GET['idProfesional'];
-} else {
-    echo "No se trajo el id del Profesional desde el menú anterior<br>";
-    header("refresh:3; url=index_administrativo.php");
-    exit();
-}
-require_once('conexion_db.php');
-$query = "SELECT nombre,apellido from profesionales where idProfesional = $idProfesional;";
-$result = $conn->query($query);
-$row = $result->fetch_assoc();
-$nombre = $row['nombre'];
-$apellido = $row['apellido'];
-?>
-                            <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Agenda del Dr. <?php echo "$nombre $apellido"; ?></h1>
-                            </div>
+echo date('Y-m-d H:i:s');
+    require_once('conexion_db.php');
+    $query = "SELECT CURDATE() AS fecha;";
+    $result = $conn->query($query);
+    $row = $result->fetch_assoc();
+    $nombre = $row['fecha'];
+    echo "Horario en la base: $nombre<br>";
+    $mysqli->close();
+
+
+    ?>
                             <hr>
-<?php
-$query = "SELECT p.nombre as nombre,p.apellido as apellido,t.fechaHora as horario from turnos t inner join pacientes p on t.idPaciente = p.idPaciente where t.idProfesional = $idProfesional and DATE(t.fechaHora) = CURDATE() ORDER BY t.fechaHora ASC;";
-$result = $conn->query($query);
-if ($result->num_rows > 0) {
-    echo "<table border='1'>";
-    echo "<tr><td>Nombre del Paciente</td><td>Horario</td></tr>";
-    while($row = $result->fetch_assoc()) {
-        $inombre = $row['nombre'];
-        $apellido = $row['apellido'];
-        $horario = $row['horario'];
-        echo "<tr><td>$nombre $apellido</td><td>$horario</td></tr>";
-    }
-    echo "</table>";
-}
-else 
-{
-    echo "No hay turnos agendados para hoy<br>";
-}
-$conn->close();
-?>
-                            <hr>
-                            <div>                            
+                            <div class="form-group">                            
                                 <a href="index_administrativo.php" class="btn btn-primary btn-user btn-block">
                                     Volver
                                 </a>
@@ -110,6 +75,9 @@ $conn->close();
         </div>
     </div>
 
+<?php     
+$conn->close();
+?>
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
