@@ -106,7 +106,7 @@ if (isset($_GET['idProfesional'])) {
                                         <td><b>Horario Egreso</b></td><td><?php echo $horarioEgreso; ?></td>
                                     </tr>
                                     <tr>
-                                        <td><b>Consultorio</b></td><td><?php echo $idConsultorio; ?></td>
+                                        <td><b>Consultorio/Box </b></td><td><?php echo $idConsultorio; ?></td>
                                     </tr>
                                 </table>
                             </div>
