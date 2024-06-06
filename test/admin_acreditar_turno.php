@@ -53,6 +53,7 @@ require_once('verificar_sesion_admin.php');
                                                     <th>Fecha</th>
                                                     <th>Servicio</th>
                                                     <th>Profesional</th>
+                                                    <th>Precio</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -64,7 +65,7 @@ if (isset($_GET['dni'])) {
     require_once('conexion_db.php');
     $conn->set_charset("utf8");
     
-    $query = "SELECT t.fechaHora as fecha, s.nombre as servicio, p.nombre as nombre, p.apellido as apellido 
+    $query = "SELECT s.precio_publico as precioPublico, pa.obraSocial as obraSocial,t.fechaHora as fecha, s.nombre as servicio, p.nombre as nombre, p.apellido as apellido 
         FROM turnos t 
         INNER JOIN profesionales p ON t.idProfesional = p.idProfesional 
         INNER JOIN servicios s ON t.idServicio = s.idServicio 
@@ -77,23 +78,27 @@ if (isset($_GET['dni'])) {
 
             if ($result && mysqli_num_rows($result) > 0) {
                 while($row = mysqli_fetch_assoc($result)) {
+                    $obraSocial = $row['obraSocial'];
                     $fecha = $row['fecha'];
                     $servicio = $row['servicio'];
+                    $precioPublico= $row['precioPublico'];
                     $profesional = $row['nombre'] . " " . $row['apellido'];
-                    echo "<tr><td><input type='radio' name='turno' value= '" . $fecha . "'></td><td>" . $fecha . "</td><td>" . $servicio . "</td><td>" . $profesional . "</td></tr>";
+                    echo "<tr><td><input type='radio' name='turno' value= '" . $fecha . "'></td><td>" . $fecha . "</td><td>" . $servicio . "</td><td>" . $profesional . "</td><td>". $precioPublico ."</td></tr>";
                 }           
             } 
             else {
-                echo "<tr><td>No se encontraron resultados</td><td></td><td></td></tr>";
+                echo "<tr><td>No se encontraron resultados</td><td></td><td></td><td></td></tr>";
             }
         }
         else {
-            echo "<tr><td>No se pudo identificar el ID de Usuario del paciente</td><td></td><td></td></tr>";
+            echo "<tr><td>No se pudo identificar el ID de Usuario del paciente</td><td></td><td></td><td></td></tr>";
         }
 ?>
 
                                             </tbody>
                                         </table>
+                                        <hr>
+                                        <?php echo "Cobertura del paciente: $obraSocial <br>"; ?>
                                         <input type="hidden" id="dni" name="dni" value="<?php echo $dni; ?>">
                                         <a class="btn btn-primary btn-user btn-block" href="#" data-toggle="modal" data-target="#ConfirmModal">
                                             Acreditar turno

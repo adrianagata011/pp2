@@ -166,7 +166,7 @@ $mysqli->close();
                                 </div>
                             </div>
                             <div class="col-lg-6">
-                                <div class="p-5">
+                                <div class="px-5 pt-5"> 
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Pacientes</h1>
                                     </div>
@@ -183,9 +183,24 @@ $mysqli->close();
                                             <button type="button" id="admin_nuevo_paciente" class="btn btn-primary btn-user btn-block" onclick="handleSubmit(this)">Nuevo paciente</button>
                                         </form>
                                     <hr>
-                                        <a href="index.html" class="btn btn-primary btn-user btn-block" href="#" data-toggle="modal" data-target="#logoutModal">
-                                            Salir
-                                        </a>
+                                </div>
+                                <div class="px-5 pb-5">
+                                    <div class="text-center">
+                                        <h1 class="h4 text-gray-900 mb-4">Estudios Clínicos</h1>
+                                    </div>
+                                    <hr>
+                                    <form id="userForm" class="user" method="post" action="userdni.php">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control form-control-user" id="dni" name="dni" aria-describedby="dni" placeholder="Ingrese el dni" required>
+                                            </div>
+                                            <button type="button" id="admin_atencion_sin_turno" class="btn btn-primary btn-user btn-block" onclick="handleSubmit(this)">Atención sin turno</button>
+                                            <button type="button" id="admin_reservar_sin_turno" class="btn btn-primary btn-user btn-block" onclick="handleSubmit(this)">Reservar turno</button>
+                                            <button type="button" id="admin_acreditar_atencion_sin_turno" class="btn btn-primary btn-user btn-block" onclick="handleSubmit(this)">Acreditar atención</button>
+                                        </form>
+                                    <hr>
+                                    <a href="index.html" class="btn btn-primary btn-user btn-block" href="#" data-toggle="modal" data-target="#logoutModal">
+                                        Salir
+                                    </a>
                                 </div>
                             </div>
                         </div>

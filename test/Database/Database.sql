@@ -67,7 +67,8 @@ CREATE TABLE servicios (
     tiempo INT,
     horarioInicio INT,
     horarioFin INT,
-    precio FLOAT
+    precio FLOAT,
+    precio_publico FLOAT
 );
 
 INSERT INTO servicios (nombre, tiempo, horarioInicio, horarioFin, precio) VALUES
@@ -855,23 +856,25 @@ INSERT INTO administrativos (nombre, apellido, dni, telefono, domicilio, email, 
 CREATE TABLE estudios (
     idEstudio INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(50) UNIQUE,
-    fechaHora DATETIME,
+    horaDesde VARCHAR(5),
+    horaHasta VARCHAR(5),
     precio FLOAT,
     prioridad VARCHAR(50)
 );
 
-INSERT INTO estudios (nombre, fechaHora, precio, prioridad) VALUES
-('Ecografia abdominal', '2024-05-20 09:00:00', 150.00, 'Alta'),
-('Analisis de sangre', '2024-05-21 07:00:00', 80.00, 'Media'),
-('Radiografia de torax', '2024-05-22 11:00:00', 120.00, 'Alta'),
-('Electrocardiograma', '2024-05-23 12:00:00', 100.00, 'Baja'),
-('Resonancia magnetica', '2024-05-24 13:00:00', 300.00, 'Alta'),
-('Tomografia computarizada', '2024-05-25 14:00:00', 250.00, 'Media'),
-('Colonoscopia', '2024-05-26 15:00:00', 200.00, 'Alta'),
-('Mamografia', '2024-05-27 16:00:00', 180.00, 'Media'),
-('Endoscopia', '2024-05-28 17:00:00', 220.00, 'Baja'),
-('Analisis de orina', '2024-05-28 17:00:00', 220.00, 'Baja'),
-('Prueba de esfuerzo', '2024-05-29 18:00:00', 130.00, 'Media');
+INSERT INTO estudios (nombre, horaDesde, horaHasta, precio, prioridad) VALUES
+('Ecografia', '07:00','17:00', 150.00, 'Alta'),
+('Analisis de sangre - ayuno', '07:00','11:00', 80.00, 'Media'),
+('Analisis de sangre - comun', '07:00','17:00', 80.00, 'Media'),
+('Radiologia', '07:00','17:00', 120.00, 'Alta'),
+('Electrocardiograma', '07:00','17:00', 100.00, 'Baja'),
+('Resonancia magnetica', '07:00','17:00', 300.00, 'Alta'),
+('Tomografia computarizada','07:00','17:00', 250.00, 'Media'),
+('Colonoscopia', '07:00','17:00', 200.00, 'Alta'),
+('Mamografia', '07:00','17:00', 180.00, 'Media'),
+('Endoscopia', '07:00','17:00', 220.00, 'Baja'),
+('Analisis de orina', '07:00','11:00', 220.00, 'Baja'),
+('Prueba de esfuerzo', '07:00','17:00', 130.00, 'Media');
 
 CREATE TABLE resultados (
     idResultado INT AUTO_INCREMENT PRIMARY KEY,
@@ -1027,6 +1030,8 @@ CREATE TABLE turnos (
     idConsultorio INT,
     idServicio INT,
     idPaciente INT,
+    idEstudio INT,
+    idComprobanteRetiro INT,
     fechaHora DATETIME,
     sobreturno BOOLEAN DEFAULT FALSE,
     acreditado BOOLEAN DEFAULT FALSE,
@@ -1163,6 +1168,7 @@ INSERT INTO horarios (idProfesional, fecha, turno) VALUES
 (8, '2024-05-27', 'Mañana'),
 (9, '2024-05-28', 'Mañana'),
 (10, '2024-05-29', 'Mañana');
+
 
 
 drop procedure if exists VerificarUsuario;
