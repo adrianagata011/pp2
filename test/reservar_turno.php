@@ -2,11 +2,25 @@
 // Iniciar la sesión
 session_start();
 
+<<<<<<< Updated upstream:test/reservar_turno.php
 // Verificar si la sesión está establecida y el usuario está logueado
 if (!isset($_SESSION['usuario']) || $_SESSION['rol_id'] != 1 ) {
     // Si no está logueado, redirigir al usuario a la página de login
     header("Location: login.html");
     exit;
+=======
+if (isset($_GET['idPaciente'])) {
+    $idPaciente = $_GET['idPaciente'];
+    // Me conecto a la base
+    require_once('conexion_db.php');
+    $query1 = "SELECT idServicio,nombre from servicios order by nombre ASC;";
+    $query2 = "SELECT idEstudio,nombre from estudios order by nombre ASC;";
+    $result1 = $conn->query($query1);
+    $result2 = $conn->query($query2);
+}
+else {
+    header("Location: index_paciente.php");
+>>>>>>> Stashed changes:test/paciente_reservar_turno.php
 }
 ?>
 
@@ -51,6 +65,7 @@ if (!isset($_SESSION['usuario']) || $_SESSION['rol_id'] != 1 ) {
 
 
                             </div>
+<<<<<<< Updated upstream:test/reservar_turno.php
 
 <hr>
                             
@@ -59,8 +74,102 @@ if (!isset($_SESSION['usuario']) || $_SESSION['rol_id'] != 1 ) {
                                 <hr>
                                 <a class="btn btn-primary btn-user btn-block" href="index_paciente.php">
                                     volver
+=======
+                            <hr>
+                            <form id="profForm" class="user" method="post" action="paciente_reservar_turno1.php">
+                                <div class="form-group">
+<?php
+    if ($result1->num_rows > 0) {
+        echo "<label for='idServicio'> Servicio: </label>";
+        echo "<select name='idServicio' id='idServicio'>";
+        while($row = $result1->fetch_assoc()) {
+            $idServicio = $row['idServicio'];
+            $nombre = $row['nombre'];
+            echo "<option value='$idServicio'>$nombre</option>";
+        }
+        echo "</select>";
+    }
+    else 
+    {
+        echo "No se encontraron servicios<br>";
+    }
+
+?>
+                                </div>
+                                <input type="hidden" id="idPaciente" name="idPaciente" value="<?php echo $idPaciente; ?>">
+                                <button type="submit" value="SeleccionarServicio" class="btn btn-primary btn-user btn-block"> Seleccionar Servicio </button>
+                            </form>
+                            <hr>
+                            <div class="form-group">                            
+                             
+                            </div>
+
+
+
+
+
+
+                            
+
+
+
+
+
+
+
+                            <!-- Columna simple centrada con Card Body -->
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-4">Estudios clinicos</h1>
+                            </div>
+                            <hr>
+                            <form id="profForm" class="user" method="post" action="paciente_reservar_estudio1.php">
+                                <div class="form-group">
+                                <?php
+    if ($result2->num_rows > 0) {
+        echo "<label for='idEstudio'> Estudio: </label>";
+        echo "<select name='idEstudio' id='idEstudio'>";
+        while($row = $result2->fetch_assoc()) {
+            $idEstudio = $row['idEstudio'];
+            $nombre = $row['nombre'];
+            echo "<option value='$idEstudio'>$nombre</option>";
+        }
+        echo "</select>";
+    }
+    else 
+    {
+        echo "No se encontraron estudios<br>";
+    }
+
+?>
+                                </div>
+                                <input type="hidden" id="idPaciente" name="idPaciente" value="<?php echo $idPaciente; ?>">
+                                <button type="submit" value="SeleccionarEstudio" class="btn btn-primary btn-user btn-block"> Seleccionar estudio </button>
+                            </form>
+                            <hr>
+                            <div class="form-group">                            
+                                <a href="index_paciente.php" class="btn btn-primary btn-user btn-block">
+                                    Volver
+>>>>>>> Stashed changes:test/paciente_reservar_turno.php
                                 </a>
                             </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                         </div>
                     </div>
 
