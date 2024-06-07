@@ -1170,6 +1170,12 @@ INSERT INTO horarios (idProfesional, fecha, turno) VALUES
 (10, '2024-05-29', 'Mañana');
 
 
+delete from htd where idServicio = 22;
+delete from profesionales where idServicio = 22;
+delete from servicios where idServicio = 22;
+delete from htd where idServicio = 18;
+delete from profesionales where idServicio = 18;
+delete from servicios where idServicio = 18;
 
 drop procedure if exists VerificarUsuario;
 delimiter //
