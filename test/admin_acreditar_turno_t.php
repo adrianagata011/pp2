@@ -48,31 +48,54 @@ require_once('verificar_sesion_admin.php');
         // Me conecto a la base
         require_once('conexion_db.php');
             
-        $query = "SELECT t.idTurno as idTurno
+        $query = "SELECT t.idTurno as idTurno,t.idProfesional as idProfesional
                 FROM turnos t
                 INNER JOIN profesionales p ON t.idProfesional = p.idProfesional
                 INNER JOIN servicios s ON t.idServicio = s.idServicio
                 INNER JOIN pacientes pa ON t.idPaciente = pa.idPaciente
                 INNER JOIN usuarios u ON pa.idUsuario = u.idUsuario
                 WHERE pa.dni = '$dni' AND t.fechahora = '$turnoSeleccionado';";
-
             $result = $conn->query($query);
             if ($result->num_rows > 0) {
                 // Output de cada fila
                 $row = $result->fetch_assoc();
                 $idTurno = $row['idTurno'];
-                $query1 = "UPDATE turnos SET acreditado = TRUE WHERE idTurno = $idTurno;";
-                $result1 = $conn->query($query1);
-                echo "Se acreditó el turno <br>";
-                header("refresh:3; url=index_administrativo.php");
-                exit();
+                $idProfesional = $row['idProfesional'];
+
+                setlocale(LC_TIME, 'es_ES.UTF-8', 'es_ES', 'esp');
+                date_default_timezone_set('America/Argentina/Buenos_Aires');
+                $fechaTurno = substr(ucfirst($turnoSeleccionado), 0, 10);
+                $fechaActual = date('Y-m-d');
+                if ($fechaTurno == $fechaActual){
+                    $query= "SELECT idConsultorio from consultorios where idProfesional = $idProfesional;";
+                    $result = $conn->query($query);
+                    if ($result->num_rows > 0) {
+                        $row = $result->fetch_assoc();
+                        $idConsultorio = $row['idConsultorio'];
+                        $query1 = "UPDATE turnos SET acreditado = TRUE WHERE idTurno = $idTurno;";
+                        $result1 = $conn->query($query1);
+                        echo "Se acreditó el turno <br>";
+                        echo "Por favor concurrir al consultorio $idConsultorio";
+                        header("refresh:5; url=index_administrativo.php");
+                        exit();
+                    } else {
+                        echo "El Dr. aún no ha llegado para poder acreditar el turno y derivar a Consultorio";
+                        header("refresh:3; url=admin_acreditar_turno.php?dni=$dni");
+                    }
+                } else {
+                    echo "Solo se puede acreditar el turno el mismo día";
+                    header("refresh:3; url=admin_acreditar_turno.php?dni=$dni");
+                }
             } else {
                 echo "No se seleccionó ningún turno<br>";
             }
             $conn->close();
         }
         else {
-                echo "Ha ocurrido un error en el sistema. Vuelva a intentarlo<br>";}
+            $dni = $_GET['dni'];  
+            echo "No ha seleccionado ningún turno. Vuelva a intentarlo<br>";
+            header("refresh:3; url=admin_acreditar_turno.php?dni=$dni");
+        }
 ?>
                         </div>
                     </div>
