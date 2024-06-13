@@ -45,7 +45,10 @@ if ($existe == 1) {
 } else {
     // Mostrar mensaje de error y redireccionar de nuevo a la página de inicio de sesión
     echo "Usuario o contraseña incorrectos. Inténtelo nuevamente.";
-    header("refresh:3; url=login.html");
+    echo '<script type="text/javascript">';
+    echo 'setTimeout(function(){ window.location.href = "login.html"; }, 3000);';
+    echo '</script>';    
+    //header("refresh:3; url=login.html");
     exit();
 }
 ?>

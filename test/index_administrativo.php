@@ -215,7 +215,7 @@ $mysqli->close();
                                             
                                         </form>
                                     <hr>
-                                    <a href="index.html" class="btn btn-primary btn-user btn-block" href="#" data-toggle="modal" data-target="#logoutModal">
+                                    <a href="logout.php" class="btn btn-primary btn-user btn-block" href="#" data-toggle="modal" data-target="#logoutModal">
                                         Salir
                                     </a>
                                 </div>
