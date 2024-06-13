@@ -687,6 +687,7 @@ INSERT INTO htd (idServicio, horario, sobreturno) VALUES
 CREATE TABLE profesionales (
     idProfesional INT AUTO_INCREMENT PRIMARY KEY,
     idServicio INT,
+    idEstudio INT,
     nombre VARCHAR(50) NOT NULL,
     apellido VARCHAR(50) NOT NULL,
     dni VARCHAR(50) NOT NULL,
@@ -734,7 +735,36 @@ INSERT INTO profesionales (idServicio, nombre, apellido, dni, telefono, domicili
 (28, 'Rodrigo', 'Campos', '88899900B', '555-2233', 'Calle de los Cerezos 124', 'rodrigo.campos@example.com', 'MAT-028', 9, 18, '2012-01-28'),
 (29, 'María', 'Estévez', '99900011C', '555-3344', 'Calle de los Sauces 125', 'maria.estevez@example.com', 'MAT-029', 9, 18, '2012-01-29');
 
+CREATE TABLE profesionales_estudios (
+    idProfesional INT AUTO_INCREMENT PRIMARY KEY,
+    idEstudio INT,
+    nombre VARCHAR(50) NOT NULL,
+    apellido VARCHAR(50) NOT NULL,
+    dni VARCHAR(50) NOT NULL,
+    telefono VARCHAR(50) NOT NULL,
+    domicilio VARCHAR(50) NOT NULL,
+    email VARCHAR(50) NOT NULL,
+    numeroMatricula VARCHAR(50) NOT NULL,
+    horarioIngreso INT,
+    horarioEgreso INT,
+    inicioActividad DATE,
+    finActividad DATE DEFAULT NULL,
+    constraint fk_profesionales_s foreign key (idServicio) references servicios(idServicio)
+);
 
+INSERT INTO profesionales_estudios (idEstudio, nombre, apellido, dni, telefono, domicilio, email, numeroMatricula, horarioIngreso, horarioEgreso, inicioActividad) VALUES
+(1, 'Javier', 'González', '11122233U', '555-5566', 'Calle de los Naranjos 117', 'paula.castro@example.com', 'MAT-021', 9, 18, '2012-01-21'),
+(2, 'Lucía', 'Fernández', '22233344V', '555-6677', 'Calle de los Cedros 118', 'sergio.molina@example.com', 'MAT-022', 9, 18, '2012-01-22'),
+(3, 'David', 'Rodríguez', '33344455W', '555-7788', 'Calle de los Pinos 119', 'gabriela.silva@example.com', 'MAT-023', 9, 18, '2012-01-23'),
+(4, 'Laura', 'López', '44455566X', '555-8899', 'Calle de los Alamos 120', 'martin.herrera@example.com', 'MAT-024', 9, 18, '2012-01-24'),
+(5, 'Carlos', 'Martínez', '55566677Y', '555-9900', 'Calle de los Olmos 121', 'natalia.marquez@example.com', 'MAT-025', 9, 18, '2012-01-25'),
+(6, 'Ana', 'García', '66677788Z', '555-0011', 'Calle de los Manzanos 122', 'pablo.iglesias@example.com', 'MAT-026', 9, 18, '2012-01-26'),
+(7, 'Raúl', 'Pérez', '77788899A', '555-1122', 'Calle de los Almendros 123', 'sandra.roman@example.com', 'MAT-027', 9, 18, '2012-01-27'),
+(8, 'Sara', 'Sánchez', '88899900B', '555-2233', 'Calle de los Cerezos 124', 'rodrigo.campos@example.com', 'MAT-028', 9, 18, '2012-01-28'),
+(9, 'Marta', 'Ramírez', '99900011C', '555-3344', 'Calle de los Sauces 125', 'maria.estevez@example.com', 'MAT-029', 9, 18, '2012-01-29'),
+(10, 'Pablo', 'Torres', '77788899A', '555-1122', 'Calle de los Almendros 123', 'sandra.roman@example.com', 'MAT-027', 9, 18, '2012-01-27'),
+(11, 'Elena', 'Vega', '88899900B', '555-2233', 'Calle de los Cerezos 124', 'rodrigo.campos@example.com', 'MAT-028', 9, 18, '2012-01-28'),
+(12, 'Manuel', 'Jiménez', '99900011C', '555-3344', 'Calle de los Sauces 125', 'maria.estevez@example.com', 'MAT-029', 9, 18, '2012-01-29');
 
 CREATE TABLE insumos (
     idInsumo INT AUTO_INCREMENT PRIMARY KEY,

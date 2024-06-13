@@ -42,6 +42,23 @@ require_once('verificar_sesion_admin.php');
         }
     </script>
 
+<script>
+        function handleSubmitEstudio(button) {
+            // Crear un campo de entrada oculto para almacenar el ID del botón
+            var hiddenField = document.createElement("input");
+            hiddenField.type = "hidden";
+            hiddenField.name = "action";
+            hiddenField.value = button.id;
+
+            // Agregar el campo oculto al formulario
+            var form = document.getElementById("estudioForm");
+            form.appendChild(hiddenField);
+
+            // Enviar el formulario
+            form.submit();
+        }
+    </script>
+
     <script>
         function handleSubmitProf(button) {
             // Crear un campo de entrada oculto para almacenar el ID del botón
@@ -189,13 +206,13 @@ $mysqli->close();
                                         <h1 class="h4 text-gray-900 mb-4">Estudios Clínicos</h1>
                                     </div>
                                     <hr>
-                                    <form id="userForm" class="user" method="post" action="userdni.php">
+                                    <form id="estudioForm" class="user" method="post" action="estudio.php">
                                             <div class="form-group">
                                                 <input type="text" class="form-control form-control-user" id="dni" name="dni" aria-describedby="dni" placeholder="Ingrese el dni" required>
                                             </div>
-                                            <button type="button" id="admin_atencion_sin_turno" class="btn btn-primary btn-user btn-block" onclick="handleSubmit(this)">Atención sin turno</button>
-                                            <button type="button" id="admin_reservar_sin_turno" class="btn btn-primary btn-user btn-block" onclick="handleSubmit(this)">Reservar turno</button>
-                                            <button type="button" id="admin_acreditar_atencion_sin_turno" class="btn btn-primary btn-user btn-block" onclick="handleSubmit(this)">Acreditar atención</button>
+                                            <button type="button" id="admin_atencion_estudio" class="btn btn-primary btn-user btn-block" onclick="handleSubmitEstudio(this)">Atención sin turno</button>
+                                            <button type="button" id="admin_reservar_estudio" class="btn btn-primary btn-user btn-block" onclick="handleSubmitEstudio(this)">Reservar turno</button>
+                                            <button type="button" id="admin_acreditar_atencion_estudio" class="btn btn-primary btn-user btn-block" onclick="handleSubmitEstudio(this)">Acreditar atención</button>
                                         </form>
                                     <hr>
                                     <a href="index.html" class="btn btn-primary btn-user btn-block" href="#" data-toggle="modal" data-target="#logoutModal">
