@@ -1,16 +1,18 @@
 -- https://www.freemysqlhosting.net/
 -- e-mail: emailpp011@gmail.com
 -- password: pp2_contrasena
-
--- =======================
+-- ==========================
 -- Server: sql10.freemysqlhosting.net
 -- Name: sql10707793
 -- Username: sql10707793
 -- Password: Rre1s76tSV
 -- Port number: 3306
-
 -- https://www.phpmyadmin.co/
-
+-- =======================
+-- Sitio: grupo7-pp2.000webhostapp.com
+-- Hosting: 000webhost.com
+-- Username: emailpp011@gmail.com
+-- Password: 9tHybPWm@6yMyAJ
 -- =======================
 
 -- mysql> ALTER USER 'root'@'localhost' IDENTIFIED BY 'testing01';
