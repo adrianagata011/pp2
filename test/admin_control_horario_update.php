@@ -68,12 +68,18 @@ if ($tipoFichada == "ingreso"){
             $query3 = "UPDATE consultorios set idProfesional = null where idConsultorio = $idConsultorio;";
             $row = $result->fetch_assoc();
             $result = $conn->query($query3);
-            header("refresh:3; url=admin_control_horario.php?idProfesional=$idProfesional");
+            echo '<script type="text/javascript">';
+            echo 'setTimeout(function(){ window.location.href = "admin_control_horario.php?idProfesional='.$idProfesional.'"; }, 3000);';
+            echo '</script>'; 
+            // header("refresh:3; url=admin_control_horario.php?idProfesional=$idProfesional");
             exit();
         }
     } else {
         echo "No hay ingreso para el día de hoy";
-        header("refresh:3; url=admin_control_horario.php?idProfesional=$idProfesional");
+        echo '<script type="text/javascript">';
+        echo 'setTimeout(function(){ window.location.href = "admin_control_horario.php?idProfesional='.$idProfesional.'"; }, 3000);';
+        echo '</script>';         
+        //header("refresh:3; url=admin_control_horario.php?idProfesional=$idProfesional");
         exit();
     }    
 }

@@ -94,7 +94,10 @@ require_once('verificar_sesion_admin.php');
         else {
             $dni = $_GET['dni'];  
             echo "No ha seleccionado ningún turno. Vuelva a intentarlo<br>";
-            header("refresh:3; url=admin_acreditar_turno.php?dni=$dni");
+            echo '<script type="text/javascript">';
+            echo 'setTimeout(function(){ window.location.href = "admin_acreditar_turno.php?dni='.$dni.'"; }, 3000);';
+            echo '</script>'; 
+            //header("refresh:3; url=admin_acreditar_turno.php?dni=$dni");
         }
 ?>
                         </div>
