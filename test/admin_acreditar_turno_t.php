@@ -76,15 +76,24 @@ require_once('verificar_sesion_admin.php');
                         $result1 = $conn->query($query1);
                         echo "Se acreditó el turno <br>";
                         echo "Por favor concurrir al consultorio $idConsultorio";
-                        header("refresh:5; url=index_administrativo.php");
+                        echo '<script type="text/javascript">';
+                        echo 'setTimeout(function(){ window.location.href = "index_administrativo.php"; }, 5000);';
+                        echo '</script>';
+                        //header("refresh:5; url=index_administrativo.php");
                         exit();
                     } else {
                         echo "El Dr. aún no ha llegado para poder acreditar el turno y derivar a Consultorio";
-                        header("refresh:3; url=admin_acreditar_turno.php?dni=$dni");
+                        echo '<script type="text/javascript">';
+                        echo 'setTimeout(function(){ window.location.href = "admin_acreditar_turno.php?dni='.$dni.'"; }, 3000);';
+                        echo '</script>';                        
+                        //header("refresh:3; url=admin_acreditar_turno.php?dni=$dni");
                     }
                 } else {
                     echo "Solo se puede acreditar el turno el mismo día";
-                    header("refresh:3; url=admin_acreditar_turno.php?dni=$dni");
+                    echo '<script type="text/javascript">';
+                    echo 'setTimeout(function(){ window.location.href = "admin_acreditar_turno.php?dni='.$dni.'"; }, 3000);';
+                    echo '</script>';                     
+                    // header("refresh:3; url=admin_acreditar_turno.php?dni=$dni");
                 }
             } else {
                 echo "No se seleccionó ningún turno<br>";
