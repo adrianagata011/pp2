@@ -9,7 +9,10 @@ if ( !isset($_POST['nombre']) || empty($_POST['nombre']) || !isset($_POST['apell
     echo "- grupo sanguineo<br>";
     echo "- contraseña<br>";
     $dni = $_POST['dni'];
-    header("refresh:3; url=admin_modificar_paciente.php?dni=$dni");
+    echo '<script type="text/javascript">';
+    echo 'setTimeout(function(){ window.location.href = "admin_modificar_paciente.php?dni='.$dni.'"; }, 3000);';
+    echo '</script>';
+    //header("refresh:3; url=admin_modificar_paciente.php?dni=$dni");
     exit();
 }
 
@@ -53,6 +56,9 @@ $result = $conn->query($query3);
 $conn->close();
 
 echo "Se modificaron los datos del Paciente";
-header("refresh:3; url=index_administrativo.php");
+echo '<script type="text/javascript">';
+echo 'setTimeout(function(){ window.location.href = "index_administrativo.php"; }, 3000);';
+echo '</script>';
+//header("refresh:3; url=index_administrativo.php");
 exit();
 ?>

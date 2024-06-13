@@ -63,7 +63,10 @@ if (isset($_GET['idProfesional'])) {
     $idProfesional = $_GET['idProfesional'];
 } else {
     echo "No se trajo el id del Profesional desde el menú anterior<br>";
-    header("refresh:3; url=index_administrativo.php");
+    echo '<script type="text/javascript">';
+    echo 'setTimeout(function(){ window.location.href = "index_administrativo.php"; }, 3000);';
+    echo '</script>'; 
+    //header("refresh:3; url=index_administrativo.php");
     exit();
 }
 require_once('conexion_db.php');
