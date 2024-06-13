@@ -6,7 +6,10 @@ if ( !isset($_POST['nombre']) || empty($_POST['nombre']) || !isset($_POST['canti
     echo "- nombre<br>";
     echo "- cantidad mínima<br>";
     echo "- cantidad existente<br>";
-    header("refresh:3; url=admin_nuevo_insumo.php");
+    echo '<script type="text/javascript">';
+    echo 'setTimeout(function(){ window.location.href = "admin_nuevo_insumo.php"; }, 3000);';
+    echo '</script>';
+    //header("refresh:3; url=admin_nuevo_insumo.php");
     exit();
 }
 
@@ -37,6 +40,9 @@ $result = $mysqli->query($query);
 $mysqli->close();
 
 echo "Se ingresó un Insumo Nuevo";
-header("refresh:3; url=index_administrativo.php");
+echo '<script type="text/javascript">';
+echo 'setTimeout(function(){ window.location.href = "index_administrativo.php"; }, 3000);';
+echo '</script>';
+//header("refresh:3; url=index_administrativo.php");
 exit();
 ?>

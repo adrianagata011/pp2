@@ -10,7 +10,10 @@ if ( !isset($_POST['idTurno']) || empty($_POST['idTurno']) ||
         echo "- Turno<br>";
         echo "- Fecha<br>";
         echo "- Observacion<br>";
-        header("refresh:3; url=index_administrativo.php");
+        echo '<script type="text/javascript">';
+        echo 'setTimeout(function(){ window.location.href = "index_administrativo.php"; }, 3000);';
+        echo '</script>';
+        //header("refresh:3; url=index_administrativo.php");
         exit();
     }
 
@@ -30,7 +33,10 @@ if (isset($_POST['idTurno']) && isset($_POST['idServicio']) && isset($_POST['fec
     $conn->close();
 
     echo "Atención Registrada";
-    header("refresh:3; url=index_administrativo.php");
+    echo '<script type="text/javascript">';
+    echo 'setTimeout(function(){ window.location.href = "index_administrativo.php"; }, 3000);';
+    echo '</script>';
+    //header("refresh:3; url=index_administrativo.php");
     exit();
 }
 ?>

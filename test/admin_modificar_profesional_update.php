@@ -3,7 +3,10 @@ require_once('verificar_sesion_admin.php');
 
 if (!isset($_POST['idProfesional']) || empty($_POST['idProfesional'])) {
     echo "No trajo el idProfesional";
-    header("refresh:3; url=admin_modificar_profesional.php");
+    echo '<script type="text/javascript">';
+    echo 'setTimeout(function(){ window.location.href = "admin_modificar_profesional.php"; }, 3000);';
+    echo '</script>';
+    //header("refresh:3; url=admin_modificar_profesional.php");
     exit();
 }
 
@@ -23,7 +26,10 @@ if ( !isset($_POST['idServicio']) || empty($_POST['idServicio']) ||
     echo "- horario de Ingreso<br>";
     echo "- horario de Engreso<br>";
     $idProfesional = $_POST['idProfesional'];
-    header("refresh:3; url=admin_modificar_profesional.php?idProfesional=$idProfesional");
+    echo '<script type="text/javascript">';
+    echo 'setTimeout(function(){ window.location.href = "admin_modificar_profesional.php?idProfesional='.$idProfesional.'"; }, 3000);';
+    echo '</script>';
+    //header("refresh:3; url=admin_modificar_profesional.php?idProfesional=$idProfesional");
     exit();
 }
 
@@ -46,11 +52,17 @@ require_once('conexion_db.php');
 $query = "UPDATE profesionales SET nombre = '$nombre',apellido = '$apellido',dni = '$dni',telefono = '$telefono',domicilio = '$domicilio',email = '$email',idServicio = $idServicio,numeroMatricula = '$numeroMatricula',horarioIngreso = $horarioIngreso,horarioEgreso = $horarioEgreso,inicioActividad = '$inicioActividad' WHERE idProfesional = $idProfesional;";
 if ($conn->query($query) === TRUE) {
     echo "Se actualizó la inforamción del Profesional";
-    header("refresh:3; url=index_administrativo.php");
+    echo '<script type="text/javascript">';
+    echo 'setTimeout(function(){ window.location.href = "index_administrativo.php"; }, 3000);';
+    echo '</script>';
+    //header("refresh:3; url=index_administrativo.php");
     exit();
 } else {
     echo "Error al actualizar la información del Profesional";
-    header("refresh:3; url=index_administrativo.php");
+    echo '<script type="text/javascript">';
+    echo 'setTimeout(function(){ window.location.href = "index_administrativo.php"; }, 3000);';
+    echo '</script>';
+    //header("refresh:3; url=index_administrativo.php");
     exit();
 }
 $conn->close();

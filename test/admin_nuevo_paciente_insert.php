@@ -8,7 +8,10 @@ if ( !isset($_POST['nombre']) || empty($_POST['nombre']) || !isset($_POST['apell
     echo "- obra social<br>";
     echo "- grupo sanguineo<br>";
     $dni = $_POST['dni'];
-    header("refresh:3; url=admin_nuevo_paciente.php?dni=$dni");
+    echo '<script type="text/javascript">';
+    echo 'setTimeout(function(){ window.location.href = "admin_nuevo_paciente.php?dni='.$dni.'"; }, 3000);';
+    echo '</script>';
+    //header("refresh:3; url=admin_nuevo_paciente.php?dni=$dni");
     exit();
 }
 
@@ -53,6 +56,9 @@ $result = $conn->query($query4);
 $conn->close();
 
 echo "Se ingresó un Nuevo Paciete";
-header("refresh:3; url=index_administrativo.php");
+echo '<script type="text/javascript">';
+echo 'setTimeout(function(){ window.location.href = "index_administrativo.php"; }, 3000);';
+echo '</script>';
+//header("refresh:3; url=index_administrativo.php");
 exit();
 ?>

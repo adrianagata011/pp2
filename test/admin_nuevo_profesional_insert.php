@@ -10,7 +10,10 @@ if ( !isset($_POST['idServicio']) || empty($_POST['idServicio']) || !isset($_POS
     echo "- numero de Matricula<br>";
     echo "- horario de Ingreso<br>";
     echo "- horario de Engreso<br>";
-    header("refresh:3; url=admin_nuevo_profesional.php");
+    echo '<script type="text/javascript">';
+    echo 'setTimeout(function(){ window.location.href = "admin_nuevo_profesional.php"; }, 3000);';
+    echo '</script>';
+    //header("refresh:3; url=admin_nuevo_profesional.php");
     exit();
 }
 
@@ -65,6 +68,9 @@ $result = $mysqli->query($query);
 $mysqli->close();
 
 echo "Se ingresó el Profesional Nuevo";
-header("refresh:3; url=index_administrativo.php");
+echo '<script type="text/javascript">';
+echo 'setTimeout(function(){ window.location.href = "index_administrativo.php"; }, 3000);';
+echo '</script>';
+//header("refresh:3; url=index_administrativo.php");
 exit();
 ?>
