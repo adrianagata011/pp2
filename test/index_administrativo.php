@@ -212,7 +212,7 @@ $mysqli->close();
                                             </div>
                                             <button type="button" id="admin_atencion_estudio" class="btn btn-primary btn-user btn-block" onclick="handleSubmitEstudio(this)">Atención sin turno</button>
                                             <button type="button" id="admin_reservar_estudio" class="btn btn-primary btn-user btn-block" onclick="handleSubmitEstudio(this)">Reservar turno</button>
-                                            <button type="button" id="admin_acreditar_atencion_estudio" class="btn btn-primary btn-user btn-block" onclick="handleSubmitEstudio(this)">Acreditar atención</button>
+                                            
                                         </form>
                                     <hr>
                                     <a href="index.html" class="btn btn-primary btn-user btn-block" href="#" data-toggle="modal" data-target="#logoutModal">

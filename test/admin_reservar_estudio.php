@@ -56,15 +56,15 @@ if (isset($_GET['dni'])) {
     $result = $conn->query($query);
     $row = $result->fetch_assoc();
     $idPaciente = $row['idPaciente'];
-    $query = "SELECT idEstudio,nombre from estudios order by nombre ASC;";
+    $query = "SELECT idServicio, nombre from servicios WHERE nombre LIKE 'Estudio_%' AND idServicio NOT IN (31, 32,40) order by nombre ASC;";
     $result = $conn->query($query);
     if ($result->num_rows > 0) {
-        echo "<label for='idEstudio'> Estudio: </label>";
-        echo "<select name='idEstudio' id='idEstudio'>";
+        echo "<label for='idServicio'> Estudio: </label>";
+        echo "<select name='idServicio' id='idServicio'>";
         while($row = $result->fetch_assoc()) {
-            $idEstudio = $row['idEstudio'];
+            $idServicio = $row['idServicio'];
             $nombre = $row['nombre'];
-            echo "<option value='$idEstudio'>$nombre</option>";
+            echo "<option value='$idServicio'>$nombre</option>";
         }
         echo "</select>";
     }

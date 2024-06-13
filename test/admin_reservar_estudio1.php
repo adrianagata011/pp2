@@ -48,17 +48,17 @@ require_once('verificar_sesion_admin.php');
                             <form id="estudioForm" class="user" method="post" action="admin_reservar_estudio2.php">
                                 <div class="form-group">
 <?php
-if (isset($_POST['idPaciente']) && isset($_POST['idEstudio'])) {
+if (isset($_POST['idPaciente']) && isset($_POST['idServicio'])) {
     $dni = $_POST['dni'];
     $idPaciente = $_POST['idPaciente'];
-    $idEstudio = $_POST['idEstudio'];
+    $idServicio = $_POST['idServicio'];
     echo "<div class='text-center'><h1 class='h4 text-gray-900 mb-4'>DNI: $dni</h1></div>";
     // Me conecto a la base
     require_once('conexion_db.php');
 
     // Muestro listado de servicios
 
-    $query = "SELECT nombre from estudios where idEstudio = $idEstudio;";
+    $query = "SELECT nombre from servicios where idServicio = $idServicio;";
     $result = $conn->query($query);
     $row = $result->fetch_assoc();
     $nombre = $row['nombre'];
@@ -66,7 +66,7 @@ if (isset($_POST['idPaciente']) && isset($_POST['idEstudio'])) {
 
     // Muestro listado de profesionales
 
-    $query = "SELECT idProfesional,nombre,apellido from profesionales where idEstudio = $idEstudio order by apellido ASC;";
+    $query = "SELECT idProfesional,nombre,apellido from profesionales where idServicio = $idServicio order by apellido ASC;";
     $result = $conn->query($query);
     if ($result->num_rows > 0) {
         echo "<label for='idProfesional'> Profesional: </label>";
@@ -81,7 +81,7 @@ if (isset($_POST['idPaciente']) && isset($_POST['idEstudio'])) {
     }
     else 
     {
-        echo "No se encontraron servicios<br>";
+        echo "No se encontraron estudios<br>";
     }
     $conn->close();
 }
@@ -89,7 +89,7 @@ if (isset($_POST['idPaciente']) && isset($_POST['idEstudio'])) {
                                 </div>
                                 <input type="hidden" id="dni" name="dni" value="<?php echo $dni; ?>">
                                 <input type="hidden" id="idPaciente" name="idPaciente" value="<?php echo $idPaciente; ?>">
-                                <input type="hidden" id="idEstudio" name="idEstudio" value="<?php echo $idEstudio; ?>">
+                                <input type="hidden" id="idServicio" name="idServicio" value="<?php echo $idServicio; ?>">
                                 <button type="submit" value="SeleccionarProfesional" class="btn btn-primary btn-user btn-block"> Seleccionar Profesional </button>
                             </form>
                             <hr>

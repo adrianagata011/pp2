@@ -52,7 +52,7 @@ if (isset($_GET['idPaciente'])) {
     $idPaciente = $_GET['idPaciente'];
     // Me conecto a la base
     require_once('conexion_db.php');
-    $query = "SELECT idServicio,nombre from servicios order by nombre ASC;";
+    $query = "SELECT idServicio,nombre from servicios WHERE nombre NOT LIKE 'Estudio_%' order by nombre ASC;";
     $result = $conn->query($query);
     if ($result->num_rows > 0) {
         echo "<label for='idServicio'> Servicio: </label>";

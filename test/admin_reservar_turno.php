@@ -56,7 +56,7 @@ if (isset($_GET['dni'])) {
     $result = $conn->query($query);
     $row = $result->fetch_assoc();
     $idPaciente = $row['idPaciente'];
-    $query = "SELECT idServicio,nombre from servicios order by nombre ASC;";
+    $query = "SELECT idServicio,nombre from servicios WHERE nombre NOT LIKE 'Estudio_%' order by nombre ASC;";
     $result = $conn->query($query);
     if ($result->num_rows > 0) {
         echo "<label for='idServicio'> Servicio: </label>";
