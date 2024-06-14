@@ -31,12 +31,16 @@ if ($existe == 1) {
     $_SESSION['usuario'] = $usuario;
 
     // Redireccionar a la pantalla de menú
-    header("Location: /backup/menu.php");
+    header("Location: menu.php");
+    //header("Location: /backup/menu.php");
     exit();
 } else {
     // Mostrar mensaje de error y redireccionar de nuevo a la página de inicio de sesión
     echo "Usuario o contraseña incorrectos. Inténtelo nuevamente.";
-    header("refresh:3; url=/backup/index.php");
+    echo '<script type="text/javascript">';
+    echo 'setTimeout(function(){ window.location.href = "index.php"; }, 3000);';
+    echo '</script>'; 
+    //header("refresh:3; url=/backup/index.php");
     exit();
 }
 ?>
