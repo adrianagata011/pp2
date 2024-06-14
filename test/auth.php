@@ -32,12 +32,18 @@ if ($existe == 1) {
     $_SESSION['rol_id'] = $rol;
     // Redireccionar a la pantalla de menú
     if ($rol == 1) {
-        header("Location: index_paciente.php");
+        echo '<script type="text/javascript">';
+        echo 'window.location.href = "index_paciente.php";';
+        echo '</script>';
+        //header("Location: index_paciente.php");
         exit();
     }
     else 
     {
-        header("Location: index_administrativo.php");
+        echo '<script type="text/javascript">';
+        echo 'window.location.href = "index_administrativo.php";';
+        echo '</script>';
+        //header("Location: index_administrativo.php");
         exit();        
     }
     
