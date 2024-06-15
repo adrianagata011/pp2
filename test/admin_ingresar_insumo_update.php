@@ -30,7 +30,7 @@ $sumaCantidades = $cantidad + $cantidadExistente;
 require_once('conexion_db.php');
 $query = "UPDATE insumos SET cantidadExistente = $sumaCantidades WHERE idInsumo = $idInsumo;";
 if ($conn->query($query) === TRUE) {
-    echo "Se actualizó la inforamción del Insumo";
+    echo "Se actualizó la información del Insumo";
     echo '<script type="text/javascript">';
     echo 'setTimeout(function(){ window.location.href = "index_administrativo.php"; }, 3000);';
     echo '</script>'; 

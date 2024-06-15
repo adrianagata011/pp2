@@ -9,7 +9,7 @@ if ( !isset($_POST['idServicio']) || empty($_POST['idServicio']) || !isset($_POS
     echo "- Servicio<br>";
     echo "- numero de Matricula<br>";
     echo "- horario de Ingreso<br>";
-    echo "- horario de Engreso<br>";
+    echo "- horario de Egreso<br>";
     echo '<script type="text/javascript">';
     echo 'setTimeout(function(){ window.location.href = "admin_nuevo_profesional.php"; }, 3000);';
     echo '</script>';

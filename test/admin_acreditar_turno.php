@@ -73,7 +73,7 @@ if (isset($_GET['dni'])) {
         INNER JOIN usuarios u ON pa.idUsuario = u.idUsuario 
         WHERE pa.dni = $dni and DATE(t.fechaHora) = CURDATE() AND t.acreditado IS FALSE
         ORDER BY t.fechaHora ASC;";
-    
+        $obraSocial="";
         $result = mysqli_query($conn, $query);
 
             if ($result && mysqli_num_rows($result) > 0) {
@@ -98,7 +98,11 @@ if (isset($_GET['dni'])) {
                                             </tbody>
                                         </table>
                                         <hr>
-                                        <?php echo "Cobertura del paciente: $obraSocial <br>"; ?>
+                                        <?php 
+                                        if ($obraSocial != ""){
+                                            echo "Cobertura del Paciente: $obraSocial<br>";
+                                        }
+                                        ?>
                                         <input type="hidden" id="dni" name="dni" value="<?php echo $dni; ?>">
                                         <a class="btn btn-primary btn-user btn-block" href="#" data-toggle="modal" data-target="#ConfirmModal">
                                             Acreditar turno
