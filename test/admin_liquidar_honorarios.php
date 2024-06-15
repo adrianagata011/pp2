@@ -91,7 +91,7 @@ if ($result->num_rows > 0) {
         $turnosAtendidos = $row['turnosAtendidos'];
         $importeDiario = $precio * $turnosAtendidos;
         echo "<tr><td>$dia</td><td>$turnosAtendidos</td><td>$importeDiario</td></tr>";
-        $importeTotal = $importetotal + ($turnosAtendidos*$precio);
+        $importeTotal = $importeTotal + ($turnosAtendidos*$precio);
     }
     echo "</table>";
     echo "<div class='text-center'>";
