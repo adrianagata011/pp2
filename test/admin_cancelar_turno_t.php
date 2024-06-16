@@ -77,12 +77,8 @@ require_once('verificar_sesion_admin.php');
                 echo "Ha ocurrido un error en el sistema. Vuelva a intentarlo<br>";}
 ?>
                                         <hr>
-                                        <a class="btn btn-primary btn-user btn-block" href="index_administrativo.php">
-                                            Home
-                                        </a>
-
-                                        <a href="index.html" class="btn btn-primary btn-user btn-block" href="#" data-toggle="modal" data-target="#logoutModal">
-                                            Salir
+                                        <a href="index_administrativo.php" class="btn btn-primary btn-user btn-block">
+                                            Volver
                                         </a>
 
                                     </div>
