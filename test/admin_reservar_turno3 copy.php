@@ -1,6 +1,7 @@
 <?php
 // usar si es una pagina para el paciente
 require_once('verificar_sesion_admin.php');
+
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +15,7 @@ require_once('verificar_sesion_admin.php');
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Sistema ClÃ­nica - Reservar Turno</title>
+    <title>Sistema Clínica - Reservar Turno</title>
     <link rel="icon" href="img/logo.ico" sizes="32x32" type="image/ico">
 
     <!-- Custom fonts for this template-->
@@ -78,13 +79,14 @@ if (isset($_POST['idPaciente']) && isset($_POST['idServicio']) && isset($_POST['
                                 </div>
                                 <div class="form-group">
 <?php 
-//consulto todos los horarios con sobreturno = 0
-$query = "SELECT DATE_FORMAT(STR_TO_DATE(horario, '%H:%i'), '%H:%i') AS horario FROM htd WHERE idServicio = $idServicio AND sobreturno = 0 AND DATE_FORMAT(STR_TO_DATE(horario, '%H:%i'), '%H:%i') NOT IN (SELECT DATE_FORMAT(fechaHora,'%H:%i') FROM turnos WHERE sobreturno = 0 AND idProfesional = $idProfesional AND DATE(fechaHora) = '$fecha');";
+/*echo "idPaciente: $idPaciente<br>";
+echo "idServicio: $idServicio<br>";
+echo "idProfesional: $idProfesional<br>";
+echo "$fecha<br>";
+*/
+
+    $query = "SELECT DATE_FORMAT(STR_TO_DATE(horario, '%H:%i'), '%H:%i') AS horario FROM htd WHERE idServicio = $idServicio AND sobreturno = 0 AND DATE_FORMAT(STR_TO_DATE(horario, '%H:%i'), '%H:%i') NOT IN (SELECT DATE_FORMAT(fechaHora,'%H:%i') FROM turnos WHERE idProfesional = $idProfesional AND DATE(fechaHora) = '$fecha');";
     $result = $conn->query($query);
-    //consulto todos los horarios con sobreturno = 1
-    $query2 = "SELECT DATE_FORMAT(STR_TO_DATE(horario, '%H:%i'), '%H:%i') AS horario FROM htd WHERE idServicio = $idServicio AND sobreturno = 1 AND DATE_FORMAT(STR_TO_DATE(horario, '%H:%i'), '%H:%i') NOT IN (SELECT DATE_FORMAT(fechaHora,'%H:%i') FROM turnos WHERE sobreturno = 1 AND idProfesional = $idProfesional AND DATE(fechaHora) = '$fecha');";
-    $result2 = $conn->query($query2);
-    
     if ($result->num_rows > 0) {
         echo "<label for='horario'> Reservar Turno: </label>";
         echo "<select name='horario' id='horario'>";
@@ -114,55 +116,9 @@ $query = "SELECT DATE_FORMAT(STR_TO_DATE(horario, '%H:%i'), '%H:%i') AS horario 
                                 <input type="hidden" id="idServicio" name="idServicio" value="<?php echo $idServicio; ?>">
                                 <input type="hidden" id="idProfesional" name="idProfesional" value="<?php echo $idProfesional; ?>">
                                 <input type="hidden" id="fecha" name="fecha" value="<?php echo $fecha; ?>">
-                                <input type="hidden" id="sobreTurno" name="sobreTurno" value="<?php $sobreTurno=0; echo $sobreTurno; ?>">
                                 <button type="submit" value="reservarTurno" class="btn btn-primary btn-user btn-block"> Reservar Turno </button>
                                 </div>
                             </form>
-                            <hr>
-                            <!--inicia agregado de reserva de sobreturno -->
-
-                            <form id="profForm2" class="user" method="post" action="admin_reservar_turno_insert.php">
-                                <div class="form-group">
-
-                                </div>
-                                <div class="form-group">
-<?php
-    $result2 = $conn->query($query2);
-    if ($result2->num_rows > 0) {
-        echo "<label for='horario'> Sobreturnos: </label>";
-        echo "<select name='horario' id='horario'>";
-        $primero2=1;
-        while($row2 = $result2->fetch_assoc()) {
-            if ($primero2 == 1){
-                $horario = $row2['horario'];
-                echo "<option value='$horario' selected>$horario</option>";
-                $primero2 = 0;
-            } else {
-                $horario = $row2['horario'];
-                echo "<option value='$horario'>$horario</option>";
-            }
-        }
-        echo "</select>";
-    }
-    else 
-    {
-        echo "No se encontraron sobreturnos disponibles<br>";
-    }
-
-?>
-                                </div>
-                                <div class="form-group">
-                                <input type="hidden" id="dni" name="dni" value="<?php echo $dni; ?>">
-                                <input type="hidden" id="idPaciente" name="idPaciente" value="<?php echo $idPaciente; ?>">
-                                <input type="hidden" id="idServicio" name="idServicio" value="<?php echo $idServicio; ?>">
-                                <input type="hidden" id="idProfesional" name="idProfesional" value="<?php echo $idProfesional; ?>">
-                                <input type="hidden" id="fecha" name="fecha" value="<?php echo $fecha; ?>">
-                                <input type="hidden" id="sobreTurno" name="sobreTurno" value="<?php $sobreTurno=1; echo $sobreTurno; ?>">
-                                <button type="submit" value="reservarTurno" class="btn btn-primary btn-user btn-block"> Reservar Sobre Turno </button>
-                                </div>
-                            </form>
-
-                            <!-- fin de agregado de reserva de sobreturno -->
                             <hr>
                             <div class="form-group">                            
                                 <a href="index_administrativo.php" class="btn btn-primary btn-user btn-block">

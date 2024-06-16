@@ -54,6 +54,7 @@ require_once('verificar_sesion_admin.php');
                                                     <th>Servicio</th>
                                                     <th>Profesional</th>
                                                     <th>Precio</th>
+                                                    <th>Sobreturno</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -65,7 +66,7 @@ if (isset($_GET['dni'])) {
     require_once('conexion_db.php');
     $conn->set_charset("utf8");
     
-    $query = "SELECT s.precio_publico as precioPublico, pa.obraSocial as obraSocial,t.fechaHora as fecha, s.nombre as servicio, p.nombre as nombre, p.apellido as apellido 
+    $query = "SELECT s.precio_publico as precioPublico, pa.obraSocial as obraSocial,t.fechaHora as fecha, s.nombre as servicio, p.nombre as nombre, p.apellido as apellido, t.sobreTurno as sobreTurno
         FROM turnos t 
         INNER JOIN profesionales p ON t.idProfesional = p.idProfesional 
         INNER JOIN servicios s ON t.idServicio = s.idServicio 
@@ -83,7 +84,8 @@ if (isset($_GET['dni'])) {
                     $servicio = $row['servicio'];
                     $precioPublico= $row['precioPublico'];
                     $profesional = $row['nombre'] . " " . $row['apellido'];
-                    echo "<tr><td><input type='radio' name='turno' value= '" . $fecha . "'></td><td>" . $fecha . "</td><td>" . $servicio . "</td><td>" . $profesional . "</td><td>". $precioPublico ."</td></tr>";
+                    $sobreTurno =  $row['sobreTurno'];
+                    echo "<tr><td><input type='radio' name='turno' value= '" . $fecha . "'></td><td>" . $fecha . "</td><td>" . $servicio . "</td><td>" . $profesional . "</td><td>". $precioPublico ."</td><td>" . $sobreTurno . "</td></tr>";
                 }           
             } 
             else {
