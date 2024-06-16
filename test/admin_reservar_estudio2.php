@@ -44,7 +44,7 @@ require_once('verificar_sesion_admin.php');
                                 <h1 class="h4 text-gray-900 mb-4">Reservar Turno</h1>
                             </div>
                             <hr>
-                            <form id="profForm" class="user" method="post" action="admin_reservar_turno3.php">
+                            <form id="profForm" class="user" method="post" action="admin_reservar_estudio3.php">
                                 <div class="form-group">
 <?php
 

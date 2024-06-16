@@ -44,7 +44,7 @@ require_once('verificar_sesion_admin.php');
                                 <h1 class="h4 text-gray-900 mb-4">Reservar Turno</h1>
                             </div>
                             <hr>
-                            <form id="profForm" class="user" method="post" action="admin_reservar_turno_insert.php">
+                            <form id="profForm" class="user" method="post" action="admin_reservar_estudio_insert.php">
                                 <div class="form-group">
 <?php
 if (isset($_POST['idPaciente']) && isset($_POST['idServicio']) && isset($_POST['idProfesional']) && isset($_POST['fecha'])) {
